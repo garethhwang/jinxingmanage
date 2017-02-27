@@ -1,2 +1,26 @@
 2017-02-24 8:37:05 - PHP Notice:  Undefined index: key in /home/work/www/JinXingManager/www/catalog/controller/api/login.php on line 11
 2017-02-24 8:37:18 - PHP Notice:  Undefined index: key in /home/work/www/JinXingManager/www/catalog/controller/api/login.php on line 11
+2017-02-27 6:31:24 - PHP Warning:  Invalid argument supplied for foreach() in /home/work/www/JinXingManager/www/admin/view/template/clinic/clinic.tpl on line 59
+2017-02-27 6:31:24 - PHP Warning:  Invalid argument supplied for foreach() in /home/work/www/JinXingManager/www/admin/view/template/clinic/clinic.tpl on line 74
+2017-02-27 6:31:24 - PHP Warning:  Invalid argument supplied for foreach() in /home/work/www/JinXingManager/www/admin/view/template/clinic/clinic.tpl on line 89
+2017-02-27 6:31:32 - PHP Warning:  Invalid argument supplied for foreach() in /home/work/www/JinXingManager/www/admin/view/template/clinic/clinic.tpl on line 59
+2017-02-27 6:31:32 - PHP Warning:  Invalid argument supplied for foreach() in /home/work/www/JinXingManager/www/admin/view/template/clinic/clinic.tpl on line 74
+2017-02-27 6:31:32 - PHP Warning:  Invalid argument supplied for foreach() in /home/work/www/JinXingManager/www/admin/view/template/clinic/clinic.tpl on line 89
+2017-02-27 6:32:01 - PHP Warning:  Invalid argument supplied for foreach() in /home/work/www/JinXingManager/www/admin/view/template/clinic/clinic.tpl on line 59
+2017-02-27 6:32:01 - PHP Warning:  Invalid argument supplied for foreach() in /home/work/www/JinXingManager/www/admin/view/template/clinic/clinic.tpl on line 74
+2017-02-27 6:32:01 - PHP Warning:  Invalid argument supplied for foreach() in /home/work/www/JinXingManager/www/admin/view/template/clinic/clinic.tpl on line 89
+2017-02-27 6:32:15 - PHP Warning:  Invalid argument supplied for foreach() in /home/work/www/JinXingManager/www/admin/view/template/clinic/clinic.tpl on line 59
+2017-02-27 6:32:15 - PHP Warning:  Invalid argument supplied for foreach() in /home/work/www/JinXingManager/www/admin/view/template/clinic/clinic.tpl on line 74
+2017-02-27 6:32:15 - PHP Warning:  Invalid argument supplied for foreach() in /home/work/www/JinXingManager/www/admin/view/template/clinic/clinic.tpl on line 89
+2017-02-27 6:48:09 - PHP Warning:  Invalid argument supplied for foreach() in /home/work/www/JinXingManager/www/admin/view/template/clinic/clinic.tpl on line 59
+2017-02-27 6:48:09 - PHP Warning:  Invalid argument supplied for foreach() in /home/work/www/JinXingManager/www/admin/view/template/clinic/clinic.tpl on line 74
+2017-02-27 6:48:09 - PHP Warning:  Invalid argument supplied for foreach() in /home/work/www/JinXingManager/www/admin/view/template/clinic/clinic.tpl on line 89
+2017-02-27 6:48:10 - PHP Warning:  Invalid argument supplied for foreach() in /home/work/www/JinXingManager/www/admin/view/template/clinic/clinic.tpl on line 59
+2017-02-27 6:48:10 - PHP Warning:  Invalid argument supplied for foreach() in /home/work/www/JinXingManager/www/admin/view/template/clinic/clinic.tpl on line 74
+2017-02-27 6:48:10 - PHP Warning:  Invalid argument supplied for foreach() in /home/work/www/JinXingManager/www/admin/view/template/clinic/clinic.tpl on line 89
+2017-02-27 6:49:54 - PHP Warning:  Invalid argument supplied for foreach() in /home/work/www/JinXingManager/www/admin/view/template/clinic/clinic.tpl on line 59
+2017-02-27 6:49:54 - PHP Warning:  Invalid argument supplied for foreach() in /home/work/www/JinXingManager/www/admin/view/template/clinic/clinic.tpl on line 74
+2017-02-27 6:49:54 - PHP Warning:  Invalid argument supplied for foreach() in /home/work/www/JinXingManager/www/admin/view/template/clinic/clinic.tpl on line 89
+2017-02-27 6:50:18 - PHP Notice:  Undefined variable: token in /home/work/www/JinXingManager/www/admin/view/template/customer/customer_visit_info.tpl on line 103
+2017-02-27 7:59:28 - PHP Notice:  Undefined variable: token in /home/work/www/JinXingManager/www/admin/view/template/customer/customer_visit_info.tpl on line 103
+2017-02-27 8:00:18 - PHP Notice:  Undefined index: receipt_id in /home/work/www/JinXingManager/www/admin/model/customer/customer.php on line 65

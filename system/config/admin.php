@@ -62,3 +62,4 @@ $_['action_event'] = array(
 	'language/extension/theme/*/before'       => 'event/compatibility/language',
 	'language/extension/total/*/before'       => 'event/compatibility/language'
 );
+
