@@ -32,7 +32,7 @@ $('#range a').on('click', function(e) {
                         if (typeof json['order'] == 'undefined') { return false; }
 			var option = {	
 				shadowSize: 0,
-				colors: ['#9FD5F1', '#1065D2'],
+				colors: ['#EF9A2D', '#1065D2'],
 				bars: { 
 					show: true,
 					fill: true,
