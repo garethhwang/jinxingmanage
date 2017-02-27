@@ -130,6 +130,8 @@ class ControllerClinicClinic extends Controller
             $province_name = $this->model_clinic_clinic->GetProvinceNameByProvinceId($result['province_id']);
             $city_name = $this->model_clinic_clinic->GetCityNameByCityId($result['city_id']);
             $district_name = $this->model_clinic_clinic->GetDistrictNameByDistrictId($result['district_id']);
+            $department_id = urlencode($result['city_id'] . ',' . $result['district_id'] . ',' . $result['office_id']);
+
 
             $data['offices'][] = array(
                 'office_id' => $result['office_id'],
@@ -141,7 +143,7 @@ class ControllerClinicClinic extends Controller
                 'province_id' => $result['province_id'],
                 'province_name' => $province_name,
                 'edit' => $this->url->link('clinic/clinic/edit', 'token=' . $this->session->data['token'] . '&office_id=' . $result['office_id'] . $url, true),
-                'office_customer' => $this->url->link('customer/customer', 'token=' . $this->session->data['token'] . '&office_id=' . $result['office_id'] . $url, true)
+                'office_customer' => $this->url->link('customer/customer', 'token=' . $this->session->data['token'] . '&office_id=' . $department_id . $url, true)
             );
         }
 

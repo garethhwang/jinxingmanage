@@ -158,12 +158,12 @@ class ModelCustomerCustomer extends Model {
 		}
 
         if (!empty($data['office_id'])) {
-            $implode[] = "department =  '" . (int)$data['office_id'] . "'";
+            $implode[] = "department =  '" . $data['office_id'] . "'";
         }
 
         //add for doctor group filter
         if (!empty($data['department'])) {
-            $implode[] = "department =  '" . (int)$data['department'] . "'";
+            $implode[] = "department =  '" . $data['department'] . "'";
         }
 
 		if ($implode) {
@@ -373,7 +373,7 @@ class ModelCustomerCustomer extends Model {
 		}
 
         if (!empty($data['office_id'])) {
-            $implode[] = "department =  '" . (int)$data['office_id'] . "'";
+            $implode[] = "department =  '" . $data['office_id'] . "'";
         }
 
 		if ($implode) {

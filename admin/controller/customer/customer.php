@@ -371,7 +371,7 @@ class ControllerCustomerCustomer extends Controller {
 		}
 
         if (isset($this->request->get['office_id'])) {
-            $office_id = $this->request->get['office_id'];
+            $office_id = urldecode($this->request->get['office_id']);
         } else {
             $office_id = null;
         }
