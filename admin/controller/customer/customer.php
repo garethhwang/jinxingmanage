@@ -447,8 +447,9 @@ class ControllerCustomerCustomer extends Controller {
             'text' => $this->language->get('heading_title'),
             'href' => $this->url->link('customer/customer', 'token=' . $this->session->data['token'] . $url, true)
         );
+        var_dump($url);
 
-		$data['add'] = $this->url->link('customer/customer/add', 'token=' . $this->session->data['token'] . $url, true);
+        $data['add'] = $this->url->link('customer/customer/add', 'token=' . $this->session->data['token'] . $url, true);
 		$data['delete'] = $this->url->link('customer/customer/delete', 'token=' . $this->session->data['token'] . $url, true);
 
 		$data['customers'] = array();
@@ -645,6 +646,7 @@ class ControllerCustomerCustomer extends Controller {
         if (isset($this->request->get['office_id'])) {
             $url .= '&office_id=' . $this->request->get['office_id'];
         }
+        var_dump($url);
 
         if (isset($this->request->get['filter_date_added'])) {
 			$url .= '&filter_date_added=' . $this->request->get['filter_date_added'];
@@ -667,7 +669,7 @@ class ControllerCustomerCustomer extends Controller {
 		$data['sort_ip'] = $this->url->link('customer/customer', 'token=' . $this->session->data['token'] . '&sort=c.ip' . $url, true);
 		$data['sort_date_added'] = $this->url->link('customer/customer', 'token=' . $this->session->data['token'] . '&sort=c.date_added' . $url, true);
        // $data['sort_product_duration_visit'] = $this->url->link('customer/customer', 'token=' . $this->session->data['token'] . '&sort=c.product_duration_visit' . $url, true);
-
+/*
 		$url = '';
 
 		if (isset($this->request->get['filter_name'])) {
@@ -705,7 +707,7 @@ class ControllerCustomerCustomer extends Controller {
 		if (isset($this->request->get['order'])) {
 			$url .= '&order=' . $this->request->get['order'];
 		}
-
+*/
 		$pagination = new Pagination();
 		$pagination->total = $customer_total;
 		$pagination->page = $page;
