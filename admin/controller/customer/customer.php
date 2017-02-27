@@ -420,10 +420,6 @@ class ControllerCustomerCustomer extends Controller {
 			$url .= '&filter_ip=' . $this->request->get['filter_ip'];
 		}
 
-        if (isset($this->request->get['office_id'])) {
-            $url .= '&office_id=' . $this->request->get['office_id'];
-        }
-
 		if (isset($this->request->get['filter_date_added'])) {
 			$url .= '&filter_date_added=' . $this->request->get['filter_date_added'];
 		}
@@ -646,7 +642,11 @@ class ControllerCustomerCustomer extends Controller {
 			$url .= '&filter_ip=' . $this->request->get['filter_ip'];
 		}
 
-		if (isset($this->request->get['filter_date_added'])) {
+        if (isset($this->request->get['office_id'])) {
+            $url .= '&office_id=' . $this->request->get['office_id'];
+        }
+
+        if (isset($this->request->get['filter_date_added'])) {
 			$url .= '&filter_date_added=' . $this->request->get['filter_date_added'];
 		}
 
