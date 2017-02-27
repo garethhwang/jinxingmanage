@@ -25,8 +25,6 @@ class ModelReportSale extends Model {
 			$implode[] = "'" . (int)$order_status_id . "'";
 		}
 
-		var_dump($this->config->get('config_complete_status'));
-
 		$order_data = array();
 
 		for ($i = 0; $i < 24; $i++) {
