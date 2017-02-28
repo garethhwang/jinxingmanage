@@ -3,8 +3,8 @@
 
 <head>
     <title>Line Chart</title>
-    <script src="system/ChartJS/dist/Chart.bundle.js"></script>
-    <script src="system/ChartJS/samples/utils.js"></script>
+    <script src="../system/ChartJS/dist/Chart.bundle.js"></script>
+    <script src="../system/ChartJS/samples/utils.js"></script>
     <style>
     canvas{
         -moz-user-select: none;
