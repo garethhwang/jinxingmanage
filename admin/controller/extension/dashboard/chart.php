@@ -127,9 +127,15 @@ class ControllerExtensionDashboardChart extends Controller {
 		$json['order']['label'] = $this->language->get('text_order');
 		$json['customer']['label'] = $this->language->get('text_customer');
 		$json['order']['data'] = array();
-		$json['customer']['data'] = array();
+        $json['customer']['data'] = array();
+        $json['order']['backgroundColor'] = 'window.chartColors.red';
+        $json['customer']['backgroundColor'] = 'window.chartColors.blue';
+        $json['order']['borderColor'] = 'window.chartColors.red';
+        $json['customer']['borderColor'] = 'window.chartColors.blue';
+        $json['order']['fill'] = 'false';
+        $json['customer']['fill'] = 'false';
 
-		if (isset($this->request->get['range'])) {
+        if (isset($this->request->get['range'])) {
 			$range = $this->request->get['range'];
 		} else {
 			$range = 'day';
@@ -141,17 +147,17 @@ class ControllerExtensionDashboardChart extends Controller {
 				$results = $this->model_report_sale->getTotalOrdersByDay();
 
 				foreach ($results as $key => $value) {
-					$json['order']['data'][] = array($key, $value['total']);
+					$json['order']['data'][] = $value['total'];
 				}
 
 				$results = $this->model_report_customer->getTotalCustomersByDay();
 
 				foreach ($results as $key => $value) {
-					$json['customer']['data'][] = array($key, $value['total']);
+					$json['customer']['data'][] = $value['total'];
 				}
 
 				for ($i = 0; $i < 24; $i++) {
-					$json['xaxis'][] = array($i, $i);
+					$json['labels'][] = $i;
 				}
 				break;
 			case 'week':
@@ -172,7 +178,7 @@ class ControllerExtensionDashboardChart extends Controller {
 				for ($i = 0; $i < 7; $i++) {
 					$date = date('Y-m-d', $date_start + ($i * 86400));
 
-					$json['xaxis'][] = array(date('w', strtotime($date)), date('D', strtotime($date)));
+					$json['labels'][] = array(date('w', strtotime($date)), date('D', strtotime($date)));
 				}
 				break;
 			case 'month':
@@ -191,7 +197,7 @@ class ControllerExtensionDashboardChart extends Controller {
 				for ($i = 1; $i <= date('t'); $i++) {
 					$date = date('Y') . '-' . date('m') . '-' . $i;
 
-					$json['xaxis'][] = array(date('j', strtotime($date)), date('d', strtotime($date)));
+					$json['labels'][] = array(date('j', strtotime($date)), date('d', strtotime($date)));
 				}
 				break;
 			case 'year':

@@ -10,73 +10,103 @@
     </div>
     <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i> <?php echo $heading_title; ?></h3>
   </div>
-  <div class="panel-body">
-    <div id="chart-sale" style="width: 100%; height: 260px;"></div>
+  <div >
+    <canvas id="canvas"></canvas>
   </div>
 </div>
-<script type="text/javascript" src="view/javascript/jquery/flot/jquery.flot.js"></script> 
+<br>
+<script type="text/javascript" src="view/javascript/jquery/flot/jquery.flot.js"></script>
 <script type="text/javascript" src="view/javascript/jquery/flot/jquery.flot.resize.min.js"></script>
+<script src="../system/ChartJS/dist/Chart.bundle.js"></script>
+<script src="../system/ChartJS/samples/utils.js"></script>
 <script type="text/javascript"><!--
-$('#range a').on('click', function(e) {
-	e.preventDefault();
-	
-	$(this).parent().parent().find('li').removeClass('active');
-	
-	$(this).parent().addClass('active');
-	
-	$.ajax({
-		type: 'get',
-		url: 'index.php?route=extension/dashboard/chart/chart&token=<?php echo $token; ?>&range=' + $(this).attr('href'),
-		dataType: 'json',
-		success: function(json) {
-                        if (typeof json['order'] == 'undefined') { return false; }
-			var option = {	
-				shadowSize: 0,
-				colors: ['#EF9A2D', '#1065D2'],
-				bars: { 
-					show: true,
-					fill: true,
-					lineWidth: 1
-				},
-				grid: {
-					backgroundColor: '#FFFFFF',
-					hoverable: true
-				},
-				points: {
-					show: false
-				},
-				xaxis: {
-					show: true,
-            		ticks: json['xaxis']
-				}
-			}
-			
-			$.plot('#chart-sale', [json['order'], json['customer']], option);	
-					
-			$('#chart-sale').bind('plothover', function(event, pos, item) {
-				$('.tooltip').remove();
-			  
-				if (item) {
-					$('<div id="tooltip" class="tooltip top in"><div class="tooltip-arrow"></div><div class="tooltip-inner">' + item.datapoint[1].toFixed(2) + '</div></div>').prependTo('body');
-					
-					$('#tooltip').css({
-						position: 'absolute',
-						left: item.pageX - ($('#tooltip').outerWidth() / 2),
-						top: item.pageY - $('#tooltip').outerHeight(),
-						pointer: 'cusror'
-					}).fadeIn('slow');	
-					
-					$('#chart-sale').css('cursor', 'pointer');		
-			  	} else {
-					$('#chart-sale').css('cursor', 'auto');
-				}
-			});
-		},
-        error: function(xhr, ajaxOptions, thrownError) {
-           alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-        }
-	});
-});
+    $('#range a').on('click', function(e) {
+        e.preventDefault();
 
-$('#range .active a').trigger('click');
-//--></script> 
+        $(this).parent().parent().find('li').removeClass('active');
+
+        $(this).parent().addClass('active');
+
+        $.ajax({
+            type: 'get',
+            url: 'index.php?route=extension/dashboard/chart/chart&token=<?php echo $token; ?>&range=' + $(this).attr('href'),
+            dataType: 'json',
+            success: function(json) {
+                if (typeof json['order'] == 'undefined') { return false; }
+                var config = {
+                    type: 'line',
+                    data: {
+                        labels: ["January", "February", "March", "April", "May", "June", "July"],
+                        datasets: [{
+                            label: "My First dataset",
+                            backgroundColor: window.chartColors.red,
+                            borderColor: window.chartColors.red,
+                            data: [
+                                randomScalingFactor(),
+                                randomScalingFactor(),
+                                randomScalingFactor(),
+                                randomScalingFactor(),
+                                randomScalingFactor(),
+                                randomScalingFactor(),
+                                randomScalingFactor()
+                            ],
+                            fill: false,
+                        }, {
+                            label: "My Second dataset",
+                            fill: false,
+                            backgroundColor: window.chartColors.blue,
+                            borderColor: window.chartColors.blue,
+                            data: [
+                                randomScalingFactor(),
+                                randomScalingFactor(),
+                                randomScalingFactor(),
+                                randomScalingFactor(),
+                                randomScalingFactor(),
+                                randomScalingFactor(),
+                                randomScalingFactor()
+                            ],
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        title:{
+                            display:true,
+                            text:'Chart.js Line Chart'
+                        },
+                        tooltips: {
+                            mode: 'index',
+                            intersect: false,
+                        },
+                        hover: {
+                            mode: 'nearest',
+                            intersect: true
+                        },
+                        scales: {
+                            xAxes: [{
+                                display: true,
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: 'Month'
+                                }
+                            }],
+                            yAxes: [{
+                                display: true,
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: 'Value'
+                                }
+                            }]
+                        }
+                    }
+                };
+                var ctx = document.getElementById("canvas").getContext("2d");
+                window.myLine = new Chart(ctx, config);
+            },
+            error: function(xhr, ajaxOptions, thrownError) {
+                alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+            }
+        });
+    });
+
+    $('#range .active a').trigger('click');
+    //--></script>
