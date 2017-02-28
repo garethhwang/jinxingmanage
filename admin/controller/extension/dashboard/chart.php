@@ -120,20 +120,8 @@ class ControllerExtensionDashboardChart extends Controller {
 		$this->load->model('report/sale');
 		$this->load->model('report/customer');
 
-		$json['order'] = array();
-		$json['customer'] = array();
-		$json['xaxis'] = array();
-
-		$json['order']['label'] = $this->language->get('text_order');
-		$json['customer']['label'] = $this->language->get('text_customer');
-		$json['order']['data'] = array();
-        $json['customer']['data'] = array();
-        $json['order']['backgroundColor'] = 'window.chartColors.red';
-        $json['customer']['backgroundColor'] = 'window.chartColors.blue';
-        $json['order']['borderColor'] = 'window.chartColors.red';
-        $json['customer']['borderColor'] = 'window.chartColors.blue';
-        $json['order']['fill'] = 'false';
-        $json['customer']['fill'] = 'false';
+		$json['datasets'] = array();
+		$json['labels'] = array();
 
         if (isset($this->request->get['range'])) {
 			$range = $this->request->get['range'];
@@ -144,17 +132,29 @@ class ControllerExtensionDashboardChart extends Controller {
 		switch ($range) {
 			default:
 			case 'day':
+                $dataset=array();
+                $dataset['label']='付款订单';
 				$results = $this->model_report_sale->getTotalOrdersByDay();
 
 				foreach ($results as $key => $value) {
-					$json['order']['data'][] = $value['total'];
+					$dataset['data'][] = $value['total'];
 				}
+				$dataset['backgroundColor']='window.chartColors.red';
+				$dataset['borderColor']='window.chartColors.red';
+				$dataset['fill']=false;
+                $json['datasets'][]=$dataset;
 
 				$results = $this->model_report_customer->getTotalCustomersByDay();
+                $dataset=array();
+                $dataset['label']='新增会员';
 
 				foreach ($results as $key => $value) {
-					$json['customer']['data'][] = $value['total'];
+                    $dataset['data'][] = $value['total'];
 				}
+                $dataset['backgroundColor']='window.chartColors.blue';
+                $dataset['borderColor']='window.chartColors.blue';
+                $dataset['fill']=false;
+                $json['datasets'][]=$dataset;
 
 				for ($i = 0; $i < 24; $i++) {
 					$json['labels'][] = $i;
