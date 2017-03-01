@@ -40,7 +40,7 @@
                         datasets: [{
                             label: "My First dataset",
                             backgroundColor: window.chartColors.red,
-                            borderColor: window.chartColors.red,
+                            borderColor: json['datasets'][0]['borderColor'],
                             data: json['datasets'][0]['data'],
                             fill: false,
                         }, {
@@ -54,8 +54,7 @@
                     options: {
                         responsive: true,
                         title:{
-                            display:true,
-                            text:'Chart.js Line Chart'
+                            display:false
                         },
                         tooltips: {
                             mode: 'index',
