@@ -139,8 +139,8 @@ class ControllerExtensionDashboardChart extends Controller {
 				foreach ($results as $key => $value) {
 					$dataset['data'][] = $value['total'];
 				}
-				$dataset['backgroundColor']='FF0000';
-				$dataset['borderColor']='FF0000';
+				$dataset['backgroundColor']='RGB(255,0,0)';
+				$dataset['borderColor']='RGB(255,0,0)';
 				$dataset['fill']=false;
                 $json['datasets'][]=$dataset;
 
