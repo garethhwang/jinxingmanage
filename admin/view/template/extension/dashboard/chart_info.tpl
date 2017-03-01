@@ -10,7 +10,7 @@
     </div>
     <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i> <?php echo $heading_title; ?></h3>
   </div>
-  <div >
+  <div id="canvasparent">
     <canvas id="canvas"></canvas>
   </div>
 </div>
@@ -82,9 +82,10 @@
                         }
                     }
                 };
+                $('#canvas').remove();
+                $('#canvasparent').append('<canvas id="canvas"></canvas>');
                 var ctx = document.getElementById("canvas").getContext("2d");
                 window.myLine = new Chart(ctx, config);
-                window.myLine.update();
             },
             error: function(xhr, ajaxOptions, thrownError) {
                 alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
