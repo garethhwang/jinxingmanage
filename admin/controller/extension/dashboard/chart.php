@@ -172,7 +172,7 @@ class ControllerExtensionDashboardChart extends Controller {
 				for ($i = 0; $i < 7; $i++) {
 					$date = date('Y-m-d', $date_start + ($i * 86400));
 
-					$json['labels'][] = array(date('w', strtotime($date)), date('D', strtotime($date)));
+					$json['labels'][] = date('D', strtotime($date));
 				}
 				break;
 			case 'month':
@@ -191,7 +191,7 @@ class ControllerExtensionDashboardChart extends Controller {
 				for ($i = 1; $i <= date('t'); $i++) {
 					$date = date('Y') . '-' . date('m') . '-' . $i;
 
-					$json['labels'][] = array(date('j', strtotime($date)), date('d', strtotime($date)));
+					$json['labels'][] =  date('d', strtotime($date));
 				}
 				break;
 			case 'year':
@@ -208,7 +208,7 @@ class ControllerExtensionDashboardChart extends Controller {
 				}
 
 				for ($i = 1; $i <= 12; $i++) {
-					$json['xaxis'][] = array($i, date('M', mktime(0, 0, 0, $i)));
+					$json['xaxis'][] =date('M', mktime(0, 0, 0, $i));
 				}
 				break;
 		}
