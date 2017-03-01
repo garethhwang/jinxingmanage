@@ -84,6 +84,7 @@
                 };
                 var ctx = document.getElementById("canvas").getContext("2d");
                 window.myLine = new Chart(ctx, config);
+                window.myLine.update();
             },
             error: function(xhr, ajaxOptions, thrownError) {
                 alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
