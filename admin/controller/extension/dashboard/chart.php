@@ -122,7 +122,8 @@ class ControllerExtensionDashboardChart extends Controller {
 
         $json['order'] = array();
         $json['customer'] = array();
-        $json['xaxis'] = array();
+        $json['labels'] = array();
+        $json['labelstring'] ='';
 
         $json['order']['label'] = $this->language->get('text_order');
         $json['customer']['label'] = $this->language->get('text_customer');
@@ -138,6 +139,7 @@ class ControllerExtensionDashboardChart extends Controller {
         switch ($range) {
             default:
             case 'day':
+                $json['labelstring'] ='天';
                 $results = $this->model_report_sale->getTotalOrdersByDay();
 
                 foreach ($results as $key => $value) {
