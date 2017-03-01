@@ -113,53 +113,52 @@ class ControllerExtensionDashboardChart extends Controller {
 	}
 
 	public function chart() {
-		$this->load->language('extension/dashboard/chart');
+        $this->load->language('extension/dashboard/chart');
 
-		$json = array();
+        $json = array();
 
-		$this->load->model('report/sale');
-		$this->load->model('report/customer');
+        $this->load->model('report/sale');
+        $this->load->model('report/customer');
 
-		$json['datasets'] = array();
-		$json['labels'] = array();
+        $json['order'] = array();
+        $json['customer'] = array();
+        $json['xaxis'] = array();
+
+        $json['order']['label'] = $this->language->get('text_order');
+        $json['customer']['label'] = $this->language->get('text_customer');
+        $json['order']['data'] = array();
+        $json['customer']['data'] = array();
+        $json['order']['backgroundColor'] = 'window.chartColors.red';
+        $json['customer']['backgroundColor'] = 'window.chartColors.blue';
+        $json['order']['borderColor'] = 'window.chartColors.red';
+        $json['customer']['borderColor'] = 'window.chartColors.blue';
+        $json['order']['fill'] = 'false';
+        $json['customer']['fill'] = 'false';
 
         if (isset($this->request->get['range'])) {
-			$range = $this->request->get['range'];
-		} else {
-			$range = 'day';
-		}
+            $range = $this->request->get['range'];
+        } else {
+            $range = 'day';
+        }
 
-		switch ($range) {
-			default:
-			case 'day':
-                $dataset=array();
-                $dataset['label']='付款订单';
-				$results = $this->model_report_sale->getTotalOrdersByDay();
+        switch ($range) {
+            default:
+            case 'day':
+                $results = $this->model_report_sale->getTotalOrdersByDay();
 
-				foreach ($results as $key => $value) {
-					$dataset['data'][] = $value['total'];
-				}
-				$dataset['backgroundColor']='RGB(255,0,0)';
-				$dataset['borderColor']='RGB(255,0,0)';
-				$dataset['fill']=false;
-                $json['datasets'][]=$dataset;
+                foreach ($results as $key => $value) {
+                    $json['order']['data'][] = $value['total'];
+                }
+                $results = $this->model_report_customer->getTotalCustomersByDay();
 
-				$results = $this->model_report_customer->getTotalCustomersByDay();
-                $dataset=array();
-                $dataset['label']='新增会员';
+                foreach ($results as $key => $value) {
+                    $json['customer']['data'][] = $value['total'];
+                }
 
-				foreach ($results as $key => $value) {
-                    $dataset['data'][] = $value['total'];
-				}
-                $dataset['backgroundColor']='window.chartColors.blue';
-                $dataset['borderColor']='window.chartColors.blue';
-                $dataset['fill']=false;
-                $json['datasets'][]=$dataset;
-
-				for ($i = 0; $i < 24; $i++) {
-					$json['labels'][] = $i;
-				}
-				break;
+                for ($i = 0; $i < 24; $i++) {
+                    $json['labels'][] = $i;
+                }
+                break;
 			case 'week':
 				$results = $this->model_report_sale->getTotalOrdersByWeek();
 
