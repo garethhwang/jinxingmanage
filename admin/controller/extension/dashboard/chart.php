@@ -123,7 +123,7 @@ class ControllerExtensionDashboardChart extends Controller {
         $json['order'] = array();
         $json['customer'] = array();
         $json['labels'] = array();
-        $json['labelstring'] ='';
+        $json['labelstring'] ='Time';
 
         $json['order']['label'] = $this->language->get('text_order');
         $json['customer']['label'] = $this->language->get('text_customer');
@@ -139,7 +139,6 @@ class ControllerExtensionDashboardChart extends Controller {
         switch ($range) {
             default:
             case 'day':
-                $json['labelstring'] ='天';
                 $results = $this->model_report_sale->getTotalOrdersByDay();
 
                 foreach ($results as $key => $value) {
@@ -159,13 +158,13 @@ class ControllerExtensionDashboardChart extends Controller {
 				$results = $this->model_report_sale->getTotalOrdersByWeek();
 
 				foreach ($results as $key => $value) {
-					$json['order']['data'][] = array($key, $value['total']);
+					$json['order']['data'][] = $value['total'];
 				}
 
 				$results = $this->model_report_customer->getTotalCustomersByWeek();
 
 				foreach ($results as $key => $value) {
-					$json['customer']['data'][] = array($key, $value['total']);
+					$json['customer']['data'][] = $value['total'];
 				}
 
 				$date_start = strtotime('-' . date('w') . ' days');
@@ -180,13 +179,13 @@ class ControllerExtensionDashboardChart extends Controller {
 				$results = $this->model_report_sale->getTotalOrdersByMonth();
 
 				foreach ($results as $key => $value) {
-					$json['order']['data'][] = array($key, $value['total']);
+					$json['order']['data'][] = $value['total'];
 				}
 
 				$results = $this->model_report_customer->getTotalCustomersByMonth();
 
 				foreach ($results as $key => $value) {
-					$json['customer']['data'][] = array($key, $value['total']);
+					$json['customer']['data'][] = $value['total'];
 				}
 
 				for ($i = 1; $i <= date('t'); $i++) {
@@ -199,13 +198,13 @@ class ControllerExtensionDashboardChart extends Controller {
 				$results = $this->model_report_sale->getTotalOrdersByYear();
 
 				foreach ($results as $key => $value) {
-					$json['order']['data'][] = array($key, $value['total']);
+					$json['order']['data'][] = $value['total'];
 				}
 
 				$results = $this->model_report_customer->getTotalCustomersByYear();
 
 				foreach ($results as $key => $value) {
-					$json['customer']['data'][] = array($key, $value['total']);
+					$json['customer']['data'][] = $value['total'];
 				}
 
 				for ($i = 1; $i <= 12; $i++) {
