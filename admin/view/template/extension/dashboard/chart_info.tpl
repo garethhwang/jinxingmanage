@@ -48,7 +48,7 @@
                             fill: false,
                             backgroundColor: window.chartColors.blue,
                             borderColor: window.chartColors.blue,
-                            data: json['customer'][1]['data'],
+                            data: json['customer']['data'],
                         }]
                     },
                     options: {
