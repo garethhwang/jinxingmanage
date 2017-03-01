@@ -39,7 +39,7 @@
                         labels: json['labels'],
                         datasets: [{
                             label: "My First dataset",
-                            backgroundColor: json['datasets'][0]['backgroundColor'],
+                            backgroundColor: window.chartColors.red,
                             borderColor: json['datasets'][0]['borderColor'],
                             data: json['datasets'][0]['data'],
                             fill: false,
