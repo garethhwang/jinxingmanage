@@ -36,35 +36,19 @@
                 var config = {
                     type: 'line',
                     data: {
-                        labels: ["January", "February", "March", "April", "May", "June", "July"],
+                        labels: json['labels'],
                         datasets: [{
                             label: "My First dataset",
                             backgroundColor: window.chartColors.red,
                             borderColor: window.chartColors.red,
-                            data: [
-                                randomScalingFactor(),
-                                randomScalingFactor(),
-                                randomScalingFactor(),
-                                randomScalingFactor(),
-                                randomScalingFactor(),
-                                randomScalingFactor(),
-                                randomScalingFactor()
-                            ],
+                            data: json['datasets'][0]['data'],
                             fill: false,
                         }, {
                             label: "My Second dataset",
                             fill: false,
                             backgroundColor: window.chartColors.blue,
                             borderColor: window.chartColors.blue,
-                            data: [
-                                randomScalingFactor(),
-                                randomScalingFactor(),
-                                randomScalingFactor(),
-                                randomScalingFactor(),
-                                randomScalingFactor(),
-                                randomScalingFactor(),
-                                randomScalingFactor()
-                            ],
+                            data: json['datasets'][0]['data'],
                         }]
                     },
                     options: {
