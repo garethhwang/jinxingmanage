@@ -48,7 +48,7 @@
                             fill: false,
                             backgroundColor: window.chartColors.blue,
                             borderColor: window.chartColors.blue,
-                            data: json['datasets'][0]['data'],
+                            data: json['datasets'][1]['data'],
                         }]
                     },
                     options: {
