@@ -32,23 +32,23 @@
             url: 'index.php?route=extension/dashboard/chart/chart&token=<?php echo $token; ?>&range=' + $(this).attr('href'),
             dataType: 'json',
             success: function(json) {
-                if (typeof json['datasets'] == 'undefined') { return false; }
+                if (typeof json['order'] == 'undefined') { return false; }
                 var config = {
                     type: 'line',
                     data: {
                         labels: json['labels'],
                         datasets: [{
-                            label: "My First dataset",
+                            label: json['order']['label'],
                             backgroundColor: window.chartColors.red,
-                            borderColor: json['datasets'][0]['borderColor'],
-                            data: json['datasets'][0]['data'],
+                            borderColor: window.chartColors.red,
+                            data: json['order']['data'],
                             fill: false,
                         }, {
-                            label: "My Second dataset",
+                            label: json['customer']['label'],
                             fill: false,
                             backgroundColor: window.chartColors.blue,
                             borderColor: window.chartColors.blue,
-                            data: json['datasets'][1]['data'],
+                            data: json['customer'][1]['data'],
                         }]
                     },
                     options: {

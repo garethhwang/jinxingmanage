@@ -128,12 +128,6 @@ class ControllerExtensionDashboardChart extends Controller {
         $json['customer']['label'] = $this->language->get('text_customer');
         $json['order']['data'] = array();
         $json['customer']['data'] = array();
-        $json['order']['backgroundColor'] = 'window.chartColors.red';
-        $json['customer']['backgroundColor'] = 'window.chartColors.blue';
-        $json['order']['borderColor'] = 'window.chartColors.red';
-        $json['customer']['borderColor'] = 'window.chartColors.blue';
-        $json['order']['fill'] = 'false';
-        $json['customer']['fill'] = 'false';
 
         if (isset($this->request->get['range'])) {
             $range = $this->request->get['range'];
