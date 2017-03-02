@@ -115,9 +115,9 @@ class ControllerExtensionDashboardProcessedorder extends Controller {
         // Total Orders
         $this->load->model('sale/order');
 
-        $today = $this->model_sale_order->getTotalOrders(array('filter_date_added' => date('Y-m-d', strtotime('-1 day'))));
+        $today = $this->model_sale_order->getTotalOrders(array('filter_date_added' => date('Y-m-d', strtotime('-1 day')), 'order_status_id' => '15'));
 
-        $yesterday = $this->model_sale_order->getTotalOrders(array('filter_date_added' => date('Y-m-d', strtotime('-2 day'))));
+        $yesterday = $this->model_sale_order->getTotalOrders(array('filter_date_added' => date('Y-m-d', strtotime('-2 day')), 'order_status_id' => '15'));
 
         $difference = $today - $yesterday;
 
@@ -127,7 +127,7 @@ class ControllerExtensionDashboardProcessedorder extends Controller {
             $data['percentage'] = 0;
         }
 
-        $order_total = $this->model_sale_order->getTotalOrders();
+        $order_total = $this->model_sale_order->getTotalOrders(array('order_status_id' => '15'));
 
         if ($order_total > 1000000000000) {
             $data['total'] = round($order_total / 1000000000000, 1) . 'T';
