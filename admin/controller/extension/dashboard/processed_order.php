@@ -17,7 +17,7 @@ class ControllerExtensionDashboardProcessedorder extends Controller {
         $this->load->model('setting/setting');
 
         if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
-            $this->model_setting_setting->editSetting('dashboard_order', $this->request->post);
+            $this->model_setting_setting->editSetting('dashboard_processed_order', $this->request->post);
 
             $this->session->data['success'] = $this->language->get('text_success');
 
@@ -57,17 +57,17 @@ class ControllerExtensionDashboardProcessedorder extends Controller {
 
         $data['breadcrumbs'][] = array(
             'text' => $this->language->get('heading_title'),
-            'href' => $this->url->link('extension/dashboard/order', 'token=' . $this->session->data['token'], true)
+            'href' => $this->url->link('extension/dashboard/processed_order', 'token=' . $this->session->data['token'], true)
         );
 
-        $data['action'] = $this->url->link('extension/dashboard/order', 'token=' . $this->session->data['token'], true);
+        $data['action'] = $this->url->link('extension/dashboard/processed_order', 'token=' . $this->session->data['token'], true);
 
         $data['cancel'] = $this->url->link('extension/extension', 'token=' . $this->session->data['token'] . '&type=dashboard', true);
 
-        if (isset($this->request->post['dashboard_order_width'])) {
-            $data['dashboard_order_width'] = $this->request->post['dashboard_order_width'];
+        if (isset($this->request->post['dashboard_processed_order_width'])) {
+            $data['dashboard_processed_order_width'] = $this->request->post['dashboard_processed_order_width'];
         } else {
-            $data['dashboard_order_width'] = $this->config->get('dashboard_order_width');
+            $data['dashboard_processed_order_width'] = $this->config->get('dashboard_processed_order_width');
         }
 
         $data['columns'] = array();
@@ -76,16 +76,16 @@ class ControllerExtensionDashboardProcessedorder extends Controller {
             $data['columns'][] = $i;
         }
 
-        if (isset($this->request->post['dashboard_order_status'])) {
-            $data['dashboard_order_status'] = $this->request->post['dashboard_order_status'];
+        if (isset($this->request->post['dashboard_processed_order_status'])) {
+            $data['dashboard_processed_order_status'] = $this->request->post['dashboard_processed_order_status'];
         } else {
-            $data['dashboard_order_status'] = $this->config->get('dashboard_order_status');
+            $data['dashboard_processed_order_status'] = $this->config->get('dashboard_processed_order_status');
         }
 
-        if (isset($this->request->post['dashboard_order_sort_order'])) {
-            $data['dashboard_order_sort_order'] = $this->request->post['dashboard_order_sort_order'];
+        if (isset($this->request->post['dashboard_processed_order_sort_order'])) {
+            $data['dashboard_processed_order_sort_order'] = $this->request->post['dashboard_processed_order_sort_order'];
         } else {
-            $data['dashboard_order_sort_order'] = $this->config->get('dashboard_order_sort_order');
+            $data['dashboard_processed_order_sort_order'] = $this->config->get('dashboard_processed_order_sort_order');
         }
 
         $data['header'] = $this->load->controller('common/header');
@@ -104,7 +104,7 @@ class ControllerExtensionDashboardProcessedorder extends Controller {
     }
 
     public function dashboard() {
-        $this->load->language('extension/dashboard/order');
+        $this->load->language('extension/dashboard/processed_order');
 
         $data['heading_title'] = $this->language->get('heading_title');
 
