@@ -6,7 +6,7 @@
  * Time: 21:29
  */
 
-class ControllerExtensionDashboardProcessed_order extends Controller {
+class ControllerExtensionDashboardProcessedorder extends Controller {
     private $error = array();
 
     public function index() {
