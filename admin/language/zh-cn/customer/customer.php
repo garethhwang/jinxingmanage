@@ -28,6 +28,7 @@ $_['column_office']           = '科室';
 // Entry
 $_['entry_customer_group']  = '会员等级';
 $_['entry_fullname']        = '姓名';
+$_['entry_realname']                    = '真实姓名';
 $_['entry_email']           = 'E-Mail';
 $_['entry_telephone']       = '电话';
 $_['entry_fax']             = '传真';
