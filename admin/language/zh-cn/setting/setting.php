@@ -93,7 +93,7 @@ $_['entry_customer_group_display']     = '显示会员等级';
 $_['entry_customer_price']             = '登陆后显示价格';
 $_['entry_login_attempts']             = '最大登陆尝试次数';
 $_['entry_account']                    = '账户条款';
-
+$_['entry_realname']                    = '真实姓名';
 $_['entry_cart_weight']                = '购物车页面显示重量';
 $_['entry_checkout_guest']             = '游客结账';
 $_['entry_checkout']                   = '结账条款';
