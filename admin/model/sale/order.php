@@ -280,10 +280,10 @@ class ModelSaleOrder extends Model {
 
 	public function getTotalOrders($data = array()) {
 		$sql = "SELECT COUNT(*) AS total FROM `" . DB_PREFIX . "order`";
-
+        $log = new Log('api.log');
 		if (isset($data['filter_order_status'])) {
 			$implode = array();
-            $log = new Log('api.log');
+
             $log->write($data['filter_order_status']);
 			$order_statuses = explode(',', $data['filter_order_status']);
 
