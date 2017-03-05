@@ -759,7 +759,8 @@ class ControllerCustomerCustomer extends Controller {
 		$data['tab_history'] = $this->language->get('tab_history');
 		$data['tab_transaction'] = $this->language->get('tab_transaction');
 		$data['tab_reward'] = $this->language->get('tab_reward');
-		$data['tab_ip'] = $this->language->get('tab_ip');
+        $data['tab_ip'] = $this->language->get('tab_ip');
+        $data['tab_basic_info'] = $this->language->get('tab_basic_info');
 
 		$data['token'] = $this->session->data['token'];
 

@@ -115,9 +115,9 @@ class ControllerExtensionDashboardProcessedorder extends Controller {
         // Total Orders
         $this->load->model('sale/order');
 
-        $today = $this->model_sale_order->getTotalOrders(array('filter_date_added' => date('Y-m-d', strtotime('-1 day')), 'filter_order_status' => '15'));
+        $today = $this->model_sale_order->getTotalOrders(array('filter_date_added' => date('Y-m-d', strtotime('-1 day')), 'filter_order_status' => '5, 15'));
 
-        $yesterday = $this->model_sale_order->getTotalOrders(array('filter_date_added' => date('Y-m-d', strtotime('-2 day')), 'filter_order_status' => '15'));
+        $yesterday = $this->model_sale_order->getTotalOrders(array('filter_date_added' => date('Y-m-d', strtotime('-2 day')), 'filter_order_status' => '5, 15'));
 
         $difference = $today - $yesterday;
 

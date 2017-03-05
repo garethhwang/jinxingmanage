@@ -154,7 +154,7 @@ $_['tab_activity']                  = '最新活动';
 $_['tab_recurring']                 = '分期付款';
 $_['tab_action']                    = '操作';
 $_['tab_thirdparty']                = '外部接口';
-
+$_['tab_basic_info']                = '体检资料';
 // Error
 $_['error_exception']               = '错读代码(%s): %s in %s on line %s';
 $_['error_upload_1']                = '警告:上传文档大小超过了php.ini中设置的最大值！';

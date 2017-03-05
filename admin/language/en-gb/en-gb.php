@@ -138,7 +138,7 @@ $_['tab_activity']                  = 'Recent Activity';
 $_['tab_recurring']                 = 'Recurring';
 $_['tab_action']                    = 'Action';
 $_['tab_google']                    = 'Google';
-
+$_['tab_basic_info']                = 'Physical Info';
 // Error
 $_['error_exception']               = 'Error Code(%s): %s in %s on line %s';
 $_['error_upload_1']                = 'Warning: The uploaded file exceeds the upload_max_filesize directive in php.ini!';

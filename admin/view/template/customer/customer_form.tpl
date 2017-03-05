@@ -32,6 +32,7 @@
             <li><a href="#tab-transaction" data-toggle="tab"><?php echo $tab_transaction; ?></a></li>
             <li><a href="#tab-reward" data-toggle="tab"><?php echo $tab_reward; ?></a></li>
             <li><a href="#tab-ip" data-toggle="tab"><?php echo $tab_ip; ?></a></li>
+            <li><a href="#tab-basic-info" data-toggle="tab"><?php echo $tab_basic_info; ?></a></li>
             <?php } ?>
           </ul>
           <div class="tab-content">
@@ -579,6 +580,19 @@
               </div>
             </div>
             <?php if ($customer_id) { ?>
+            <div class="tab-pane" id="tab-basic-info">
+              <div id="history"></div>
+              <br />
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-comment"><?php echo $entry_comment; ?></label>
+                <div class="col-sm-10">
+                  <textarea name="comment" rows="8" placeholder="<?php echo $entry_comment; ?>" id="input-comment" class="form-control"></textarea>
+                </div>
+              </div>
+              <div class="text-right">
+                <button id="button-history" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary"><i class="fa fa-plus-circle"></i> <?php echo $button_history_add; ?></button>
+              </div>
+            </div>
             <div class="tab-pane" id="tab-history">
               <div id="history"></div>
               <br />
