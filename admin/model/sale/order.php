@@ -283,7 +283,8 @@ class ModelSaleOrder extends Model {
 
 		if (isset($data['filter_order_status'])) {
 			$implode = array();
-
+            $log = new Log('api.log');
+            $log->write($data['filter_order_status']);
 			$order_statuses = explode(',', $data['filter_order_status']);
 
 			foreach ($order_statuses as $order_status_id) {
@@ -296,6 +297,7 @@ class ModelSaleOrder extends Model {
 		} else {
 			$sql .= " WHERE order_status_id > '0'";
 		}
+        $log->write($sql);
 
 		if (!empty($data['filter_order_id'])) {
 			$sql .= " AND order_id = '" . (int)$data['filter_order_id'] . "'";
