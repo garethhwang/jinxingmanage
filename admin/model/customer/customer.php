@@ -111,7 +111,7 @@ class ModelCustomerCustomer extends Model {
 	public function getCustomer($customer_id) {
 	    $log=new Log('api.log');
 	    $log->write("SELECT DISTINCT * FROM " . DB_PREFIX . "customer, " . DB_PREFIX . "physical WHERE " . DB_PREFIX . "customer.customer_id = '" . (int)$customer_id . "' AND " . DB_PREFIX . "physical.customer_id= '" .(int)$customer_id . "'");
-        $query = $this->db->query("SELECT DISTINCT * FROM " . DB_PREFIX . "customer, " . DB_PREFIX . "physical WHERE " . DB_PREFIX . ".customer_id = '" . (int)$customer_id . "' AND " . DB_PREFIX . "physical.customer_id= '" .(int)$customer_id . "'");
+        $query = $this->db->query("SELECT DISTINCT * FROM " . DB_PREFIX . "customer, " . DB_PREFIX . "physical WHERE " . DB_PREFIX . "customer.customer_id = '" . (int)$customer_id . "' AND " . DB_PREFIX . "physical.customer_id= '" .(int)$customer_id . "'");
 
 		return $query->row;
 	}
