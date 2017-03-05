@@ -741,6 +741,21 @@ class ControllerCustomerCustomer extends Controller {
 		$data['entry_description'] = $this->language->get('entry_description');
 		$data['entry_amount'] = $this->language->get('entry_amount');
 		$data['entry_points'] = $this->language->get('entry_points');
+        $data['entry_barcode']=$this->language->get('entry_barcode');
+        $data['entry_height']=$this->language->get('entry_height');
+        $data['entry_weight']=$this->language->get('entry_weight');
+        $data['entry_bmitype']=$this->language->get('entry_bmitype');
+        $data['entry_bmiindex']=$this->language->get('entry_bmiindex');
+        $data['entry_lastmenstrualdate']=$this->language->get('entry_lastmenstrualdate');
+        $data['entry_edc']=$this->language->get('entry_edc');
+        $data['entry_gravidity']=$this->language->get('entry_gravidity');
+        $data['entry_parity']=$this->language->get('entry_parity');
+        $data['entry_vaginaldelivery']=$this->language->get('entry_vaginaldelivery');
+        $data['entry_aesarean']=$this->language->get('entry_aesarean');
+        $data['entry_spontaneousabortion']=$this->language->get('entry_spontaneousabortion');
+        $data['entry_drug_inducedabortion']=$this->language->get('entry_drug_inducedabortion');
+        $data['entry_highrisk']=$this->language->get('entry_highrisk');
+        $data['entry_highriskfactor']=$this->language->get('entry_highriskfactor');
 
 		$data['help_safe'] = $this->language->get('help_safe');
 		$data['help_points'] = $this->language->get('help_points');
