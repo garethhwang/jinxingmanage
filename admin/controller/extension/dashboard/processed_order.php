@@ -127,7 +127,7 @@ class ControllerExtensionDashboardProcessedorder extends Controller {
             $data['percentage'] = 0;
         }
 
-        $order_total = $this->model_sale_order->getTotalOrders(array('filter_order_status' => '15'));
+        $order_total = $this->model_sale_order->getTotalOrders(array('filter_order_status' => '5, 15'));
 
         if ($order_total > 1000000000000) {
             $data['total'] = round($order_total / 1000000000000, 1) . 'T';
