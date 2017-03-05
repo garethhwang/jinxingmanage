@@ -905,6 +905,125 @@ class ControllerCustomerCustomer extends Controller {
 			$data['realname'] = '';
 		}
 
+        if (isset($this->request->post['height'])) {
+            $data['height'] = $this->request->post['height'];
+        } elseif (!empty($customer_info)) {
+            $data['height'] = $customer_info['height'];
+        } else {
+            $data['height'] = '';
+        }
+
+        if (isset($this->request->post['weight'])) {
+            $data['weight'] = $this->request->post['weight'];
+        } elseif (!empty($customer_info)) {
+            $data['weight'] = $customer_info['weight'];
+        } else {
+            $data['weight'] = '';
+        }
+
+        if (isset($this->request->post['bmitype'])) {
+            $data['bmitype'] = $this->request->post['bmitype'];
+        } elseif (!empty($customer_info)) {
+            $data['bmitype'] = $customer_info['bmitype'];
+        } else {
+            $data['bmitype'] = '';
+        }
+
+        if (isset($this->request->post['bmiindex'])) {
+            $data['bmiindex'] = $this->request->post['bmiindex'];
+        } elseif (!empty($customer_info)) {
+            $data['bmiindex'] = $customer_info['bmiindex'];
+        } else {
+            $data['bmiindex'] = '';
+        }
+
+        if (isset($this->request->post['lastmenstrualdate'])) {
+            $data['lastmenstrualdate'] = $this->request->post['lastmenstrualdate'];
+        } elseif (!empty($customer_info)) {
+            $data['lastmenstrualdate'] = $customer_info['lastmenstrualdate'];
+        } else {
+            $data['lastmenstrualdate'] = '';
+        }
+
+        if (isset($this->request->post['gravidity'])) {
+            $data['gravidity'] = $this->request->post['gravidity'];
+        } elseif (!empty($customer_info)) {
+            $data['gravidity'] = $customer_info['gravidity'];
+        } else {
+            $data['gravidity'] = '';
+        }
+
+        if (isset($this->request->post['parity'])) {
+            $data['parity'] = $this->request->post['parity'];
+        } elseif (!empty($customer_info)) {
+            $data['parity'] = $customer_info['parity'];
+        } else {
+            $data['parity'] = '';
+        }
+
+        if (isset($this->request->post['vaginaldelivery'])) {
+            $data['vaginaldelivery'] = $this->request->post['vaginaldelivery'];
+        } elseif (!empty($customer_info)) {
+            $data['vaginaldelivery'] = $customer_info['vaginaldelivery'];
+        } else {
+            $data['vaginaldelivery'] = '';
+        }
+
+        if (isset($this->request->post['aesarean'])) {
+            $data['aesarean'] = $this->request->post['aesarean'];
+        } elseif (!empty($customer_info)) {
+            $data['aesarean'] = $customer_info['aesarean'];
+        } else {
+            $data['aesarean'] = '';
+        }
+
+        if (isset($this->request->post['spontaneousabortion'])) {
+            $data['spontaneousabortion'] = $this->request->post['spontaneousabortion'];
+        } elseif (!empty($customer_info)) {
+            $data['spontaneousabortion'] = $customer_info['spontaneousabortion'];
+        } else {
+            $data['spontaneousabortion'] = '';
+        }
+
+        if (isset($this->request->post['drug_inducedabortion'])) {
+            $data['drug_inducedabortion'] = $this->request->post['drug_inducedabortion'];
+        } elseif (!empty($customer_info)) {
+            $data['drug_inducedabortion'] = $customer_info['drug_inducedabortion'];
+        } else {
+            $data['drug_inducedabortion'] = '';
+        }
+
+        if (isset($this->request->post['highrisk'])) {
+            $data['highrisk'] = $this->request->post['highrisk'];
+        } elseif (!empty($customer_info)) {
+            $data['highrisk'] = $customer_info['highrisk'];
+        } else {
+            $data['highrisk'] = '';
+        }
+
+        if (isset($this->request->post['highriskfactor'])) {
+            $data['highriskfactor'] = $this->request->post['highriskfactor'];
+        } elseif (!empty($customer_info)) {
+            $data['highriskfactor'] = $customer_info['highriskfactor'];
+        } else {
+            $data['highriskfactor'] = '';
+        }
+
+        if (isset($this->request->post['edc'])) {
+            $data['edc'] = $this->request->post['edc'];
+        } elseif (!empty($customer_info)) {
+            $data['edc'] = $customer_info['edc'];
+        } else {
+            $data['edc'] = '';
+        }
+
+        if (isset($this->request->post['barcode'])) {
+            $data['barcode'] = $this->request->post['barcode'];
+        } elseif (!empty($customer_info)) {
+            $data['barcode'] = $customer_info['barcode'];
+        } else {
+            $data['barcode'] = '';
+        }
 
 		if (isset($this->request->post['email'])) {
 			$data['email'] = $this->request->post['email'];

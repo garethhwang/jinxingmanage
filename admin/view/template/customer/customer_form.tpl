@@ -581,16 +581,95 @@
             </div>
             <?php if ($customer_id) { ?>
             <div class="tab-pane" id="tab-basic-info">
-              <div id="history"></div>
-              <br />
               <div class="form-group">
-                <label class="col-sm-2 control-label" for="input-comment"><?php echo $entry_comment; ?></label>
+                <label class="col-sm-2 control-label" for="input-barcode"><?php echo $entry_barcode; ?></label>
                 <div class="col-sm-10">
-                  <textarea name="comment" rows="8" placeholder="<?php echo $entry_comment; ?>" id="input-comment" class="form-control"></textarea>
+                  <input type="text" name="barcode" value="<?php echo $barcode; ?>" placeholder="<?php echo $entry_barcode; ?>" id="input-barcode" class="form-control" />
                 </div>
               </div>
-              <div class="text-right">
-                <button id="button-history" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary"><i class="fa fa-plus-circle"></i> <?php echo $button_history_add; ?></button>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-height"><?php echo $entry_height; ?></label>
+                <div class="col-sm-10">
+                  <input type="text" name="height" value="<?php echo $height; ?>" placeholder="<?php echo $entry_height; ?>" id="input-height" class="form-control" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-weight"><?php echo $entry_weight; ?></label>
+                <div class="col-sm-10">
+                  <input type="text" name="weight" value="<?php echo $weight; ?>" placeholder="<?php echo $entry_weight; ?>" id="input-weight" class="form-control" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-bmitype"><?php echo $entry_bmitype; ?></label>
+                <div class="col-sm-10">
+                  <input type="text" name="bmitype" value="<?php echo $bmitype; ?>" placeholder="<?php echo $entry_bmitype; ?>" id="input-bmitype" class="form-control" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-bmiindex"><?php echo $entry_bmiindex; ?></label>
+                <div class="col-sm-10">
+                  <input type="text" name="bmiindex" value="<?php echo $bmiindex; ?>" placeholder="<?php echo $entry_bmiindex; ?>" id="input-bmiindex" class="form-control" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-lastmenstrualdate"><?php echo $entry_lastmenstrualdate; ?></label>
+                <div class="col-sm-10">
+                  <input type="text" name="lastmenstrualdate" value="<?php echo $lastmenstrualdate; ?>" placeholder="<?php echo $entry_lastmenstrualdate; ?>" id="input-lastmenstrualdate" class="form-control" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-edc"><?php echo $entry_edc; ?></label>
+                <div class="col-sm-10">
+                  <input type="text" name="ed" value="<?php echo $edc; ?>" placeholder="<?php echo $entry_edc; ?>" id="input-edc" class="form-control" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-gravidity"><?php echo $entry_gravidity; ?></label>
+                <div class="col-sm-10">
+                  <input type="text" name="gravidity" value="<?php echo $gravidity; ?>" placeholder="<?php echo $entry_gravidity; ?>" id="input-gravidity" class="form-control" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-parity"><?php echo $entry_parity; ?></label>
+                <div class="col-sm-10">
+                  <input type="text" name="parity" value="<?php echo $parity; ?>" placeholder="<?php echo $entry_parity; ?>" id="input-parity" class="form-control" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-vaginaldelivery"><?php echo $entry_vaginaldelivery; ?></label>
+                <div class="col-sm-10">
+                  <input type="text" name="vaginaldelivery" value="<?php echo $vaginaldelivery; ?>" placeholder="<?php echo $entry_vaginaldelivery; ?>" id="input-vaginaldelivery" class="form-control" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-aesarean"><?php echo $entry_aesarean; ?></label>
+                <div class="col-sm-10">
+                  <input type="text" name="aesarean" value="<?php echo $aesarean; ?>" placeholder="<?php echo $entry_aesarean; ?>" id="input-aesarean" class="form-control" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-spontaneousabortion"><?php echo $entry_spontaneousabortion; ?></label>
+                <div class="col-sm-10">
+                  <input type="text" name="spontaneousabortion" value="<?php echo $spontaneousabortion; ?>" placeholder="<?php echo $entry_spontaneousabortion; ?>" id="input-spontaneousabortion" class="form-control" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-drug_inducedabortion"><?php echo $entry_drug_inducedabortion; ?></label>
+                <div class="col-sm-10">
+                  <input type="text" name="drug_inducedabortion" value="<?php echo $drug_inducedabortion; ?>" placeholder="<?php echo $entry_drug_inducedabortion; ?>" id="input-drug_inducedabortion" class="form-control" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-highrisk"><?php echo $entry_highrisk; ?></label>
+                <div class="col-sm-10">
+                  <input type="text" name="highrisk" value="<?php echo $highrisk; ?>" placeholder="<?php echo $entry_highrisk; ?>" id="input-highrisk" class="form-control" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-highriskfactor"><?php echo $entry_highriskfactor; ?></label>
+                <div class="col-sm-10">
+                  <input type="text" name="highriskfactor" value="<?php echo $highriskfactor; ?>" placeholder="<?php echo $entry_highriskfactor; ?>" id="input-highriskfactor" class="form-control" />
+                </div>
               </div>
             </div>
             <div class="tab-pane" id="tab-history">
