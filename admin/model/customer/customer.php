@@ -24,15 +24,19 @@ class ModelCustomerCustomer extends Model {
 		if (!isset($data['custom_field'])) {
 			$data['custom_field'] = array();
 		}
+        $log = new Log('customer.log');
 
 		$this->db->query("UPDATE " . DB_PREFIX . "customer SET customer_group_id = '" . (int)$data['customer_group_id'] . "', realname = '" . $this->db->escape($data['realname']) . "', email = '" . $this->db->escape($data['email']) . "', telephone = '" . $this->db->escape($data['telephone']) . "', fax = '" . $this->db->escape($data['fax']) . "', custom_field = '" . $this->db->escape(isset($data['custom_field']) ? json_encode($data['custom_field']) : '') . "', newsletter = '" . (int)$data['newsletter'] . "', status = '" . (int)$data['status'] . "', approved = '" . (int)$data['approved'] . "', safe = '" . (int)$data['safe'] . "' WHERE customer_id = '" . (int)$customer_id . "'");
 
         $query =$this->db->query("SELECT physical_id FROM " . DB_PREFIX . "customer  where customer_id = '" . (int)$customer_id . "'");
+        $log->write('customer_id='.$customer_id);
 
-        if(isset($query['physical_id'])) {
+        if(isset($query->row['physical_id'])) {
             $physical_id = $query['physical_id'];
+            $log->write('physical_id='.$physical_id);
 
             $this->db->query("UPDATE " . DB_PREFIX . "physical SET realname = '" . $this->db->escape($data['realname']) . "', height = '" . $this->db->escape($data['height']) . "', weight = '" . $this->db->escape($data['weight']) . "', weight = '" . $this->db->escape($data['weight']) . "', bmiindex = '" . $this->db->escape($data['bmiindex']) . "', bmitype = '" . $this->db->escape($data['bmitype']) . "', lastmenstrualdate = '" . $this->db->escape($data['lastmenstrualdate']) . "', edc = '" . $this->db->escape($data['edc']) . "', gravidity = '" . $this->db->escape($data['gravidity']) . "', parity = '" . $this->db->escape($data['parity']) . "', vaginaldelivery = '" . $this->db->escape($data['vaginaldelivery']) . "', aesarean = '" . $this->db->escape($data['aesarean']) . "', spontaneousabortion = '" . $this->db->escape($data['spontaneousabortion']) . "', drug_inducedabortion = '" . $this->db->escape($data['drug_inducedabortion']) . "', fetal = '" . $this->db->escape($data['fetal']) . "', highrisk = '" . $this->db->escape($data['highrisk']) . "', highriskfactor = '" . $this->db->escape($data['highriskfactor']) . "', custom_field = '" . $this->db->escape(isset($data['custom_field']) ? json_encode($data['custom_field']) : '') . "' WHERE physical_id  = '" . (int)$physical_id . "' AND customer_id = '" . (int)$customer_id . "'");
+            $log->write("UPDATE " . DB_PREFIX . "physical SET realname = '" . $this->db->escape($data['realname']) . "', height = '" . $this->db->escape($data['height']) . "', weight = '" . $this->db->escape($data['weight']) . "', weight = '" . $this->db->escape($data['weight']) . "', bmiindex = '" . $this->db->escape($data['bmiindex']) . "', bmitype = '" . $this->db->escape($data['bmitype']) . "', lastmenstrualdate = '" . $this->db->escape($data['lastmenstrualdate']) . "', edc = '" . $this->db->escape($data['edc']) . "', gravidity = '" . $this->db->escape($data['gravidity']) . "', parity = '" . $this->db->escape($data['parity']) . "', vaginaldelivery = '" . $this->db->escape($data['vaginaldelivery']) . "', aesarean = '" . $this->db->escape($data['aesarean']) . "', spontaneousabortion = '" . $this->db->escape($data['spontaneousabortion']) . "', drug_inducedabortion = '" . $this->db->escape($data['drug_inducedabortion']) . "', fetal = '" . $this->db->escape($data['fetal']) . "', highrisk = '" . $this->db->escape($data['highrisk']) . "', highriskfactor = '" . $this->db->escape($data['highriskfactor']) . "', custom_field = '" . $this->db->escape(isset($data['custom_field']) ? json_encode($data['custom_field']) : '') . "' WHERE physical_id  = '" . (int)$physical_id . "' AND customer_id = '" . (int)$customer_id . "'");
 
             $lastmenstrual = $this->db->query("SELECT lastmenstrualdate FROM " . DB_PREFIX . "physical  WHERE customer_id = '" . (int)$customer_id . "'");
 
