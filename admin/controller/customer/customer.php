@@ -1180,6 +1180,7 @@ class ControllerCustomerCustomer extends Controller {
 			$this->error['email'] = $this->language->get('error_email');
 		}
 
+		/*
 		$customer_info = $this->model_customer_customer->getCustomerByEmail($this->request->post['email']);
 
 		if (!isset($this->request->get['customer_id'])) {
@@ -1191,7 +1192,7 @@ class ControllerCustomerCustomer extends Controller {
 				$this->error['warning'] = $this->language->get('error_exists');
 			}
 		}
-
+*/
 		if ((utf8_strlen($this->request->post['telephone']) < 3) || (utf8_strlen($this->request->post['telephone']) > 32)) {
 			$this->error['telephone'] = $this->language->get('error_telephone');
 		}
