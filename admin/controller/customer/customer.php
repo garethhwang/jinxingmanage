@@ -1261,6 +1261,8 @@ class ControllerCustomerCustomer extends Controller {
 			}
 		}
 
+		var_dump($this->error);
+
 		if ($this->error && !isset($this->error['warning'])) {
 			$this->error['warning'] = $this->language->get('error_warning');
 		}
