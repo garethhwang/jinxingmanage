@@ -59,6 +59,27 @@ class ControllerCommonColumnLeft extends Controller {
                 );
             }
 
+            //回访调查
+            $receipt = array();
+
+            if ($this->user->hasPermission('access', 'receipt/receipt')) {
+                $receipt[] = array(
+                    'name'	   => $this->language->get('text_receipt'),
+                    'href'     => $this->url->link('receipt/receipt', 'token=' . $this->session->data['token'], true),
+                    'children' => array()
+                );
+            }
+
+            if ($receipt) {
+                $data['menus'][] = array(
+                    'id'       => 'menu-receipt',
+                    'icon'	   => 'fa-building',
+                    'name'	   => $this->language->get('text_receipt'),
+                    'href'     => '',
+                    'children' => $receipt
+                );
+            }
+
 			// Catalog
 			$catalog = array();
 			
