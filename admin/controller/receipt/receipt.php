@@ -111,6 +111,7 @@ class ControllerReceiptReceipt extends Controller
         $data['filter_name'] = $filter_name;
         $data['filter_date_added'] = $filter_date_added;
         $data['sort'] = $sort;
+
         $data['heading_title'] = $this->language->get('heading_title');
 
         $data['text_list'] = $this->language->get('text_list');
@@ -123,7 +124,7 @@ class ControllerReceiptReceipt extends Controller
         $data['text_confirm'] = $this->language->get('text_confirm');
 
         $data['column_name'] = $this->language->get('column_name');
-        $data['column_email'] = $this->language->get('column_email');
+        $data['column_telephone'] = $this->language->get('column_telephone');
         $data['column_customer_group'] = $this->language->get('column_customer_group');
         $data['column_status'] = $this->language->get('column_status');
         $data['column_approved'] = $this->language->get('column_approved');
