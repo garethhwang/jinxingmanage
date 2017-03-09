@@ -153,6 +153,10 @@ class ControllerReceiptReceipt extends Controller
         $data['sort_name'] = $this->url->link('receipt/receipt', 'token=' . $this->session->data['token'] . '&sort=name', true);
         $data['sort_date_added'] = $this->url->link('receipt/receipt', 'token=' . $this->session->data['token'] . '&sort=c.date_added', true);
 
+        $data['header'] = $this->load->controller('common/header');
+        $data['column_left'] = $this->load->controller('common/column_left');
+        $data['footer'] = $this->load->controller('common/footer');
+
         $this->response->setOutput($this->load->view('receipt/receipt', $data));
     }
 
