@@ -412,9 +412,6 @@ class ModelCustomerCustomer extends Model {
 			$sql .= " WHERE " . implode(" AND ", $implode);
 		}
 
-		$log = new Log("sql.log");
-		$log->write($sql);
-
 		$query = $this->db->query($sql);
 
 		return $query->row['total'];
@@ -652,8 +649,6 @@ class ModelCustomerCustomer extends Model {
 	}
 
     public function getReceiptByCustomerId($customer_id) {
-        $log = new Log('sql2.log');
-        $log->write("SELECT * FROM " . DB_PREFIX . "receipt_history WHERE customer_id = '" . (int)$customer_id . "'");
         $receipt_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "receipt_history WHERE customer_id = '" . (int)$customer_id . "'");
         return $receipt_query->rows;
     }

@@ -549,7 +549,7 @@ class ControllerCustomerCustomer extends Controller {
                 //'product_duration_visit'=> $result['product_duration_visit'],
 				'approve'        => $approve,
 				'unlock'         => $unlock,
-                'visit_info'           => $this->url->link('customer/customer/visit_info', 'token=' . $this->session->data['token'] . '&customer_id=' . $result['customer_id'] . $url, true),
+                'visit_info'     => $this->url->link('customer/customer/visit_info', 'token=' . $this->session->data['token'] . '&customer_id=' . $result['customer_id'] . $url, true),
 				'edit'           => $this->url->link('customer/customer/edit', 'token=' . $this->session->data['token'] . '&customer_id=' . $result['customer_id'] . $url, true)
 			);
 
