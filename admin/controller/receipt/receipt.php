@@ -108,6 +108,7 @@ class ControllerReceiptReceipt extends Controller
         $data['pagination'] = $pagination->render();
 
         $data['results'] = sprintf($this->language->get('text_pagination'), ($receipt_total) ? (($page - 1) * $this->config->get('config_limit_admin')) + 1 : 0, ((($page - 1) * $this->config->get('config_limit_admin')) > ($receipt_total - $this->config->get('config_limit_admin'))) ? $receipt_total : ((($page - 1) * $this->config->get('config_limit_admin')) + $this->config->get('config_limit_admin')), $receipt_total, ceil($receipt_total / $this->config->get('config_limit_admin')));
+        $data['filter_name'] = $filter_name;
 
         $data['heading_title'] = $this->language->get('heading_title');
 
@@ -148,10 +149,18 @@ class ControllerReceiptReceipt extends Controller
         $data['button_login'] = $this->language->get('button_login');
         $data['button_unlock'] = $this->language->get('button_unlock');
 
+
+        if (isset($this->error['warning'])) {
+            $data['error_warning'] = $this->error['warning'];
+        } else {
+            $data['error_warning'] = '';
+        }
+
         $data['token'] = $this->session->data['token'];
 
         $data['sort_name'] = $this->url->link('receipt/receipt', 'token=' . $this->session->data['token'] . '&sort=name', true);
         $data['sort_date_added'] = $this->url->link('receipt/receipt', 'token=' . $this->session->data['token'] . '&sort=c.date_added', true);
+
 
         $data['header'] = $this->load->controller('common/header');
         $data['column_left'] = $this->load->controller('common/column_left');
