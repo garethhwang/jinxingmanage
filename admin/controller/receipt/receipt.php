@@ -90,7 +90,7 @@ class ControllerReceiptReceipt extends Controller
 
             $data['receipts'][] = array(
                 'customer_id'    => $result['customer_id'],
-                'realname'        => $result['realname'],
+                'name'        => $result['name'],
                 'telephone'       => $result['telephone'],
                 'receipt_history_id' => $result['receipt_history_id'],
                 'receipt_status' => $result['receipt_status'],
