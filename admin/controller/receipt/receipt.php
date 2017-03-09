@@ -54,6 +54,14 @@ class ControllerReceiptReceipt extends Controller
             $data['selected'] = array();
         }
 
+        if (isset($this->session->data['success'])) {
+            $data['success'] = $this->session->data['success'];
+
+            unset($this->session->data['success']);
+        } else {
+            $data['success'] = '';
+        }
+
         if (isset($this->request->get['order'])) {
             $order = $this->request->get['order'];
         } else {
