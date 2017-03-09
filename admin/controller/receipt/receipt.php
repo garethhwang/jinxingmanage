@@ -109,7 +109,8 @@ class ControllerReceiptReceipt extends Controller
                 'receipt_history_id' => $result['receipt_history_id'],
                 'receipt_status' => $result['receipt_status'],
                 'receipt_text' => $receipt_text,
-                'date_add' => $result['date_add']
+                'date_add' => $result['date_add'],
+                'visit_info'=>$this->url->link('receipt/receipt/visit_info', 'token=' . $this->session->data['token'] . '&receipt_history_id=' . $result['receipt_history_id'] , true)
             );
         }
 
@@ -185,4 +186,66 @@ class ControllerReceiptReceipt extends Controller
         $this->response->setOutput($this->load->view('receipt/receipt', $data));
     }
 
+    public function visit_info() {
+        $this->load->language('receipt/receipt');
+
+        $this->document->setTitle($this->language->get('heading_title'));
+
+        $this->load->model('receipt/receipt');
+
+        $data['heading_title'] = '回访调查详情';
+        $data['text_list'] = '回访调查内容';
+        $data['text_no_results'] = '没有回访信息';
+        $data['column_left'] = $this->load->controller('common/column_left');
+        $data['column_right'] = $this->load->controller('common/column_right');
+        $data['content_top'] = $this->load->controller('common/content_top');
+        $data['content_bottom'] = $this->load->controller('common/content_bottom');
+        $data['footer'] = $this->load->controller('common/footer');
+        $data['header'] = $this->load->controller('common/header');
+
+        $data['breadcrumbs'] = array();
+
+        $data['breadcrumbs'][] = array(
+            'text' => '首页',
+            'href' => $this->url->link('common/home')
+        );
+
+        $data['breadcrumbs'][] = array(
+            'text' =>  '新增回访调查',
+            'href' => $this->url->link('receipt/receipt', '', true)
+        );
+
+        $data['infos'] = array();
+
+        if (isset($this->request->get['receipt_history_id'])) {
+            $receipt_history_id = $this->request->get['receipt_history_id'];
+        } else {
+            $receipt_history_id = null;
+        }
+
+        $this->load->model('receipt/receipt');
+        $log = new Log('sql2.log');
+        $log->write($receipt_history_id);
+        $result = $this->model_receipt_receipt->getReceiptByReceipt_history_Id($receipt_history_id);
+
+        if(isset($result)){
+            if(json_decode($result['receipt_text'],true)['receipt']){
+                $receipt_text=array(json_decode($result['receipt_text'],true)['receipt']);
+            }else{
+                $receipt_text=NULL;
+            }
+            $data['info'] = array(
+                'receipt_history_id' => $result['receipt_history_id'],
+                'receipt_id' => $result['receipt_id'],
+                'customer_id' => $result['customer_id'],
+                'receipt_status' => $result['receipt_status'],
+                'receipt_text' => $receipt_text,
+                'date_add' => $result['date_add']
+                );
+        }
+
+
+        $this->response->setOutput($this->load->view('receipt/receipt_visit_info', $data));
     }
+
+}

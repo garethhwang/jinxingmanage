@@ -88,7 +88,7 @@
                                 <td class="text-left"><?php echo $receipt['name']; ?></td>
                                 <td class="text-left"><?php echo $receipt['telephone']; ?></td>
                                 <td class="text-left"><?php echo $receipt['date_add']; ?></td>
-                                <td class="text-left"><a href="<?php echo $customer['visit_info']; ?>" data-toggle="tooltip" title="<?php echo $button_visit_info; ?>" class="<?php if ($customer['urgency'] == 1){ echo 'btn btn-success'; } else if ($customer['urgency'] == 2) { echo 'btn btn-warning';} else if ($customer['urgency'] == 3) { echo 'btn btn-danger';} ?> "><i class="fa fa-info"></i></a></td>
+                                <td class="text-left"><a href="<?php echo $receipt['visit_info']; ?>" data-toggle="tooltip" title="<?php echo $button_visit_info; ?>" class="btn btn-success"><i class="fa fa-info"></i></a></td>
                             </tr>
                             <?php } ?>
                             <?php } else { ?>

@@ -4,7 +4,7 @@ $_['heading_title']         = '新增回访调查';
 
 // Text
 $_['text_success']          = '成功: 已修改会员！';
-$_['text_list']             = '会员列表';
+$_['text_list']             = '新增回访调查记录';
 $_['text_add']              = '添加会员';
 $_['text_edit']             = '编辑会员';
 $_['text_default']          = '默认';
