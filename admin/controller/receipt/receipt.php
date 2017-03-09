@@ -48,6 +48,12 @@ class ControllerReceiptReceipt extends Controller
             $filter_date_added = null;
         }
 
+        if (isset($this->request->post['selected'])) {
+            $data['selected'] = (array)$this->request->post['selected'];
+        } else {
+            $data['selected'] = array();
+        }
+
         if (isset($this->request->get['order'])) {
             $order = $this->request->get['order'];
         } else {
