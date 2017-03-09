@@ -227,7 +227,7 @@ class ControllerReceiptReceipt extends Controller
         $log = new Log('sql2.log');
         $log->write($receipt_history_id);
         $result = $this->model_receipt_receipt->getReceiptByReceipt_history_Id($receipt_history_id);
-
+        var_dump($result);
         if(isset($result)){
             if(json_decode($result['receipt_text'],true)['receipt']){
                 $receipt_text=array(json_decode($result['receipt_text'],true)['receipt']);
