@@ -82,6 +82,6 @@ class ModelReceiptReceipt extends Model {
     }
     public function getReceiptByReceipt_history_Id($Receipt_history_Id){
         $receipt_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "receipt_history WHERE receipt_history_id = '" . (int)$Receipt_history_Id . "'");
-        return $receipt_query->rows;
+        return $receipt_query->row;
     }
 }
