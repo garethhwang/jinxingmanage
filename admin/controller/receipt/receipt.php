@@ -110,6 +110,7 @@ class ControllerReceiptReceipt extends Controller
         $data['results'] = sprintf($this->language->get('text_pagination'), ($receipt_total) ? (($page - 1) * $this->config->get('config_limit_admin')) + 1 : 0, ((($page - 1) * $this->config->get('config_limit_admin')) > ($receipt_total - $this->config->get('config_limit_admin'))) ? $receipt_total : ((($page - 1) * $this->config->get('config_limit_admin')) + $this->config->get('config_limit_admin')), $receipt_total, ceil($receipt_total / $this->config->get('config_limit_admin')));
         $data['filter_name'] = $filter_name;
         $data['filter_date_added'] = $filter_date_added;
+        $data['sort'] = $sort;
         $data['heading_title'] = $this->language->get('heading_title');
 
         $data['text_list'] = $this->language->get('text_list');
