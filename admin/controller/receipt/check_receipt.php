@@ -95,16 +95,17 @@ class ControllerReceiptCheckReceipt extends Controller
 
         $results = $this->model_receipt_check_receipt->getAllCustomersNear($filter_data);
 
-        foreach ($results as $result){
-            $data['receipts'][] = array(
-                'customer_id'    => $result['customer_id'],
-                'name'        => $result['name'],
-                'telephone'       => $result['telephone'],
-                'receiptdate' => $result['receiptdate'],
-                'visit_info'=>$this->url->link('receipt/receipt/visit_info', 'token=' . $this->session->data['token'] . '&receipt_history_id=' . $result['receipt_history_id'] , true)
-            );
+        if(!empty($results)){
+            foreach ($results as $result){
+                $data['receipts'][] = array(
+                    'customer_id'    => $result['customer_id'],
+                    'name'        => $result['name'],
+                    'telephone'       => $result['telephone'],
+                    'receiptdate' => $result['receiptdate'],
+                    'visit_info'=>$this->url->link('receipt/receipt/visit_info', 'token=' . $this->session->data['token'] . '&receipt_history_id=' . $result['receipt_history_id'] , true)
+                );
+            }
         }
-
         $pagination = new Pagination();
         $pagination->total = $receipt_total;
         $pagination->page = $page;
