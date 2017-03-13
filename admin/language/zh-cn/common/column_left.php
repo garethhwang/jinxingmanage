@@ -40,6 +40,7 @@ $_['text_order']                     = '订单管理';
 $_['text_order_status']              = '订单状态';
 $_['text_product']                   = '商品管理';
 $_['text_receipt']                   = '新增回访调查';
+$_['text_check_receipt']             = '回访调查检测';
 $_['text_reports']                   = '报告';
 $_['text_report_sale']               = '销售';
 $_['text_report_sale_order']         = '销售订单';

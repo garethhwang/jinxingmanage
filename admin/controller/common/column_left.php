@@ -64,7 +64,7 @@ class ControllerCommonColumnLeft extends Controller {
 
             if ($this->user->hasPermission('access', 'receipt/check_receipt')) {
                 $receipt[] = array(
-                    'name'	   => $this->language->get('text_receipt'),
+                    'name'	   => $this->language->get('text_check_receipt'),
                     'href'     => $this->url->link('receipt/check_receipt', 'token=' . $this->session->data['token'], true),
                     'children' => array()
                 );
