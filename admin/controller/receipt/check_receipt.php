@@ -97,6 +97,7 @@ class ControllerReceiptCheckReceipt extends Controller
 
         if(!empty($results)){
             foreach ($results as $result){
+
                 $data['receipts'][] = array(
                     'customer_id'    => $result['customer_id'],
                     'name'        => $result['name'],
