@@ -64,16 +64,16 @@
                                     <a href="<?php echo $sort_name; ?>"><?php echo $column_name; ?></a>
                                     <?php } ?></td>
                                 <td class="text-left"><?php if ($sort == 'telephone') { ?>
-                                    <a href="<?php echo $sort_ip; ?>" class="<?php echo strtolower($order); ?>"><?php echo $column_telephone; ?></a>
+                                    <a href="<?php echo $sort_telephone; ?>" class="<?php echo strtolower($order); ?>"><?php echo $column_telephone; ?></a>
                                     <?php } else { ?>
-                                    <a href="<?php echo $sort_ip; ?>"><?php echo $column_telephone; ?></a>
+                                    <a href="<?php echo $sort_telephone; ?>"><?php echo $column_telephone; ?></a>
                                     <?php } ?></td>
                                 <td class="text-left"><?php if ($sort == 'date_added') { ?>
                                     <a href="<?php echo $sort_date_added; ?>" class="<?php echo strtolower($order); ?>"><?php echo $column_date_added; ?></a>
                                     <?php } else { ?>
                                     <a href="<?php echo $sort_date_added; ?>"><?php echo $column_date_added; ?></a>
                                     <?php } ?></td>
-                                <td class="text-left">更新到期天数</td>
+                                <td class="text-left"><a >更新到期天数</a></td>
                             </tr>
                             </thead>
                             <tbody>
@@ -88,7 +88,7 @@
                                 <td class="text-left"><?php echo $receipt['name']; ?></td>
                                 <td class="text-left"><?php echo $receipt['telephone']; ?></td>
                                 <td class="text-left"><?php echo $receipt['receiptdate']; ?></td>
-                                <td class="text-left"><?php echo $receipt['days']; echo"天"; ?></td>
+                                <td class="text-left"><class="<?php if ($receipt['urgency'] == 1){ echo 'btn btn-success'; } else if ($receipt['urgency'] == 2) { echo 'btn btn-warning';} else if ($receipt['urgency'] == 3) { echo 'btn btn-danger';}><?php echo $receipt['days']; echo"天"; ?></td>
                             </tr>
                             <?php } ?>
                             <?php } else { ?>
