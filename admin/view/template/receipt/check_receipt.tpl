@@ -88,7 +88,7 @@
                                 <td class="text-left"><?php echo $receipt['name']; ?></td>
                                 <td class="text-left"><?php echo $receipt['telephone']; ?></td>
                                 <td class="text-left"><?php echo $receipt['receiptdate']; ?></td>
-                                <td class="text-left"><?php echo $receipt['days']; ?></td>
+                                <td class="text-left"><?php echo $receipt['days']; echo"天"; ?></td>
                             </tr>
                             <?php } ?>
                             <?php } else { ?>
