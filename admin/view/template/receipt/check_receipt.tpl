@@ -88,7 +88,7 @@
                                 <td class="text-left"><?php echo $receipt['name']; ?></td>
                                 <td class="text-left"><?php echo $receipt['telephone']; ?></td>
                                 <td class="text-left"><?php echo $receipt['receiptdate']; ?></td>
-                                <td class="text-left"><class="<?php if ($receipt['urgency'] == 1){ echo 'btn btn-success'; } else if ($receipt['urgency'] == 2) { echo 'btn btn-warning';} else if ($receipt['urgency'] == 3) { echo 'btn btn-danger';}?> "><?php echo $receipt['days']; echo"天"; ?></td>
+                                <td class="text-left"><class="<?php if ($receipt['urgency'] == 1){ echo 'color="green"'; } else if ($receipt['urgency'] == 2) { echo 'color="orange"';} else if ($receipt['urgency'] == 3) { echo 'color="red"';}?> "><?php echo $receipt['days']; echo"天"; ?></td>
                             </tr>
                             <?php } ?>
                             <?php } else { ?>
