@@ -8,7 +8,7 @@
 
 class ModelReceiptCheckReceipt extends Model {
     public function getTotalCustomersNear($data = array()) {
-        $sql = "SELECT COUNT(*) AS total FROM " . DB_PREFIX . "customer WHERE DATE_SUB(CURDATE(), INTERVAL 7 DAY) >=date(receiptdate) AND ispregnant = 1";
+        $sql = "SELECT COUNT(*) AS total FROM " . DB_PREFIX . "customer WHERE DATE_SUB(CURDATE(), INTERVAL 7 DAY) <=date(receiptdate) AND CURDATE() > date(receiptdate) AND ispregnant = 1";
 
         $implode = array();
 
@@ -28,7 +28,7 @@ class ModelReceiptCheckReceipt extends Model {
         return $query->row['total'];
     }
     public function getAllCustomersNear($data = array()) {
-        $sql = "SELECT customer_id, realname AS name, telephone, receiptdate FROM " .DB_PREFIX . "customer WHERE DATE_SUB(CURDATE(), INTERVAL 7 DAY) >=date(receiptdate) AND ispregnant = 1";
+        $sql = "SELECT customer_id, realname AS name, telephone, receiptdate FROM " .DB_PREFIX . "customer WHERE DATE_SUB(CURDATE(), INTERVAL 7 DAY) <=date(receiptdate) AND CURDATE() > date(receiptdate) AND ispregnant = 1";
 
         $implode = array();
 
