@@ -100,9 +100,8 @@ class ControllerReceiptCheckReceipt extends Controller
                 $data['receipts'][] = array(
                     'customer_id'    => $result['customer_id'],
                     'name'        => $result['name'],
-                    'telephone'       => $result['telephone'],
-                    'receiptdate' => $result['receiptdate'],
-                    'visit_info'=>$this->url->link('receipt/receipt/visit_info', 'token=' . $this->session->data['token'] . '&receipt_history_id=' . $result['receipt_history_id'] , true)
+                    'telephone'    => $result['telephone'],
+                    'receiptdate' => $result['receiptdate']
                 );
             }
         }
