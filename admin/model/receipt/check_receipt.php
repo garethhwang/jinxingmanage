@@ -8,7 +8,7 @@
 
 class ModelReceiptCheckReceipt extends Model {
     public function getTotalCustomersNear($data = array()) {
-        $sql = "SELECT COUNT(*) AS total FROM " . DB_PREFIX . "customer WHERE DATE_SUB(DATE_SUB(CURDATE(), INTERVAL 7 DAY) >=date(receiptdate)";
+        $sql = "SELECT COUNT(*) AS total FROM " . DB_PREFIX . "customer WHERE DATE_SUB(CURDATE(), INTERVAL 7 DAY) >=date(receiptdate)";
 
         $implode = array();
 
