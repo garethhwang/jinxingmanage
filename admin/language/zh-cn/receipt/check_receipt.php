@@ -10,7 +10,7 @@ $_['heading_title']         = '回访调查监测站';
 
 // Text
 $_['text_success']          = '成功: 已修改会员！';
-$_['text_list']             = '新增回访调查记录';
+$_['text_list']             = '回访调查更新人员列表';
 $_['text_add']              = '添加会员';
 $_['text_edit']             = '编辑会员';
 $_['text_default']          = '默认';
@@ -21,7 +21,7 @@ $_['column_name']           = '会员姓名';
 $_['column_telephone']      = '电话号码';
 $_['column_customer_group'] = '会员等级';
 $_['column_status']         = '状态';
-$_['column_date_added']     = '添加日期';
+$_['column_date_added']     = '更新日期';
 $_['column_product_duration_visit']     = '产间回访';
 $_['column_comment']        = '备注';
 $_['column_description']    = '描述';
@@ -34,7 +34,7 @@ $_['column_office']           = '科室';
 // Entry
 $_['entry_customer_group']  = '会员等级';
 $_['entry_fullname']        = '姓名';
-$_['entry_realname']                    = '真实姓名';
+$_['entry_realname']         = '真实姓名';
 $_['entry_email']           = 'E-Mail';
 $_['entry_telephone']       = '电话';
 $_['entry_fax']             = '传真';
@@ -58,7 +58,7 @@ $_['entry_amount']          = '金额';
 $_['entry_points']          = '奖励积分';
 $_['entry_name']            = '会员姓名';
 $_['entry_ip']              = 'IP';
-$_['entry_date_added']      = '添加日期';
+$_['entry_date_added']      = '更新日期';
 $_['entry_shipping_telephone']       = '收件人电话';
 $_['entry_barcode']          ='条形码';
 $_['entry_height']           ='身高';

@@ -73,7 +73,7 @@
                                     <?php } else { ?>
                                     <a href="<?php echo $sort_date_added; ?>"><?php echo $column_date_added; ?></a>
                                     <?php } ?></td>
-                                <td class="text-left">产间回访</td>
+                                <td class="text-left">更新到期天数</td>
                             </tr>
                             </thead>
                             <tbody>
@@ -88,7 +88,7 @@
                                 <td class="text-left"><?php echo $receipt['name']; ?></td>
                                 <td class="text-left"><?php echo $receipt['telephone']; ?></td>
                                 <td class="text-left"><?php echo $receipt['receiptdate']; ?></td>
-                                <td class="text-left"><a href="<?php echo $receipt['visit_info']; ?>" data-toggle="tooltip" title="<?php echo $button_visit_info; ?>" class="btn btn-success"><i class="fa fa-info"></i></a></td>
+                                <td class="text-left"><?php echo $receipt['days']; ?></td>
                             </tr>
                             <?php } ?>
                             <?php } else { ?>

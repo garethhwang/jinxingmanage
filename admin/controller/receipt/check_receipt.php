@@ -97,12 +97,17 @@ class ControllerReceiptCheckReceipt extends Controller
 
         if(!empty($results)){
             foreach ($results as $result){
-
+                $receiptdate=$result['receiptdate'];
+                $today=date($this->language->get('date_format_short'));
+                $d1=strtotime($receiptdate);
+                $d2=strtotime($today);
+                $Days=round(($d2-$d1)/3600/24);
                 $data['receipts'][] = array(
                     'customer_id'    => $result['customer_id'],
                     'name'        => $result['name'],
                     'telephone'    => $result['telephone'],
-                    'receiptdate' => $result['receiptdate']
+                    'receiptdate' => $result['receiptdate'],
+                    'days'        => $Days
                 );
             }
         }
