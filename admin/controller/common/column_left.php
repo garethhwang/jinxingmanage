@@ -62,10 +62,10 @@ class ControllerCommonColumnLeft extends Controller {
             //回访调查
             $receipt = array();
 
-            if ($this->user->hasPermission('access', 'receipt/receipt')) {
+            if ($this->user->hasPermission('access', 'receipt/check_receipt')) {
                 $receipt[] = array(
                     'name'	   => $this->language->get('text_receipt'),
-                    'href'     => $this->url->link('receipt/receipt', 'token=' . $this->session->data['token'], true),
+                    'href'     => $this->url->link('receipt/check_receipt', 'token=' . $this->session->data['token'], true),
                     'children' => array()
                 );
             }
