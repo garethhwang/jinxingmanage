@@ -5,7 +5,7 @@
  * Date: 2017/3/13
  * Time: 14:36
  */
-class ControllerReceiptCheckRecipt extends Controller
+class ControllerReceiptCheckReceipt extends Controller
 {
     public function index() {
         try{
