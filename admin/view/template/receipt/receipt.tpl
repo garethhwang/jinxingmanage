@@ -85,8 +85,7 @@
                                 <td class="text-left"><?php echo $receipt['name']; ?></td>
                                 <td class="text-left"><?php echo $receipt['telephone']; ?></td>
                                 <td class="text-left"><?php echo $receipt['date_add']; ?></td>
-                                <td class="text-left"><a href="<?php echo $receipt['visit_info']; ?>" data-toggle="tooltip" title="<?php echo $button_visit_info; ?>" class="btn btn-success"><i class="fa fa-info"></i></a></td>
-                                <td class="text-left"><a href="<?php echo $receipt['visit_info']; ?>" data-toggle="tooltip" title="<?php echo $button_visit_info; ?>" class="btn btn-danger"><i class="fa fa-trash-o"></i></a></td>
+                                <td class="text-left"><a href="<?php echo $receipt['visit_info']; ?>" data-toggle="tooltip" title="<?php echo $button_visit_info; ?>" class="btn btn-success"><i class="fa fa-info"></i></a><a href="<?php echo $receipt['visit_info']; ?>" data-toggle="tooltip" title="<?php echo $button_visit_info; ?>" class="btn btn-danger"><i class="fa fa-trash-o"></i></a></td>
                             </tr>
                             <?php } ?>
                             <?php } else { ?>
