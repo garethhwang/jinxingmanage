@@ -252,11 +252,13 @@ class ControllerReceiptReceipt extends Controller
 
                     $lastmenstrualdate=$this->model_receipt_receipt->getLastdateByCustomerId($customer_id);
                     $baseline=date_create($lastmenstrualdate);
-                    $firstcheck=date_modify($baseline, '+11 weeks');
-                    $secondcheck=date_modify($baseline, '+21 weeks');
+                    $firstcheck=date("Y-m-d",strtotime("+11 week",strtotime($lastmenstrualdate)));
+                    $secondcheck=date("Y-m-d",strtotime("+21 week",strtotime($lastmenstrualdate)));
+                    $thirdcheck=date("Y-m-d",strtotime("+35 week",strtotime($lastmenstrualdate)));
 
                     var_dump($firstcheck);
                     var_dump($secondcheck);
+                    var_dump($thirdcheck);
 
 
                 }
