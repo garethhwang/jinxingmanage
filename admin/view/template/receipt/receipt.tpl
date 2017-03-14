@@ -2,6 +2,9 @@
 <div id="content">
     <div class="page-header">
         <div class="container-fluid">
+            <div class="pull-right">
+                <button type="button" data-toggle="tooltip" title="<?php echo $button_delete; ?>" class="btn btn-danger" onclick="confirm('<?php echo $text_confirm; ?>') ? $('#form-customer').submit() : false;"><i class="fa fa-trash-o"></i></button>
+            </div>
             <h1><?php echo $heading_title; ?></h1>
             <ul class="breadcrumb">
                 <?php foreach ($breadcrumbs as $breadcrumb) { ?>
@@ -77,10 +80,10 @@
                             <?php if ($receipts) { ?>
                             <?php foreach ($receipts as $receipt) { ?>
                             <tr>
-                                <td class="text-center"><?php if (in_array($receipt['customer_id'], $selected)) { ?>
-                                    <input type="checkbox" name="selected[]" value="<?php echo $receipt['customer_id']; ?>" checked="checked" />
+                                <td class="text-center"><?php if (in_array($receipt['receipt_history_id'], $selected)) { ?>
+                                    <input type="checkbox" name="selected[]" value="<?php echo $receipt['receipt_history_id']; ?>" checked="checked" />
                                     <?php } else { ?>
-                                    <input type="checkbox" name="selected[]" value="<?php echo $receipt['customer_id']; ?>" />
+                                    <input type="checkbox" name="selected[]" value="<?php echo $receipt['receipt_history_id']; ?>" />
                                     <?php } ?></td>
                                 <td class="text-left"><?php echo $receipt['name']; ?></td>
                                 <td class="text-left"><?php echo $receipt['telephone']; ?></td>
@@ -88,9 +91,6 @@
                                 <td class="text-left">
                                     <div class="btn-group" >
                                         <a href="<?php echo $receipt['visit_info']; ?>" data-toggle="tooltip" title="<?php echo $button_visit_info; ?>" class="btn btn-success"><i class="fa fa-info"></i></a>
-                                    </div>
-                                    <div class="btn-group" >
-                                        <a href="<?php echo $receipt['visit_delete']; ?>" data-toggle="tooltip" title="<?php echo $button_visit_delete; ?>" class="btn btn-danger"><i class="fa fa-trash-o"></i></a>
                                     </div>
                                 </td>
                             </tr>
