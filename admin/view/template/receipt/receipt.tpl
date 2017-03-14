@@ -90,7 +90,7 @@
                                         <a href="<?php echo $receipt['visit_info']; ?>" data-toggle="tooltip" title="<?php echo $button_visit_info; ?>" class="btn btn-success"><i class="fa fa-info"></i></a>
                                     </div>
                                     <div class="btn-group" >
-                                        <a href="<?php echo $receipt['visit_info']; ?>" data-toggle="tooltip" title="<?php echo $button_visit_info; ?>" class="btn btn-danger"><i class="fa fa-trash-o"></i></a>
+                                        <a href="<?php echo $receipt['visit_delete']; ?>" data-toggle="tooltip" title="<?php echo $button_visit_delete; ?>" class="btn btn-danger"><i class="fa fa-trash-o"></i></a>
                                     </div>
                                 </td>
                             </tr>

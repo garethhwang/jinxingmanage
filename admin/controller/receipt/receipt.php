@@ -151,7 +151,7 @@ class ControllerReceiptReceipt extends Controller
 
         $data['button_edit'] = $this->language->get('button_edit');
         $data['button_visit_info'] = '回访信息查询';
-        $data['button_delete'] = $this->language->get('button_delete');
+        $data['button_visit_delete'] = $this->language->get('button_delete');
         $data['button_filter'] = $this->language->get('button_filter');
 
 
