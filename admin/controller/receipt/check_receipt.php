@@ -101,7 +101,7 @@ class ControllerReceiptCheckReceipt extends Controller
                 $today = date($this->language->get('date_format_short'));
                 $d1 = strtotime($receiptdate);
                 $d2 = strtotime($today);
-                $Days = round(($d2 - $d1) / 3600 / 24);
+                $Days = 7 - round(($d2 - $d1) / 3600 / 24);
 
                 if ($Days < 3) {
                     $urgency = 3;
@@ -110,7 +110,6 @@ class ControllerReceiptCheckReceipt extends Controller
                 }else if ($Days >= 5) {
                     $urgency = 1;
                 }
-                var_dump($urgency);
 
                 $data['receipts'][] = array(
                     'customer_id'    => $result['customer_id'],
