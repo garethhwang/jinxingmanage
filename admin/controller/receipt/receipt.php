@@ -110,7 +110,8 @@ class ControllerReceiptReceipt extends Controller
                 'receipt_status' => $result['receipt_status'],
                 'receipt_text' => $receipt_text,
                 'date_add' => $result['date_add'],
-                'visit_info'=>$this->url->link('receipt/receipt/visit_info', 'token=' . $this->session->data['token'] . '&receipt_history_id=' . $result['receipt_history_id'] , true)
+                'visit_info'=>$this->url->link('receipt/receipt/visit_info', 'token=' . $this->session->data['token'] . '&receipt_history_id=' . $result['receipt_history_id'] , true),
+                'visit_delete'=>$this->url->link('receipt/receipt/visit_delete', 'token=' . $this->session->data['token'] . '&receipt_history_id=' . $result['receipt_history_id'] , true)
             );
         }
 
@@ -140,31 +141,18 @@ class ControllerReceiptReceipt extends Controller
 
         $data['column_name'] = $this->language->get('column_name');
         $data['column_telephone'] = $this->language->get('column_telephone');
-        $data['column_customer_group'] = $this->language->get('column_customer_group');
-        $data['column_status'] = $this->language->get('column_status');
         $data['column_approved'] = $this->language->get('column_approved');
-        $data['column_ip'] = $this->language->get('column_ip');
         $data['column_date_added'] = $this->language->get('column_date_added');
         $data['column_action'] = $this->language->get('column_action');
         $data['column_office'] = $this->language->get('column_office');
 
         $data['entry_name'] = $this->language->get('entry_name');
-        $data['entry_email'] = $this->language->get('entry_email');
-        $data['entry_customer_group'] = $this->language->get('entry_customer_group');
-        $data['entry_status'] = $this->language->get('entry_status');
-        $data['entry_approved'] = $this->language->get('entry_approved');
-        $data['entry_ip'] = $this->language->get('entry_ip');
         $data['entry_date_added'] = $this->language->get('entry_date_added');
-        $data['office_name'] = $this->language->get('office_name');
 
-        $data['button_approve'] = $this->language->get('button_approve');
-        $data['button_add'] = $this->language->get('button_add');
         $data['button_edit'] = $this->language->get('button_edit');
         $data['button_visit_info'] = '回访信息查询';
         $data['button_delete'] = $this->language->get('button_delete');
         $data['button_filter'] = $this->language->get('button_filter');
-        $data['button_login'] = $this->language->get('button_login');
-        $data['button_unlock'] = $this->language->get('button_unlock');
 
 
         if (isset($this->error['warning'])) {
@@ -224,8 +212,6 @@ class ControllerReceiptReceipt extends Controller
         }
 
         $this->load->model('receipt/receipt');
-        $log = new Log('sql2.log');
-        $log->write($receipt_history_id);
         $result = $this->model_receipt_receipt->getReceiptByReceipt_history_Id($receipt_history_id);
 
         if(isset($result)){
@@ -246,6 +232,10 @@ class ControllerReceiptReceipt extends Controller
 
 
         $this->response->setOutput($this->load->view('receipt/receipt_visit_info', $data));
+    }
+
+    public function visit_delete(){
+
     }
 
 }
