@@ -87,6 +87,6 @@ class ModelReceiptReceipt extends Model {
 
     public function getLastdateByCustomerId($customer_id){
         $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "physical WHERE customer_id = '" . (int)$customer_id . "'");
-        return $query->row;
+        return $query->row['lastmenstrualdate'];
     }
 }
