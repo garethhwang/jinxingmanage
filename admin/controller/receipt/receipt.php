@@ -110,10 +110,10 @@ class ControllerReceiptReceipt extends Controller
                 'receipt_status' => $result['receipt_status'],
                 'receipt_text' => $receipt_text,
                 'date_add' => $result['date_add'],
-                'visit_info'=>$this->url->link('receipt/receipt/visit_info', 'token=' . $this->session->data['token'] . '&receipt_history_id=' . $result['receipt_history_id'] , true),
-                'visit_delete'=>$this->url->link('receipt/receipt/visit_delete', 'token=' . $this->session->data['token'] . '&receipt_history_id=' . $result['receipt_history_id'] , true)
+                'visit_info'=>$this->url->link('receipt/receipt/visit_info', 'token=' . $this->session->data['token'] . '&receipt_history_id=' . $result['receipt_history_id'] , true)
             );
         }
+        $data[] = $this->url->link('receipt/receipt/visit_delete', 'token=' . $this->session->data['token'] , true);
 
         $pagination = new Pagination();
         $pagination->total = $receipt_total;
