@@ -246,6 +246,7 @@ class ControllerReceiptReceipt extends Controller
             foreach ($this->request->post['selected'] as $receipt_history_id) {
                 $result = $this->model_receipt_receipt->getReceiptByReceipt_history_Id($receipt_history_id);
                 var_dump($result);
+
                 if(isset($result))
                 {
                     $customer_id=$result['customer_id'];
