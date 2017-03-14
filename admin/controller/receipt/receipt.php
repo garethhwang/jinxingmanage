@@ -244,7 +244,24 @@ class ControllerReceiptReceipt extends Controller
         if (isset($this->request->post['selected'])) {
             var_dump($this->request->post['selected']);
             foreach ($this->request->post['selected'] as $receipt_history_id) {
-                //$this->model_customer_customer->deleteCustomer($receipt_history_id);
+                $result = $this->model_receipt_receipt->getReceiptByReceipt_history_Id($receipt_history_id);
+                if(isset($result))
+                {
+                    $customer_id=$result['customer_id'];
+                    $date_add=$result['date_add'];
+
+                    $lastmenstrualdate=$this->model_receipt_receipt->getLastdateByCustomerId($customer_id);
+                    $baseline=date_create($lastmenstrualdate);
+                    $firstcheck=date_modify($baseline, '+11 weeks');
+                    $secondcheck=date_modify($baseline, '+21 weeks');
+
+                    var_dump($firstcheck);
+                    var_dump($secondcheck);
+
+
+                }
+                //$this->model_receipt_receipt->deleteReceiptHistoryRecord($receipt_history_id);
+
             }
 /*
             $this->session->data['success'] = $this->language->get('text_success');

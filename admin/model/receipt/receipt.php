@@ -84,4 +84,9 @@ class ModelReceiptReceipt extends Model {
         $receipt_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "receipt_history WHERE receipt_history_id = '" . (int)$Receipt_history_Id . "'");
         return $receipt_query->row;
     }
+
+    public function getLastdateByCustomerId($customer_id){
+        $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "physical WHERE customer_id = '" . (int)$customer_id . "'");
+        return $query->row;
+    }
 }
