@@ -258,6 +258,7 @@ class ControllerReceiptReceipt extends Controller
                     $thirdcheck=date("Y-m-d",strtotime("+34 week",strtotime($lastmenstrualdate)));
 
                     $log = new Log('test.log');
+                    $log->write("date_Add=".$date_add);
                     if ( $date_add>$firstcheck && $date_add<$secondcheck )
                     {
                         $log->write("first=".$firstcheck);
