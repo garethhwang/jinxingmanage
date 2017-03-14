@@ -259,10 +259,13 @@ class ControllerReceiptReceipt extends Controller
 
                     if ( $date_add>$firstcheck && $date_add<$secondcheck )
                     {
+                        var_dump($firstcheck);
                         $this->model_receipt_receipt->updateReceiptdate($firstcheck, $customer_id);
                     } else if ( $date_add>$secondcheck && $date_add<$thirdcheck ){
+                        var_dump($secondcheck);
                         $this->model_receipt_receipt->updateReceiptdate($secondcheck, $customer_id);
                     } else{
+                        var_dump($thirdcheck);
                         $this->model_receipt_receipt->updateReceiptdate($thirdcheck, $customer_id);
                     }
 

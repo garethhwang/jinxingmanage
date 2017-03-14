@@ -92,8 +92,8 @@ class ModelReceiptReceipt extends Model {
 
     public function updateReceiptdate($date, $customer_id){
         $log = new Log('test.log');
-        $log->write("UPDATE " . DB_PREFIX . "customer SET receiptdate = $date WHERE customer_id = '" . (int)$customer_id . "'");
-        //$this->db->query("UPDATE " . DB_PREFIX . "customer SET receiptdate = $date WHERE customer_id = '" . (int)$customer_id . "'");
+        $log->write("UPDATE " . DB_PREFIX . "customer SET receiptdate = '" . $date . "' WHERE customer_id = '" . (int)$customer_id . "'");
+        //$this->db->query("UPDATE " . DB_PREFIX . "customer SET receiptdate = '" . $date . "' WHERE customer_id = '" . (int)$customer_id . "'");
     }
 
     public function deleteReceiptHistoryRecord($receipt_history_id){
