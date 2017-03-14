@@ -103,9 +103,9 @@ class ControllerReceiptCheckReceipt extends Controller
                 $d2 = strtotime($today);
                 $Days = round(($d2 - $d1) / 3600 / 24);
 
-                if ($Days >= 1) {
+                if ($Days < 3) {
                     $urgency = 3;
-                } else if ($Days >= 3) {
+                } else if ($Days < 5) {
                     $urgency = 2;
                 }else if ($Days >= 5) {
                     $urgency = 1;
