@@ -110,6 +110,7 @@ class ControllerReceiptCheckReceipt extends Controller
                 }else if ($Days >= 5) {
                     $urgency = 1;
                 }
+                var_dump($urgency);
 
                 $data['receipts'][] = array(
                     'customer_id'    => $result['customer_id'],
