@@ -257,24 +257,12 @@ class ControllerReceiptReceipt extends Controller
                     $secondcheck=date("Y-m-d",strtotime("+20 week",strtotime($lastmenstrualdate)));
                     $thirdcheck=date("Y-m-d",strtotime("+34 week",strtotime($lastmenstrualdate)));
 
-                    $log = new Log('test.log');
-                    $log->write("date_Add=".$date_add);
-                    $log->write("first=".$firstcheck);
-                    $log->write("second=".$secondcheck);
-                    $log->write("third".$thirdcheck);
-
                     if ( strtotime($date_add) >= strtotime($firstcheck) && strtotime($date_add)<strtotime($secondcheck) )
                     {
-                        $log->write("first=".$firstcheck);
-                        var_dump($firstcheck);
                         $this->model_receipt_receipt->updateReceiptdate($firstcheck, $customer_id);
                     } else if ( strtotime($date_add)>=strtotime($secondcheck) && strtotime($date_add)<strtotime($thirdcheck) ){
-                        $log->write("second=".$secondcheck);
-                        var_dump($secondcheck);
                         $this->model_receipt_receipt->updateReceiptdate($secondcheck, $customer_id);
                     } else{
-                        $log->write("third".$thirdcheck);
-                        var_dump($thirdcheck);
                         $this->model_receipt_receipt->updateReceiptdate($thirdcheck, $customer_id);
                     }
 

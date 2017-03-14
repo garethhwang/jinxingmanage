@@ -8,7 +8,7 @@
 
 class ModelReceiptReceipt extends Model {
     public function getTotalReceipts($data = array()) {
-        $sql = "SELECT COUNT(*) AS total FROM " . DB_PREFIX . "receipt_history WHERE DATE_SUB(CURDATE(), INTERVAL 14 DAY) <=date(date_add)";
+        $sql = "SELECT COUNT(*) AS total FROM " . DB_PREFIX . "receipt_history WHERE DATE_SUB(CURDATE(), INTERVAL 7 DAY) <=date(date_add)";
 
         $implode = array();
 
@@ -28,7 +28,7 @@ class ModelReceiptReceipt extends Model {
         return $query->row['total'];
     }
     public function getAllReceipts($data = array()) {
-        $sql = "SELECT a.customer_id, a.receipt_history_id, a.receipt_status, a.receipt_text, a.date_add, b.realname AS name, b.telephone FROM " . DB_PREFIX . "receipt_history AS a, " . DB_PREFIX . "customer AS b WHERE a.customer_id = b.customer_id AND DATE_SUB(CURDATE(), INTERVAL 14 DAY) <=date(a.date_add)";
+        $sql = "SELECT a.customer_id, a.receipt_history_id, a.receipt_status, a.receipt_text, a.date_add, b.realname AS name, b.telephone FROM " . DB_PREFIX . "receipt_history AS a, " . DB_PREFIX . "customer AS b WHERE a.customer_id = b.customer_id AND DATE_SUB(CURDATE(), INTERVAL 7 DAY) <=date(a.date_add)";
 
         $implode = array();
 
@@ -91,14 +91,10 @@ class ModelReceiptReceipt extends Model {
     }
 
     public function updateReceiptdate($date, $customer_id){
-        $log = new Log('test.log');
-        $log->write("UPDATE " . DB_PREFIX . "customer SET receiptdate = '" . $date . "' WHERE customer_id = '" . (int)$customer_id . "'");
-        //$this->db->query("UPDATE " . DB_PREFIX . "customer SET receiptdate = '" . $date . "' WHERE customer_id = '" . (int)$customer_id . "'");
+        $this->db->query("UPDATE " . DB_PREFIX . "customer SET receiptdate = '" . $date . "' WHERE customer_id = '" . (int)$customer_id . "'");
     }
 
     public function deleteReceiptHistoryRecord($receipt_history_id){
-        $log = new Log('test.log');
-        $log->write("DELETE FROM " . DB_PREFIX . "receipt_history WHERE receipt_history_id = '" . (int)$receipt_history_id ."'" );
-        //$this->db-query("DELETE FROM " . DB_PREFIX . "receipt_history WHERE receipt_history_id = '" . (int)$receipt_history_id ."'" );
+        $this->db-query("DELETE FROM " . DB_PREFIX . "receipt_history WHERE receipt_history_id = '" . (int)$receipt_history_id ."'" );
     }
 }
