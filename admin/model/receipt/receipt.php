@@ -89,4 +89,16 @@ class ModelReceiptReceipt extends Model {
         $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "physical WHERE customer_id = '" . (int)$customer_id . "'");
         return $query->row['lastmenstrualdate'];
     }
+
+    public function updateReceiptdate($date, $customer_id){
+        $log = new Log('test.log');
+        $log->write("UPDATE " . DB_PREFIX . "customer SET receiptdate = $date WHERE customer_id = '" . (int)$customer_id . "'");
+        //$this->db->query("UPDATE " . DB_PREFIX . "customer SET receiptdate = $date WHERE customer_id = '" . (int)$customer_id . "'");
+    }
+
+    public function deleteReceiptHistoryRecord($receipt_history_id){
+        $log = new Log('test.log');
+        $log->write("DELETE FROM " . DB_PREFIX . "receipt_history WHERE receipt_history_id = '" . (int)$receipt_history_id ."'" );
+        //$this->db-query("DELETE FROM " . DB_PREFIX . "receipt_history WHERE receipt_history_id = '" . (int)$receipt_history_id ."'" );
+    }
 }
