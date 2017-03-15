@@ -145,9 +145,10 @@
                     <?php } else { ?>
                     <a href="<?php echo $sort_date_added; ?>"><?php echo $column_date_added; ?></a>
                     <?php } ?></td>
+                  <td class="text-right"><?php echo $column_action; ?></td>
                   <!-- <td class="text-left">产间回访</td> -->
                   <!-- <?php if($user_group_id == 1) { ?> -->
-                  <td class="text-right"><?php echo $column_action; ?></td>
+
                   <!-- <?php } ?> -->
                 </tr>
               </thead>
