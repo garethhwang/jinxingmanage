@@ -13,6 +13,8 @@ $_['text_balance']          = '账户';
 // Column
 $_['column_name']           = '会员姓名';
 $_['column_email']          = 'E-Mail';
+$_['column_telephone']       = '电话号码';
+$_['column_address']          = '地址';
 $_['column_customer_group'] = '会员等级';
 $_['column_status']         = '状态';
 $_['column_date_added']     = '添加日期';

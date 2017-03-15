@@ -170,7 +170,7 @@
                   <td class="text-left"><?php echo $customer['name']; ?></td>
                   <!-- <td class="text-left"><?php echo $customer['email']; ?></td> -->
                   <td class="text-left"><?php echo $customer['telephone']; ?></td>
-                  <td class="text-left"><?php echo $customer['address']; ?></td>
+                  <td class="text-left"><?php echo $customer['customer_address']; ?></td>
                   <td class="text-left"><?php echo $customer['date_added']; ?></td>
                   <td class="text-right">
                     <div class="btn-group">
