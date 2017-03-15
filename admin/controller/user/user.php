@@ -452,9 +452,7 @@ class ControllerUserUser extends Controller {
         $data['filter_district_id'] = $filter_district_id;
         $data['filter_province_id'] = $filter_province_id;
         $data['filter_city_id'] = $filter_city_id;
-        $data['filter_office_id'] = $filter_city_id . ',' . $filter_district_id . ',' . $filter_office_id;
-        $log = new Log('api.log');
-        $log->write($data['filter_office_id']);
+        $data['filter_office_id'] = $filter_office_id;
 
 		$this->load->model('tool/image');
 
