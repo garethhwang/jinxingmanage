@@ -894,6 +894,12 @@ class ControllerCustomerCustomer extends Controller {
 			$data['action'] = $this->url->link('customer/customer/edit', 'token=' . $this->session->data['token'] . '&customer_id=' . $this->request->get['customer_id'] . $url, true);
 		}
 
+        $user_id = $this->user->isLogged();
+        $user_info = $this->model_customer_customer->getUserInfo($user_id);
+
+        $user_group_id = $user_info['user_group_id'];
+        $data['user_group_id'] = $user_group_id;
+
 		$data['cancel'] = $this->url->link('customer/customer', 'token=' . $this->session->data['token'] . $url, true);
 
 		if (isset($this->request->get['customer_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {

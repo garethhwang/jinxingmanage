@@ -26,13 +26,17 @@
       <div class="panel-body">
         <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form-customer" class="form-horizontal">
           <ul class="nav nav-tabs">
-            <li class="active"><a href="#tab-general" data-toggle="tab"><?php echo $tab_general; ?></a></li>
+            <?php if ($user_group_id == 1) { ?>
+            <li><a href="#tab-general" data-toggle="tab"><?php echo $tab_general; ?></a></li>
+            <?php } ?>
             <?php if ($customer_id) { ?>
+            <?php if ($user_group_id == 1) { ?>
             <li><a href="#tab-history" data-toggle="tab"><?php echo $tab_history; ?></a></li>
             <li><a href="#tab-transaction" data-toggle="tab"><?php echo $tab_transaction; ?></a></li>
             <li><a href="#tab-reward" data-toggle="tab"><?php echo $tab_reward; ?></a></li>
             <li><a href="#tab-ip" data-toggle="tab"><?php echo $tab_ip; ?></a></li>
-            <li><a href="#tab-basic-info" data-toggle="tab"><?php echo $tab_basic_info; ?></a></li>
+            <?php } ?>
+            <li class="active"><a href="#tab-basic-info" data-toggle="tab"><?php echo $tab_basic_info; ?></a></li>
             <?php } ?>
           </ul>
           <div class="tab-content">
