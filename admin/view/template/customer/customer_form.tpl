@@ -40,7 +40,7 @@
             <?php } ?>
           </ul>
           <div class="tab-content">
-            <div class="tab-pane active" id="tab-general">
+            <div class="tab-pane" id="tab-general">
               <div class="row">
                 <?php if ($user_group_id == 1) { ?>
                 <div class="col-sm-2">
