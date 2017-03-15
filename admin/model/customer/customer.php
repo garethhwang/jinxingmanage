@@ -378,7 +378,8 @@ class ModelCustomerCustomer extends Model {
 	}
 
 	public function getTotalCustomers($data = array()) {
-		$sql = "SELECT COUNT(*) AS total FROM " . DB_PREFIX . "customer";
+        $sql = "SELECT COUNT(*) AS total FROM " . DB_PREFIX . "customer c LEFT JOIN " . DB_PREFIX . "customer_group_description cgd ON (c.customer_group_id = cgd.customer_group_id) LEFT JOIN " . DB_PREFIX . "address ca ON (c.customer_id = ca.customer_id) WHERE cgd.language_id = '" . (int)$this->config->get('config_language_id') . "'";
+        //$sql = "SELECT COUNT(*) AS total FROM " . DB_PREFIX . "customer";
 
 		$implode = array();
 
@@ -389,6 +390,10 @@ class ModelCustomerCustomer extends Model {
 		if (!empty($data['filter_email'])) {
 			$implode[] = "email LIKE '" . $this->db->escape($data['filter_email']) . "%'";
 		}
+
+        if (!empty($data['filter_telephone'])) {
+            $implode[] = "telephone LIKE '" . $this->db->escape($data['filter_telephone']) . "%'";
+        }
 
 		if (isset($data['filter_newsletter']) && !is_null($data['filter_newsletter'])) {
 			$implode[] = "newsletter = '" . (int)$data['filter_newsletter'] . "'";
