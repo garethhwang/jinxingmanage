@@ -558,6 +558,7 @@ class ControllerCustomerCustomer extends Controller {
 				'ip'             => $result['ip'],
                 'receiptdate'   => date($this->language->get('date_format_short'), strtotime($result['receiptdate'])),
 				'date_added'     => date($this->language->get('date_format_short'), strtotime($result['date_added'])),
+                'customer_address'   => result['customer_address'],
                 'urgency'        => $Urgency,
                 //'product_duration_visit'=> $result['product_duration_visit'],
 				'approve'        => $approve,
@@ -582,6 +583,7 @@ class ControllerCustomerCustomer extends Controller {
 		$data['column_name'] = $this->language->get('column_name');
 		$data['column_email'] = $this->language->get('column_email');
         $data['column_telephone'] = $this->language->get('column_telephone');
+        $data['column_address'] = $this->language->get('column_address');
         $data['column_customer_group'] = $this->language->get('column_customer_group');
 		$data['column_status'] = $this->language->get('column_status');
 		$data['column_approved'] = $this->language->get('column_approved');
