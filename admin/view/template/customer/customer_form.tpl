@@ -57,7 +57,7 @@
                 <?php } ?>
                 <div class="col-sm-10">
                   <div class="tab-content">
-                    <div class="tab-pane" id="tab-customer">
+                    <div class="tab-pane active" id="tab-customer">
                       <div class="form-group">
                         <label class="col-sm-2 control-label" for="input-customer-group"><?php echo $entry_customer_group; ?></label>
                         <div class="col-sm-10">
