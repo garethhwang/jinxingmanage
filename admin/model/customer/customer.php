@@ -199,6 +199,10 @@ class ModelCustomerCustomer extends Model {
 			$implode[] = "DATE(c.date_added) = DATE('" . $this->db->escape($data['filter_date_added']) . "')";
 		}
 
+        if (!empty($data['filter_receiptdate'])) {
+            $implode[] = "DATE(c.receiptdate) = DATE('" . $this->db->escape($data['filter_receiptdate']) . "')";
+        }
+
         if (!empty($data['office_id'])) {
             $implode[] = "department =  '" . $data['office_id'] . "'";
         }
@@ -219,7 +223,8 @@ class ModelCustomerCustomer extends Model {
 			'c.status',
 			'c.approved',
 			'c.ip',
-			'c.date_added'
+			'c.date_added',
+            'c.receiptdate'
 		);
 
 		if (isset($data['sort']) && in_array($data['sort'], $sort_data)) {
@@ -378,8 +383,8 @@ class ModelCustomerCustomer extends Model {
 	}
 
 	public function getTotalCustomers($data = array()) {
-        $sql = "SELECT COUNT(*) AS total FROM " . DB_PREFIX . "customer c LEFT JOIN " . DB_PREFIX . "customer_group_description cgd ON (c.customer_group_id = cgd.customer_group_id) LEFT JOIN " . DB_PREFIX . "address ca ON (c.customer_id = ca.customer_id) WHERE cgd.language_id = '" . (int)$this->config->get('config_language_id') . "'";
-        //$sql = "SELECT COUNT(*) AS total FROM " . DB_PREFIX . "customer";
+        //$sql = "SELECT COUNT(*) AS total FROM " . DB_PREFIX . "customer c LEFT JOIN " . DB_PREFIX . "customer_group_description cgd ON (c.customer_group_id = cgd.customer_group_id) LEFT JOIN " . DB_PREFIX . "address ca ON (c.customer_id = ca.customer_id) WHERE cgd.language_id = '" . (int)$this->config->get('config_language_id') . "'";
+        $sql = "SELECT COUNT(*) AS total FROM " . DB_PREFIX . "customer";
 
 		$implode = array();
 
@@ -418,6 +423,10 @@ class ModelCustomerCustomer extends Model {
 		if (!empty($data['filter_date_added'])) {
 			$implode[] = "DATE(date_added) = DATE('" . $this->db->escape($data['filter_date_added']) . "')";
 		}
+
+        if (!empty($data['filter_receiptdate'])) {
+            $implode[] = "DATE(receiptdate) = DATE('" . $this->db->escape($data['filter_receiptdate']) . "')";
+        }
 
         if (!empty($data['office_id'])) {
             $implode[] = "department =  '" . $data['office_id'] . "'";

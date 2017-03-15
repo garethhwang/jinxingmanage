@@ -102,6 +102,16 @@
             </div> -->
             <div class="col-sm-3">
               <div class="form-group">
+                <label class="control-label" for="input-receiptdate"><?php echo $entry_receiptdate; ?></label>
+                <div class="input-group date">
+                  <input type="text" name="filter_receiptdate" value="<?php echo $filter_receiptdate; ?>" placeholder="<?php echo $entry_receiptdate; ?>" data-date-format="YYYY-MM-DD" id="input-receiptdate" class="form-control" />
+                  <span class="input-group-btn">
+                  <button type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button>
+                  </span></div>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="form-group">
                 <label class="control-label" for="input-date-added"><?php echo $entry_date_added; ?></label>
                 <div class="input-group date">
                   <input type="text" name="filter_date_added" value="<?php echo $filter_date_added; ?>" placeholder="<?php echo $entry_date_added; ?>" data-date-format="YYYY-MM-DD" id="input-date-added" class="form-control" />
@@ -151,6 +161,11 @@
                     <?php } else { ?>
                     <a href="<?php echo $sort_date_added; ?>"><?php echo $column_date_added; ?></a>
                     <?php } ?></td>
+                  <td class="text-left"><?php if ($sort == 'c.receiptdate') { ?>
+                    <a href="<?php echo $sort_receiptdate; ?>" class="<?php echo strtolower($order); ?>"><?php echo $column_receiptdate; ?></a>
+                    <?php } else { ?>
+                    <a href="<?php echo $sort_receiptdate; ?>"><?php echo $column_receiptdate; ?></a>
+                    <?php } ?></td>
                   <td class="text-right"><?php echo $column_action; ?></td>
                   <!-- <td class="text-left">产间回访</td> -->
                   <!-- <?php if($user_group_id == 1) { ?> -->
@@ -172,6 +187,7 @@
                   <td class="text-left"><?php echo $customer['telephone']; ?></td>
                   <td class="text-left"><?php echo $customer['customer_address']; ?></td>
                   <td class="text-left"><?php echo $customer['date_added']; ?></td>
+                  <td class="text-left"><?php echo $customer['receiptdate']; ?></td>
                   <td class="text-right">
                     <div class="btn-group">
                       <a href="<?php echo $customer['visit_info']; ?>" data-toggle="tooltip" title="<?php echo $button_visit_info; ?>" class="<?php if ($customer['urgency'] == 1){ echo 'btn btn-success'; } else if ($customer['urgency'] == 2) { echo 'btn btn-warning';} else if ($customer['urgency'] == 3) { echo 'btn btn-danger';} ?> "><i class="fa fa-info"></i></a>

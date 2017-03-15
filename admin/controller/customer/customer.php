@@ -371,10 +371,16 @@ class ControllerCustomerCustomer extends Controller {
 		}
 
 		if (isset($this->request->get['filter_date_added'])) {
-			$filter_date_added = $this->request->get['filter_date_added'];
-		} else {
-			$filter_date_added = null;
-		}
+            $filter_date_added = $this->request->get['filter_date_added'];
+        } else {
+            $filter_date_added = null;
+        }
+
+        if (isset($this->request->get['filter_receiptdate'])) {
+            $filter_receiptdate = $this->request->get['filter_receiptdate'];
+        } else {
+            $filter_receiptdate = null;
+        }
 
         if (isset($this->request->get['office_id'])) {
             $office_id = urldecode($this->request->get['office_id']);
@@ -430,9 +436,13 @@ class ControllerCustomerCustomer extends Controller {
 			$url .= '&filter_ip=' . $this->request->get['filter_ip'];
 		}
 
-		if (isset($this->request->get['filter_date_added'])) {
-			$url .= '&filter_date_added=' . $this->request->get['filter_date_added'];
-		}
+        if (isset($this->request->get['filter_date_added'])) {
+            $url .= '&filter_date_added=' . $this->request->get['filter_date_added'];
+        }
+
+        if (isset($this->request->get['filter_receiptdate'])) {
+            $url .= '&filter_receiptdate=' . $this->request->get['filter_receiptdate'];
+        }
 
 		if (isset($this->request->get['sort'])) {
 			$url .= '&sort=' . $this->request->get['sort'];
@@ -479,6 +489,7 @@ class ControllerCustomerCustomer extends Controller {
                 'filter_status' => $filter_status,
                 'filter_approved' => $filter_approved,
                 'filter_date_added' => $filter_date_added,
+                'filter_receiptdate' => $filter_receiptdate,
                 'filter_ip' => $filter_ip,
                 'office_id' => $office_id,
                 'sort' => $sort,
@@ -496,6 +507,7 @@ class ControllerCustomerCustomer extends Controller {
                 'filter_status' => $filter_status,
                 'filter_approved' => $filter_approved,
                 'filter_date_added' => $filter_date_added,
+                'filter_receiptdate' => $filter_receiptdate,
                 'filter_ip' => $filter_ip,
                 'office_id' => $office_id,
                 'sort' => $sort,
@@ -589,7 +601,8 @@ class ControllerCustomerCustomer extends Controller {
 		$data['column_approved'] = $this->language->get('column_approved');
 		$data['column_ip'] = $this->language->get('column_ip');
 		$data['column_date_added'] = $this->language->get('column_date_added');
-		$data['column_action'] = $this->language->get('column_action');
+        $data['column_receiptdate'] = $this->language->get('column_receiptdate');
+        $data['column_action'] = $this->language->get('column_action');
         $data['column_office'] = $this->language->get('column_office');
 
 		$data['entry_name'] = $this->language->get('entry_name');
@@ -599,7 +612,8 @@ class ControllerCustomerCustomer extends Controller {
 		$data['entry_status'] = $this->language->get('entry_status');
 		$data['entry_approved'] = $this->language->get('entry_approved');
 		$data['entry_ip'] = $this->language->get('entry_ip');
-		$data['entry_date_added'] = $this->language->get('entry_date_added');
+        $data['entry_date_added'] = $this->language->get('entry_date_added');
+        $data['entry_receiptdate'] = $this->language->get('entry_receiptdate');
         $data['office_name'] = $this->language->get('office_name');
 
 		$data['button_approve'] = $this->language->get('button_approve');
@@ -668,8 +682,12 @@ class ControllerCustomerCustomer extends Controller {
         }
 
         if (isset($this->request->get['filter_date_added'])) {
-			$url .= '&filter_date_added=' . $this->request->get['filter_date_added'];
-		}
+            $url .= '&filter_date_added=' . $this->request->get['filter_date_added'];
+        }
+
+        if (isset($this->request->get['filter_receiptdate'])) {
+            $url .= '&filter_receiptdate=' . $this->request->get['filter_receiptdate'];
+        }
 
 		if ($order == 'ASC') {
 			$url .= '&order=DESC';
@@ -683,7 +701,7 @@ class ControllerCustomerCustomer extends Controller {
 		$data['sort_status'] = $this->url->link('customer/customer', 'token=' . $this->session->data['token'] . '&sort=c.status' . $url, true);
 		$data['sort_ip'] = $this->url->link('customer/customer', 'token=' . $this->session->data['token'] . '&sort=c.ip' . $url, true);
 		$data['sort_date_added'] = $this->url->link('customer/customer', 'token=' . $this->session->data['token'] . '&sort=c.date_added' . $url, true);
-       // $data['sort_product_duration_visit'] = $this->url->link('customer/customer', 'token=' . $this->session->data['token'] . '&sort=c.product_duration_visit' . $url, true);
+        $data['sort_receiptdate'] = $this->url->link('customer/customer', 'token=' . $this->session->data['token'] . '&sort=c.receiptdate' . $url, true);
 
 		$pagination = new Pagination();
 		$pagination->total = $customer_total;
@@ -702,7 +720,8 @@ class ControllerCustomerCustomer extends Controller {
 		$data['filter_status'] = $filter_status;
 		$data['filter_approved'] = $filter_approved;
 		$data['filter_ip'] = $filter_ip;
-		$data['filter_date_added'] = $filter_date_added;
+        $data['filter_date_added'] = $filter_date_added;
+        $data['filter_receiptdate'] = $filter_receiptdate;
 
 		$this->load->model('customer/customer_group');
 
