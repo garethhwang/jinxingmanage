@@ -91,10 +91,16 @@ class ModelCustomerCustomer extends Model {
 	    $wechat_id = $query->row['wechat_id'];
 
         $query = $this->db->query("SELECT order_id FROM " . DB_PREFIX . "order WHERE customer_id = '" . (int)$customer_id . "'" );
-        $order_id = $query->row['order_id'];
+        if(isset($query->row['order_id']))
+        {
+            $order_id = $query->row['order_id'];
+        }
 
         $query = $this->db->query("SELECT receipt_id FROM " . DB_PREFIX . "receipt_history WHERE customer_id = '" . (int)$customer_id . "'" );
-        $receipt_id = $query->row['receipt_id'];
+        if(isset($query->row['receipt_id']))
+        {
+            $receipt_id = $query->row['receipt_id'];
+        }
 
         if(isset($wechat_id)){
             $this->db->query("DELETE FROM " . DB_PREFIX . "nonpregnant WHERE wechat_id = '" . (int)$wechat_id . "'");
@@ -153,7 +159,7 @@ class ModelCustomerCustomer extends Model {
 	}
 
 	public function getCustomers($data = array()) {
-		$sql = "SELECT *, CONCAT(c.realname) AS name, cgd.name AS customer_group FROM " . DB_PREFIX . "customer c LEFT JOIN " . DB_PREFIX . "customer_group_description cgd ON (c.customer_group_id = cgd.customer_group_id) WHERE cgd.language_id = '" . (int)$this->config->get('config_language_id') . "'";
+		$sql = "SELECT *, CONCAT(c.realname) AS name, cgd.name AS customer_group FROM " . DB_PREFIX . "customer c LEFT JOIN " . DB_PREFIX . "customer_group_description cgd ON (c.customer_group_id = cgd.customer_group_id) LEFT JOIN " . DB_PREFIX . "address ca ON (c.customer_id = ca.customer_id) WHERE cgd.language_id = '" . (int)$this->config->get('config_language_id') . "'";
 
 		$implode = array();
 

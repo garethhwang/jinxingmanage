@@ -38,13 +38,17 @@
                 <label class="control-label" for="input-name"><?php echo $entry_name; ?></label>
                 <input type="text" name="filter_name" value="<?php echo $filter_name; ?>" placeholder="<?php echo $entry_name; ?>" id="input-name" class="form-control" />
               </div>
-              <div class="form-group">
+              <!-- <div class="form-group">
                 <label class="control-label" for="input-email"><?php echo $entry_email; ?></label>
                 <input type="text" name="filter_email" value="<?php echo $filter_email; ?>" placeholder="<?php echo $entry_email; ?>" id="input-email" class="form-control" />
-              </div>
+              </div> -->
             </div>
             <div class="col-sm-3">
               <div class="form-group">
+                <label class="control-label" for="input-telephone"><?php echo $entry_telephone; ?></label>
+                <input type="text" name="filter_telephone" value="<?php echo $filter_telephone; ?>" placeholder="<?php echo $entry_telephone; ?>" id="input-telephone" class="form-control" />
+              </div>
+              <!-- <div class="form-group">
                 <label class="control-label" for="input-customer-group"><?php echo $entry_customer_group; ?></label>
                 <select name="filter_customer_group_id" id="input-customer-group" class="form-control">
                   <option value="*"></option>
@@ -72,7 +76,7 @@
                   <option value="0"><?php echo $text_disabled; ?></option>
                   <?php } ?>
                 </select>
-              </div>
+              </div> -->
             </div>
             <div class="col-sm-3">
               <div class="form-group">
