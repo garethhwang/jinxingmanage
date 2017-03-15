@@ -558,7 +558,7 @@ class ControllerCustomerCustomer extends Controller {
 				'ip'             => $result['ip'],
                 'receiptdate'   => date($this->language->get('date_format_short'), strtotime($result['receiptdate'])),
 				'date_added'     => date($this->language->get('date_format_short'), strtotime($result['date_added'])),
-                'customer_address'   => result['customer_address'],
+                'customer_address'   => $result['customer_address'],
                 'urgency'        => $Urgency,
                 //'product_duration_visit'=> $result['product_duration_visit'],
 				'approve'        => $approve,
