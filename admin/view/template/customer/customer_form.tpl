@@ -42,6 +42,7 @@
           <div class="tab-content">
             <div class="tab-pane active" id="tab-general">
               <div class="row">
+                <?php if ($user_group_id == 1) { ?>
                 <div class="col-sm-2">
                   <ul class="nav nav-pills nav-stacked" id="address">
                     <li class="active"><a href="#tab-customer" data-toggle="tab"><?php echo $tab_general; ?></a></li>
@@ -53,6 +54,7 @@
                     <li id="address-add"><a onclick="addAddress();"><i class="fa fa-plus-circle"></i> <?php echo $button_address_add; ?></a></li>
                   </ul>
                 </div>
+                <?php } ?>
                 <div class="col-sm-10">
                   <div class="tab-content">
                     <div class="tab-pane active" id="tab-customer">
