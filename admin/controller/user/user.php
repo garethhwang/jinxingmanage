@@ -453,6 +453,7 @@ class ControllerUserUser extends Controller {
         $data['filter_province_id'] = $filter_province_id;
         $data['filter_city_id'] = $filter_city_id;
         $data['filter_office_id'] = '$filter_city_id'.',$filter_district_id,'.'$filter_office_id';
+        var_dum
 
 		$this->load->model('tool/image');
 
