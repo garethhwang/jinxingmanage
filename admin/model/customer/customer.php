@@ -433,7 +433,7 @@ class ModelCustomerCustomer extends Model {
         }
 
 		if ($implode) {
-			$sql .= "  " . implode(" AND ", $implode);
+			$sql .= " WHERE " . implode(" AND ", $implode);
 		}
         $log = new Log('api.log');
         $log->write($sql);
