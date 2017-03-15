@@ -693,7 +693,7 @@ class ControllerCustomerCustomer extends Controller {
 		$pagination->total = $customer_total;
 		$pagination->page = $page;
 		$pagination->limit = $this->config->get('config_limit_admin');
-		$pagination->url = $this->url->link('customer/customer', 'token=' . $this->session->data['token'] . $url . '&page={page}', true);
+		$pagination->url = $this->url->link('customer/customer', 'token=' . $this->session->data['token'] . $url , true);
 
 		$data['pagination'] = $pagination->render();
 
