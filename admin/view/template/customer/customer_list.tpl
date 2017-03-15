@@ -3,7 +3,9 @@
   <div class="page-header">
     <div class="container-fluid">
       <div class="pull-right"><a href="<?php echo $add; ?>" data-toggle="tooltip" title="<?php echo $button_add; ?>" class="btn btn-primary"><i class="fa fa-plus"></i></a>
+        <?php if($user_group_id == 1) { ?>
         <button type="button" data-toggle="tooltip" title="<?php echo $button_delete; ?>" class="btn btn-danger" onclick="confirm('<?php echo $text_confirm; ?>') ? $('#form-customer').submit() : false;"><i class="fa fa-trash-o"></i></button>
+        <?php } ?>
       </div>
       <h1><?php echo $heading_title; ?></h1>
       <ul class="breadcrumb">
@@ -118,11 +120,11 @@
                     <?php } else { ?>
                     <a href="<?php echo $sort_name; ?>"><?php echo $column_name; ?></a>
                     <?php } ?></td>
-                  <td class="text-left"><?php if ($sort == 'c.email') { ?>
+                  <!--<td class="text-left"><?php if ($sort == 'c.email') { ?>
                     <a href="<?php echo $sort_email; ?>" class="<?php echo strtolower($order); ?>"><?php echo $column_email; ?></a>
                     <?php } else { ?>
                     <a href="<?php echo $sort_email; ?>"><?php echo $column_email; ?></a>
-                    <?php } ?></td>
+                    <?php } ?></td>-->
                   <td class="text-left"><?php if ($sort == 'customer_group') { ?>
                     <a href="<?php echo $sort_customer_group; ?>" class="<?php echo strtolower($order); ?>"><?php echo $column_customer_group; ?></a>
                     <?php } else { ?>
@@ -143,10 +145,10 @@
                     <?php } else { ?>
                     <a href="<?php echo $sort_date_added; ?>"><?php echo $column_date_added; ?></a>
                     <?php } ?></td>
-                  <td class="text-left">产间回访</td>
-                  <?php if($user_group_id == 1) { ?>
+                  <!-- <td class="text-left">产间回访</td>
+                  <?php if($user_group_id == 1) { ?> -->
                   <td class="text-right"><?php echo $column_action; ?></td>
-                  <?php } ?>
+                  <!-- <?php } ?> -->
                 </tr>
               </thead>
               <tbody>
@@ -159,13 +161,20 @@
                     <input type="checkbox" name="selected[]" value="<?php echo $customer['customer_id']; ?>" />
                     <?php } ?></td>
                   <td class="text-left"><?php echo $customer['name']; ?></td>
-                  <td class="text-left"><?php echo $customer['email']; ?></td>
+                  <!-- <td class="text-left"><?php echo $customer['email']; ?></td> -->
                   <td class="text-left"><?php echo $customer['customer_group']; ?></td>
                   <td class="text-left"><?php echo $customer['status']; ?></td>
                   <td class="text-left"><?php echo $customer['ip']; ?></td>
                   <td class="text-left"><?php echo $customer['date_added']; ?></td>
-                  <td class="text-left"><a href="<?php echo $customer['visit_info']; ?>" data-toggle="tooltip" title="<?php echo $button_visit_info; ?>" class="<?php if ($customer['urgency'] == 1){ echo 'btn btn-success'; } else if ($customer['urgency'] == 2) { echo 'btn btn-warning';} else if ($customer['urgency'] == 3) { echo 'btn btn-danger';} ?> "><i class="fa fa-info"></i></a></td>
-                  <?php if($user_group_id == 1) { ?>
+                  <td class="text-right">
+                    <div class="btn-group">
+                      <a href="<?php echo $customer['visit_info']; ?>" data-toggle="tooltip" title="<?php echo $button_visit_info; ?>" class="<?php if ($customer['urgency'] == 1){ echo 'btn btn-success'; } else if ($customer['urgency'] == 2) { echo 'btn btn-warning';} else if ($customer['urgency'] == 3) { echo 'btn btn-danger';} ?> "><i class="fa fa-info"></i></a>
+                    </div>
+                    <div class="btn-group">
+                      <a href="<?php echo $customer['edit']; ?>" data-toggle="tooltip" title="<?php echo $button_edit; ?>" class="btn btn-primary"><i class="fa fa-pencil"></i></a>
+                    </div>
+                  </td>
+                  <!-- <?php if($user_group_id == 1) { ?>
                   <td class="text-right"><?php if ($customer['approve']) { ?>
                     <a href="<?php echo $customer['approve']; ?>" data-toggle="tooltip" title="<?php echo $button_approve; ?>" class="btn btn-success"><i class="fa fa-thumbs-o-up"></i></a>
                     <?php } else { ?>
@@ -186,7 +195,7 @@
                     <button type="button" class="btn btn-warning" disabled><i class="fa fa-unlock"></i></button>
                     <?php } ?>
                     <a href="<?php echo $customer['edit']; ?>" data-toggle="tooltip" title="<?php echo $button_edit; ?>" class="btn btn-primary"><i class="fa fa-pencil"></i></a></td>
-                  <?php } ?>
+                  <?php } ?> -->
                 </tr>
                 <?php } ?>
                 <?php } else { ?>
