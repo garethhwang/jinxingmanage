@@ -6,6 +6,10 @@ class ModelUserUser extends Model {
         $filter_city_id = $data['filter_city_id'];
         $filter_office_id = $data['filter_office_id'];
 	    $department_id = $filter_city_id . ',' . $filter_district_id  . ',' . $filter_office_id;
+	    $log = new Log('api.log');
+	    $log->write($filter_district_id.$filter_city_id.$filter_office_id);
+
+	    $log->write("INSERT INTO `" . DB_PREFIX . "user` SET username = '" . $this->db->escape($data['username']) . "', user_group_id = '" . (int)$data['user_group_id']. "', office_id = '" . $this->db->escape($department_id) . "', salt = '" . $this->db->escape($salt = token(9)) . "', password = '" . $this->db->escape(sha1($salt . sha1($salt . sha1($data['password'])))) . "', realname = '" . $this->db->escape($data['realname']) . "', email = '" . $this->db->escape($data['email']) . "', image = '" . $this->db->escape($data['image']) . "', status = '" . (int)$data['status'] . "', date_added = NOW()");
 
 		$this->db->query("INSERT INTO `" . DB_PREFIX . "user` SET username = '" . $this->db->escape($data['username']) . "', user_group_id = '" . (int)$data['user_group_id']. "', office_id = '" . $this->db->escape($department_id) . "', salt = '" . $this->db->escape($salt = token(9)) . "', password = '" . $this->db->escape(sha1($salt . sha1($salt . sha1($data['password'])))) . "', realname = '" . $this->db->escape($data['realname']) . "', email = '" . $this->db->escape($data['email']) . "', image = '" . $this->db->escape($data['image']) . "', status = '" . (int)$data['status'] . "', date_added = NOW()");
 	
