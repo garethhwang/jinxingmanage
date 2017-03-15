@@ -78,7 +78,7 @@
                 </select>
               </div> -->
             </div>
-            <div class="col-sm-3">
+            <!-- <div class="col-sm-3">
               <div class="form-group">
                 <label class="control-label" for="input-approved"><?php echo $entry_approved; ?></label>
                 <select name="filter_approved" id="input-approved" class="form-control">
@@ -99,7 +99,7 @@
                 <label class="control-label" for="input-ip"><?php echo $entry_ip; ?></label>
                 <input type="text" name="filter_ip" value="<?php echo $filter_ip; ?>" placeholder="<?php echo $entry_ip; ?>" id="input-ip" class="form-control" />
               </div>
-            </div>
+            </div> -->
             <div class="col-sm-3">
               <div class="form-group">
                 <label class="control-label" for="input-date-added"><?php echo $entry_date_added; ?></label>
@@ -124,11 +124,13 @@
                     <?php } else { ?>
                     <a href="<?php echo $sort_name; ?>"><?php echo $column_name; ?></a>
                     <?php } ?></td>
+                  <td class="text-left"><?php echo $column_telephone; ?></td>
+                  <td class="text-left"><?php echo $column_address; ?></td>
                   <!--<td class="text-left"><?php if ($sort == 'c.email') { ?>
                     <a href="<?php echo $sort_email; ?>" class="<?php echo strtolower($order); ?>"><?php echo $column_email; ?></a>
                     <?php } else { ?>
                     <a href="<?php echo $sort_email; ?>"><?php echo $column_email; ?></a>
-                    <?php } ?></td>-->
+                    <?php } ?></td>
                   <td class="text-left"><?php if ($sort == 'customer_group') { ?>
                     <a href="<?php echo $sort_customer_group; ?>" class="<?php echo strtolower($order); ?>"><?php echo $column_customer_group; ?></a>
                     <?php } else { ?>
@@ -143,7 +145,7 @@
                     <a href="<?php echo $sort_ip; ?>" class="<?php echo strtolower($order); ?>"><?php echo $column_ip; ?></a>
                     <?php } else { ?>
                     <a href="<?php echo $sort_ip; ?>"><?php echo $column_ip; ?></a>
-                    <?php } ?></td>
+                    <?php } ?></td>-->
                   <td class="text-left"><?php if ($sort == 'c.date_added') { ?>
                     <a href="<?php echo $sort_date_added; ?>" class="<?php echo strtolower($order); ?>"><?php echo $column_date_added; ?></a>
                     <?php } else { ?>
@@ -167,9 +169,8 @@
                     <?php } ?></td>
                   <td class="text-left"><?php echo $customer['name']; ?></td>
                   <!-- <td class="text-left"><?php echo $customer['email']; ?></td> -->
-                  <td class="text-left"><?php echo $customer['customer_group']; ?></td>
-                  <td class="text-left"><?php echo $customer['status']; ?></td>
-                  <td class="text-left"><?php echo $customer['ip']; ?></td>
+                  <td class="text-left"><?php echo $customer['telephone']; ?></td>
+                  <td class="text-left"><?php echo $customer['address']; ?></td>
                   <td class="text-left"><?php echo $customer['date_added']; ?></td>
                   <td class="text-right">
                     <div class="btn-group">
