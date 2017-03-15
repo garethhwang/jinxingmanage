@@ -45,7 +45,7 @@
                 <?php if ($user_group_id == 1) { ?>
                 <div class="col-sm-2">
                   <ul class="nav nav-pills nav-stacked" id="address">
-                    <li class="active"><a href="#tab-customer" data-toggle="tab"><?php echo $tab_general; ?></a></li>
+                    <li><a href="#tab-customer" data-toggle="tab"><?php echo $tab_general; ?></a></li>
                     <?php $address_row = 1; ?>
                     <?php foreach ($addresses as $address) { ?>
                     <li><a href="#tab-address<?php echo $address_row; ?>" data-toggle="tab"><i class="fa fa-minus-circle" onclick="$('#address a:first').tab('show'); $('#address a[href=\'#tab-address<?php echo $address_row; ?>\']').parent().remove(); $('#tab-address<?php echo $address_row; ?>').remove();"></i> <?php echo $tab_address . ' ' . $address_row; ?></a></li>
