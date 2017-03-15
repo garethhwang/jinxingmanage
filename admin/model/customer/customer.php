@@ -426,7 +426,8 @@ class ModelCustomerCustomer extends Model {
 		if ($implode) {
 			$sql .= " AND " . implode(" AND ", $implode);
 		}
-
+        $log = new Log('api.log');
+        $log->write($sql);
 		$query = $this->db->query($sql);
 
 		return $query->row['total'];
