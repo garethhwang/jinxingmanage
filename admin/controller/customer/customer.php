@@ -677,10 +677,6 @@ class ControllerCustomerCustomer extends Controller {
 			$url .= '&order=ASC';
 		}
 
-		if (isset($this->request->get['page'])) {
-			$url .= '&page=' . $this->request->get['page'];
-		}
-
 		$data['sort_name'] = $this->url->link('customer/customer', 'token=' . $this->session->data['token'] . '&sort=name' . $url, true);
 		$data['sort_email'] = $this->url->link('customer/customer', 'token=' . $this->session->data['token'] . '&sort=c.email' . $url, true);
 		$data['sort_customer_group'] = $this->url->link('customer/customer', 'token=' . $this->session->data['token'] . '&sort=customer_group' . $url, true);
@@ -693,7 +689,7 @@ class ControllerCustomerCustomer extends Controller {
 		$pagination->total = $customer_total;
 		$pagination->page = $page;
 		$pagination->limit = $this->config->get('config_limit_admin');
-		$pagination->url = $this->url->link('customer/customer', 'token=' . $this->session->data['token'] . $url , true);
+		$pagination->url = $this->url->link('customer/customer', 'token=' . $this->session->data['token'] . $url . '&page={page}', true);
 
 		$data['pagination'] = $pagination->render();
 
