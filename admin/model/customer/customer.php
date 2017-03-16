@@ -191,10 +191,6 @@ class ModelCustomerCustomer extends Model {
 			$implode[] = "c.status = '" . (int)$data['filter_status'] . "'";
 		}
 
-		if (isset($data['filter_approved']) && !is_null($data['filter_approved'])) {
-			$implode[] = "c.approved = '" . (int)$data['filter_approved'] . "'";
-		}
-
 		if (!empty($data['filter_date_added'])) {
 			$implode[] = "DATE(c.date_added) = DATE('" . $this->db->escape($data['filter_date_added']) . "')";
 		}
@@ -221,7 +217,6 @@ class ModelCustomerCustomer extends Model {
 			'c.email',
 			'customer_group',
 			'c.status',
-			'c.approved',
 			'c.ip',
 			'c.date_added',
             'c.receiptdate'
@@ -414,10 +409,6 @@ class ModelCustomerCustomer extends Model {
 
 		if (isset($data['filter_status']) && !is_null($data['filter_status'])) {
 			$implode[] = "status = '" . (int)$data['filter_status'] . "'";
-		}
-
-		if (isset($data['filter_approved']) && !is_null($data['filter_approved'])) {
-			$implode[] = "approved = '" . (int)$data['filter_approved'] . "'";
 		}
 
 		if (!empty($data['filter_date_added'])) {
