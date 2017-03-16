@@ -190,7 +190,7 @@
                   <td class="text-left"><?php echo $customer['receiptdate']; ?></td>
                   <td class="text-right">
                     <div class="btn-group">
-                      <a href="<?php echo $customer['visit_info']; ?>" data-toggle="tooltip" title="<?php echo $button_visit_info; ?>" class="<?php if ($customer['urgency'] == 1){ echo 'btn btn-success'; } else if ($customer['urgency'] == 2) { echo 'btn btn-warning';} else if ($customer['urgency'] == 3) { echo 'btn btn-danger';} ?> "><i class="fa fa-info"></i></a>
+                      <a href="<?php if ($customer['urgency'] == 1){ echo '无未填回访调查'; } else if ($customer['urgency'] == 2) { echo '回访调查填写期';} else if ($customer['urgency'] == 3) { echo '回访调查过期未填';} ?>" data-toggle="tooltip" title="<?php echo $button_visit_info; ?>" class="<?php if ($customer['urgency'] == 1){ echo 'btn btn-success'; } else if ($customer['urgency'] == 2) { echo 'btn btn-warning';} else if ($customer['urgency'] == 3) { echo 'btn btn-danger';} ?> "><i class="fa fa-info"></i></a>
                     </div>
                     <div class="btn-group">
                       <a href="<?php echo $customer['edit']; ?>" data-toggle="tooltip" title="<?php echo $button_edit; ?>" class="btn btn-primary"><i class="fa fa-pencil"></i></a>
