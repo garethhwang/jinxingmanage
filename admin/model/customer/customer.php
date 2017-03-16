@@ -179,16 +179,8 @@ class ModelCustomerCustomer extends Model {
 			$implode[] = "c.newsletter = '" . (int)$data['filter_newsletter'] . "'";
 		}
 
-		if (!empty($data['filter_customer_group_id'])) {
-			$implode[] = "c.customer_group_id = '" . (int)$data['filter_customer_group_id'] . "'";
-		}
-
 		if (!empty($data['filter_ip'])) {
 			$implode[] = "c.customer_id IN (SELECT customer_id FROM " . DB_PREFIX . "customer_ip WHERE ip = '" . $this->db->escape($data['filter_ip']) . "')";
-		}
-
-		if (isset($data['filter_status']) && !is_null($data['filter_status'])) {
-			$implode[] = "c.status = '" . (int)$data['filter_status'] . "'";
 		}
 
 		if (!empty($data['filter_date_added'])) {
@@ -215,8 +207,6 @@ class ModelCustomerCustomer extends Model {
 		$sort_data = array(
 			'name',
 			'c.email',
-			'customer_group',
-			'c.status',
 			'c.ip',
 			'c.date_added',
             'c.receiptdate'
@@ -378,7 +368,6 @@ class ModelCustomerCustomer extends Model {
 	}
 
 	public function getTotalCustomers($data = array()) {
-        //$sql = "SELECT COUNT(*) AS total FROM " . DB_PREFIX . "customer c LEFT JOIN " . DB_PREFIX . "customer_group_description cgd ON (c.customer_group_id = cgd.customer_group_id) LEFT JOIN " . DB_PREFIX . "address ca ON (c.customer_id = ca.customer_id) WHERE cgd.language_id = '" . (int)$this->config->get('config_language_id') . "'";
         $sql = "SELECT COUNT(*) AS total FROM " . DB_PREFIX . "customer";
 
 		$implode = array();
@@ -399,16 +388,8 @@ class ModelCustomerCustomer extends Model {
 			$implode[] = "newsletter = '" . (int)$data['filter_newsletter'] . "'";
 		}
 
-		if (!empty($data['filter_customer_group_id'])) {
-			$implode[] = "customer_group_id = '" . (int)$data['filter_customer_group_id'] . "'";
-		}
-
 		if (!empty($data['filter_ip'])) {
 			$implode[] = "customer_id IN (SELECT customer_id FROM " . DB_PREFIX . "customer_ip WHERE ip = '" . $this->db->escape($data['filter_ip']) . "')";
-		}
-
-		if (isset($data['filter_status']) && !is_null($data['filter_status'])) {
-			$implode[] = "status = '" . (int)$data['filter_status'] . "'";
 		}
 
 		if (!empty($data['filter_date_added'])) {

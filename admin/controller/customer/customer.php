@@ -346,18 +346,6 @@ class ControllerCustomerCustomer extends Controller {
             $filter_telephone = null;
         }
 
-		if (isset($this->request->get['filter_customer_group_id'])) {
-			$filter_customer_group_id = $this->request->get['filter_customer_group_id'];
-		} else {
-			$filter_customer_group_id = null;
-		}
-
-		if (isset($this->request->get['filter_status'])) {
-			$filter_status = $this->request->get['filter_status'];
-		} else {
-			$filter_status = null;
-		}
-
 		if (isset($this->request->get['filter_ip'])) {
 			$filter_ip = $this->request->get['filter_ip'];
 		} else {
@@ -414,14 +402,6 @@ class ControllerCustomerCustomer extends Controller {
             $url .= '&filter_telephone=' . urlencode(html_entity_decode($this->request->get['filter_telephone'], ENT_QUOTES, 'UTF-8'));
         }
 
-		if (isset($this->request->get['filter_customer_group_id'])) {
-			$url .= '&filter_customer_group_id=' . $this->request->get['filter_customer_group_id'];
-		}
-
-		if (isset($this->request->get['filter_status'])) {
-			$url .= '&filter_status=' . $this->request->get['filter_status'];
-		}
-
 		if (isset($this->request->get['filter_ip'])) {
 			$url .= '&filter_ip=' . $this->request->get['filter_ip'];
 		}
@@ -475,8 +455,6 @@ class ControllerCustomerCustomer extends Controller {
                 'filter_name' => $filter_name,
                 'filter_email' => $filter_email,
                 'filter_telephone' => $filter_telephone,
-                'filter_customer_group_id' => $filter_customer_group_id,
-                'filter_status' => $filter_status,
                 'filter_date_added' => $filter_date_added,
                 'filter_receiptdate' => $filter_receiptdate,
                 'filter_ip' => $filter_ip,
@@ -492,8 +470,6 @@ class ControllerCustomerCustomer extends Controller {
                 'filter_name' => $filter_name,
                 'filter_email' => $filter_email,
                 'filter_telephone' => $filter_telephone,
-                'filter_customer_group_id' => $filter_customer_group_id,
-                'filter_status' => $filter_status,
                 'filter_date_added' => $filter_date_added,
                 'filter_receiptdate' => $filter_receiptdate,
                 'filter_ip' => $filter_ip,
@@ -554,7 +530,6 @@ class ControllerCustomerCustomer extends Controller {
 				'email'          => $result['email'],
                 'telephone'     =>  $result['telephone'],
 				'customer_group' => $result['customer_group'],
-				'status'         => ($result['status'] ? $this->language->get('text_enabled') : $this->language->get('text_disabled')),
 				'ip'             => $result['ip'],
                 'receiptdate'   => date($this->language->get('date_format_short'), strtotime($result['receiptdate'])),
 				'date_added'     => date($this->language->get('date_format_short'), strtotime($result['date_added'])),
