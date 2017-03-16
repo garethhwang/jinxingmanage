@@ -524,6 +524,14 @@ class ControllerCustomerCustomer extends Controller {
                 $Urgency = 3;
             }
 
+            $ispregnant = $result['ispregnant'];
+            if( $ispregnant = 1 )
+            {
+                $receiptdate=date($this->language->get('date_format_short'), strtotime($result['receiptdate']));
+            } else {
+                $receiptdate='无';
+            }
+
             $data['customers'][] = array(
 				'customer_id'    => $result['customer_id'],
 				'name'           => $result['name'],
@@ -531,7 +539,7 @@ class ControllerCustomerCustomer extends Controller {
                 'telephone'     =>  $result['telephone'],
 				'customer_group' => $result['customer_group'],
 				'ip'             => $result['ip'],
-                'receiptdate'   => date($this->language->get('date_format_short'), strtotime($result['receiptdate'])),
+                'receiptdate'   => $receiptdate,
 				'date_added'     => date($this->language->get('date_format_short'), strtotime($result['date_added'])),
                 'customer_address'   => $result['customer_address'],
                 'urgency'        => $Urgency,
