@@ -675,8 +675,6 @@ class ControllerCustomerCustomer extends Controller {
 		$data['filter_name'] = $filter_name;
 		$data['filter_email'] = $filter_email;
         $data['filter_telephone'] = $filter_telephone;
-        $data['filter_customer_group_id'] = $filter_customer_group_id;
-		$data['filter_status'] = $filter_status;
 		$data['filter_ip'] = $filter_ip;
         $data['filter_date_added'] = $filter_date_added;
         $data['filter_receiptdate'] = $filter_receiptdate;
