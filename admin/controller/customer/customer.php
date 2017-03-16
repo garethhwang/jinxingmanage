@@ -358,12 +358,6 @@ class ControllerCustomerCustomer extends Controller {
 			$filter_status = null;
 		}
 
-		if (isset($this->request->get['filter_approved'])) {
-			$filter_approved = $this->request->get['filter_approved'];
-		} else {
-			$filter_approved = null;
-		}
-
 		if (isset($this->request->get['filter_ip'])) {
 			$filter_ip = $this->request->get['filter_ip'];
 		} else {
@@ -428,10 +422,6 @@ class ControllerCustomerCustomer extends Controller {
 			$url .= '&filter_status=' . $this->request->get['filter_status'];
 		}
 
-		if (isset($this->request->get['filter_approved'])) {
-			$url .= '&filter_approved=' . $this->request->get['filter_approved'];
-		}
-
 		if (isset($this->request->get['filter_ip'])) {
 			$url .= '&filter_ip=' . $this->request->get['filter_ip'];
 		}
@@ -487,7 +477,6 @@ class ControllerCustomerCustomer extends Controller {
                 'filter_telephone' => $filter_telephone,
                 'filter_customer_group_id' => $filter_customer_group_id,
                 'filter_status' => $filter_status,
-                'filter_approved' => $filter_approved,
                 'filter_date_added' => $filter_date_added,
                 'filter_receiptdate' => $filter_receiptdate,
                 'filter_ip' => $filter_ip,
@@ -669,10 +658,6 @@ class ControllerCustomerCustomer extends Controller {
 			$url .= '&filter_status=' . $this->request->get['filter_status'];
 		}
 
-		if (isset($this->request->get['filter_approved'])) {
-			$url .= '&filter_approved=' . $this->request->get['filter_approved'];
-		}
-
 		if (isset($this->request->get['filter_ip'])) {
 			$url .= '&filter_ip=' . $this->request->get['filter_ip'];
 		}
@@ -718,7 +703,6 @@ class ControllerCustomerCustomer extends Controller {
         $data['filter_telephone'] = $filter_telephone;
         $data['filter_customer_group_id'] = $filter_customer_group_id;
 		$data['filter_status'] = $filter_status;
-		$data['filter_approved'] = $filter_approved;
 		$data['filter_ip'] = $filter_ip;
         $data['filter_date_added'] = $filter_date_added;
         $data['filter_receiptdate'] = $filter_receiptdate;
