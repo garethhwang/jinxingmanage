@@ -252,24 +252,6 @@ $('#button-filter').on('click', function() {
 		url += '&filter_email=' + encodeURIComponent(filter_email);
 	}
 
-	var filter_customer_group_id = $('select[name=\'filter_customer_group_id\']').val();
-
-	if (filter_customer_group_id != '*') {
-		url += '&filter_customer_group_id=' + encodeURIComponent(filter_customer_group_id);
-	}
-
-	var filter_status = $('select[name=\'filter_status\']').val();
-
-	if (filter_status != '*') {
-		url += '&filter_status=' + encodeURIComponent(filter_status);
-	}
-
-	var filter_approved = $('select[name=\'filter_approved\']').val();
-
-	if (filter_approved != '*') {
-		url += '&filter_approved=' + encodeURIComponent(filter_approved);
-	}
-
 	var filter_ip = $('input[name=\'filter_ip\']').val();
 
 	if (filter_ip) {
@@ -281,6 +263,12 @@ $('#button-filter').on('click', function() {
 	if (filter_date_added) {
 		url += '&filter_date_added=' + encodeURIComponent(filter_date_added);
 	}
+
+    var filter_receiptdate = $('input[name=\'filter_receiptdate\']').val();
+
+    if (filter_receiptdate) {
+        url += '&filter_receiptdate=' + encodeURIComponent(filter_receiptdate);
+    }
 
 	location = url;
 });
