@@ -525,7 +525,7 @@ class ControllerCustomerCustomer extends Controller {
             }
 
             $ispregnant = $result['ispregnant'];
-            if( $ispregnant = 1 )
+            if( $ispregnant == 1 )
             {
                 $receiptdate=date($this->language->get('date_format_short'), strtotime($result['receiptdate']));
             } else {
