@@ -494,7 +494,6 @@ class ControllerCustomerCustomer extends Controller {
                 'filter_telephone' => $filter_telephone,
                 'filter_customer_group_id' => $filter_customer_group_id,
                 'filter_status' => $filter_status,
-                'filter_approved' => $filter_approved,
                 'filter_date_added' => $filter_date_added,
                 'filter_receiptdate' => $filter_receiptdate,
                 'filter_ip' => $filter_ip,
