@@ -8,6 +8,9 @@ class ControllerCommonLogin extends Controller {
 		$this->document->setTitle($this->language->get('heading_title'));
 
 		if ($this->user->isLogged() && isset($this->request->get['token']) && ($this->request->get['token'] == $this->session->data['token'])) {
+			if( $this->user->getGroupId() == 11 ) {
+				$this->response->redirect($this->url->link('customer/customer', 'token=' . $this->session->data['token'], true));
+			}
 			$this->response->redirect($this->url->link('common/dashboard', 'token=' . $this->session->data['token'], true));
 		}
 
@@ -17,6 +20,9 @@ class ControllerCommonLogin extends Controller {
 			if (isset($this->request->post['redirect']) && (strpos($this->request->post['redirect'], HTTP_SERVER) === 0 || strpos($this->request->post['redirect'], HTTPS_SERVER) === 0)) {
 				$this->response->redirect($this->request->post['redirect'] . '&token=' . $this->session->data['token']);
 			} else {
+				if( $this->user->getGroupId() == 11 ) {
+					$this->response->redirect($this->url->link('customer/customer', 'token=' . $this->session->data['token'], true));
+				}
 				$this->response->redirect($this->url->link('common/dashboard', 'token=' . $this->session->data['token'], true));
 			}
 		}
