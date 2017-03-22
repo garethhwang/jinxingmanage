@@ -1706,12 +1706,21 @@ class ControllerCustomerCustomer extends Controller {
         $data['heading_title'] = '回访调查详情';
         $data['text_list'] = '回访调查内容';
         $data['text_no_results'] = '没有回访信息';
-        $data['column_left'] = $this->load->controller('common/column_left');
         $data['column_right'] = $this->load->controller('common/column_right');
         $data['content_top'] = $this->load->controller('common/content_top');
         $data['content_bottom'] = $this->load->controller('common/content_bottom');
-        $data['footer'] = $this->load->controller('common/footer');
-        $data['header'] = $this->load->controller('common/header');
+
+		if( $this->user->getGroupId() == 11 ) {
+		    $data['header'] = $this->load->view('common/onlyheader');
+			$data['column_left'] = "";
+		    $data['footer'] = "";
+		} else {
+			$data['header'] = $this->load->controller('common/header');
+		    $data['column_left'] = $this->load->controller('common/column_left');
+		    $data['footer'] = $this->load->controller('common/footer');
+		}
+
+
 
         $data['breadcrumbs'] = array();
 
