@@ -1164,9 +1164,14 @@ class ControllerCustomerCustomer extends Controller {
 			$data['address_id'] = '';
 		}
 
-		$data['header'] = $this->load->controller('common/header');
-		$data['column_left'] = $this->load->controller('common/column_left');
-		$data['footer'] = $this->load->controller('common/footer');
+		if( $this->user->getGroupId() == 11 ) {
+		    $data['header'] = $this->load->view('common/onlyheader');
+			$data['column_left'] = "";
+		} else {
+			$data['header'] = $this->load->controller('common/header');
+		    $data['column_left'] = $this->load->controller('common/column_left');
+		    $data['footer'] = $this->load->controller('common/footer');
+		}
 
 		$this->response->setOutput($this->load->view('customer/customer_form', $data));
 	}
