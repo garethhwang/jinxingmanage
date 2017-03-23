@@ -650,6 +650,9 @@ class ControllerCustomerCustomer extends Controller {
 		$data['column_ip'] = $this->language->get('column_ip');
 		$data['column_date_added'] = $this->language->get('column_date_added');
         $data['column_receiptdate'] = $this->language->get('column_receiptdate');
+        $data['column_firreceipt'] = $this->language->get('column_firreceipt');
+        $data['column_secreceipt'] = $this->language->get('column_secreceipt');
+        $data['column_thireceipt'] = $this->language->get('column_thireceipt');
         $data['column_action'] = $this->language->get('column_action');
         $data['column_office'] = $this->language->get('column_office');
 
