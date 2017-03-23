@@ -592,7 +592,12 @@ class ControllerCustomerCustomer extends Controller {
                     $thireceipt_title = '过期未填写';
                 }
             } else {
-                $receiptdate='无';
+                $firreceipt='无';
+                $firreceipt_title='';
+                $secreceipt='无';
+                $secreceipt_title='';
+                $thireceipt='无';
+                $thireceipt_title='';
             }
 
             $data['customers'][] = array(
@@ -611,7 +616,6 @@ class ControllerCustomerCustomer extends Controller {
                 'thireceipt'    => $thireceipt,
                 'thireceipt_title' => $thireceipt_title,
                 'thiurgent'     =>  $thiurgent,
-                'receiptdate'   => $receiptdate,
 				'date_added'     => date($this->language->get('date_format_short'), strtotime($result['date_added'])),
                 'customer_address'=> $result['customer_address'],
                 //'product_duration_visit'=> $result['product_duration_visit'],
