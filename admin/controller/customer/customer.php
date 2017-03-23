@@ -504,8 +504,7 @@ class ControllerCustomerCustomer extends Controller {
 
             $ispregnant = $result['ispregnant'];
 
-            if( $ispregnant == 1 )
-            {
+            if( $ispregnant == 1 ) {
                 $firreceipt = date($this->language->get('date_format_short'), strtotime($result['firreceipt']));
                 $secreceipt = date($this->language->get('date_format_short'), strtotime($result['secreceipt']));
                 $thireceipt = date($this->language->get('date_format_short'), strtotime($result['thireceipt']));

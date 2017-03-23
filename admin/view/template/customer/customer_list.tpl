@@ -202,7 +202,7 @@
                       <a href="<?php echo $customer['visit_info']; ?>" data-toggle="tooltip"
                          title="<?php echo $customer['firreceipt_title'] ?>"
                          class="<?php if ($customer['firurgent'] == 1){ echo 'btn btn-success'; } else if ($customer['firurgent'] == 2) { echo 'btn btn-warning';} else if ($customer['firurgent'] == 3) { echo 'btn btn-danger';} ?> ">
-                        <i class="fa"><?php echo $firreceipt ?></i>
+                        <i class="fa"><?php echo $customer['firreceipt'] ?></i>
                       </a>
                     </div>
                   </td>
@@ -211,7 +211,7 @@
                       <a href="<?php echo $customer['visit_info']; ?>" data-toggle="tooltip"
                          title="<?php echo $customer['secreceipt_title'] ?>"
                          class="<?php if ($customer['securgent'] == 1){ echo 'btn btn-success'; } else if ($customer['securgent'] == 2) { echo 'btn btn-warning';} else if ($customer['securgent'] == 3) { echo 'btn btn-danger';} ?> ">
-                        <i class="fa"><?php echo $secreceipt ?></i>
+                        <i class="fa"><?php echo $customer['secreceipt'] ?></i>
                       </a>
                     </div>
                   </td>
@@ -220,7 +220,7 @@
                       <a href="<?php echo $customer['visit_info']; ?>" data-toggle="tooltip"
                          title="<?php echo $customer['thireceipt_title'] ?>"
                          class="<?php if ($customer['thiurgent'] == 1){ echo 'btn btn-success'; } else if ($customer['thiurgent'] == 2) { echo 'btn btn-warning';} else if ($customer['thiurgent'] == 3) { echo 'btn btn-danger';} ?> ">
-                        <i class="fa"><?php echo $thireceipt ?></i>
+                        <i class="fa"><?php echo $customer['thireceipt'] ?></i>
                       </a>
                     </div>
                   </td>
