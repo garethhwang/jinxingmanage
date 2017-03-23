@@ -597,6 +597,9 @@ class ControllerCustomerCustomer extends Controller {
                 $secreceipt_title='';
                 $thireceipt='无';
                 $thireceipt_title='';
+                $firurgent=0;
+                $securgent=0;
+                $thiurgent=0;
             }
 
             $data['customers'][] = array(
