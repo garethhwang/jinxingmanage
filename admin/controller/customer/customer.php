@@ -485,7 +485,9 @@ class ControllerCustomerCustomer extends Controller {
 
 		$results = $this->model_customer_customer->getCustomers($filter_data);
 
-		foreach ($results as $result) {
+        $currentDate=date("Y-m-d");
+
+        foreach ($results as $result) {
 			if (!$result['approved']) {
 				$approve = $this->url->link('customer/customer/approve', 'token=' . $this->session->data['token'] . '&customer_id=' . $result['customer_id'] . $url, true);
 			} else {
@@ -500,34 +502,95 @@ class ControllerCustomerCustomer extends Controller {
 				$unlock = '';
 			}
 
-            $date = date($this->language->get('date_format_short'), strtotime($result['receiptdate']));
-            $currentDate=date("Y-m-d");
-            $cYear=date("Y",strtotime($currentDate));
-            $cMonth=date("m",strtotime($currentDate));
-            $cDay=date("d",strtotime($currentDate));
-            $year=date("Y",strtotime($date));
-            $month=date("m",strtotime($date));
-            $day=date("d",strtotime($date));
-            $daydeadline=$day+7;
-
-            $currentUnix=mktime(0,0,0,$cMonth,$cDay,$cYear);
-            //当前日期的 Unix 时间戳
-            $dateUnix=mktime(0,0,0,$month,$day,$year);
-            //待比较日期的 Unix 时间戳
-            $dateDeadUnix=mktime(0,0,0,$month,$daydeadline,$year);
-            //deadline日期的 Unix 时间戳
-            if($currentUnix <= $dateUnix){
-                $Urgency = 1;
-            }else if($currentUnix <= $dateDeadUnix){
-                $Urgency = 2;
-            }else{
-                $Urgency = 3;
-            }
-
             $ispregnant = $result['ispregnant'];
+
             if( $ispregnant == 1 )
             {
-                $receiptdate=date($this->language->get('date_format_short'), strtotime($result['receiptdate']));
+                $firreceipt = date($this->language->get('date_format_short'), strtotime($result['firreceipt']));
+                $secreceipt = date($this->language->get('date_format_short'), strtotime($result['secreceipt']));
+                $thireceipt = date($this->language->get('date_format_short'), strtotime($result['thireceipt']));
+
+                $receiptrecords = array();
+                $receiptrecords = $this->model_customer_customer->getReceiptByCustomerId($result['customer_id']);
+
+                if( sizeof($receiptrecords) > 0 ){
+                    foreach ($receiptrecords as $receiptrecord){
+                        $date_add = $receiptrecord['date_add'];
+                        if(strtotime($date_add) >= strtotime($thireceipt)){
+                            $third = $receiptrecord;
+                        } elseif (strtotime($date_add) >= strtotime($secreceipt)){
+                            $second = $receiptrecord;
+                        } elseif (strtotime($date_add) >= strtotime($firreceipt)) {
+                            $first = $receiptrecord;
+                        }
+                    }
+                }
+
+                $firstflag=$secondflag=$thirdflag=0;
+
+                if(isset($first)){
+                    $firstflag = 1;
+                }
+                if(isset($second)){
+                    $secondflag = 1;
+                }
+                if(isset($third)){
+                    $thirdflag = 1;
+                }
+
+                if ( strtotime($currentDate) < strtotime($firreceipt)) {
+                    $firurgent=$securgent=$thiurgent=1;
+                } else if (strtotime($currentDate) < strtotime("+1 week", strtotime($firreceipt))){
+                    $firurgent=2;
+                    $securgent=$thiurgent=1;
+                } else if ( strtotime($currentDate) < strtotime($secreceipt)) {
+                    $firurgent=3;
+                    $securgent=$thiurgent=1;
+                } else if (strtotime($currentDate) < strtotime("+1 week", strtotime($secreceipt))) {
+                    $firurgent=3;
+                    $securgent=2;
+                    $thiurgent=1;
+                } else if ( strtotime($currentDate) < strtotime($thireceipt)) {
+                    $firurgent=3;
+                    $securgent=3;
+                    $thiurgent=1;
+                } else if (strtotime($currentDate) < strtotime("+1 week", strtotime($thireceipt))) {
+                    $firurgent=3;
+                    $securgent=3;
+                    $thiurgent=2;
+                } else{
+                    $thiurgent=3;
+                }
+
+                if($firstflag == 1){
+                    $firreceipt_title = '已填写提交';
+                }else if ($firurgent == 1){
+                    $firreceipt_title = '未到填写期';
+                }else if ($firurgent == 2){
+                    $firreceipt_title = '进入填写期';
+                }else if ($firurgent == 3){
+                    $firreceipt_title = '过期未填写';
+                }
+
+                if($secondflag == 1){
+                    $secreceipt_title = '已填写提交';
+                }else if ($securgent == 1){
+                    $secreceipt_title = '未到填写期';
+                }else if ($securgent == 2){
+                    $secreceipt_title = '进入填写期';
+                }else if ($securgent == 3){
+                    $secreceipt_title = '过期未填写';
+                }
+
+                if($thirdflag == 1){
+                    $thireceipt_title = '已填写提交';
+                }else if ($thiurgent == 1){
+                    $thireceipt_title = '未到填写期';
+                }else if ($thiurgent == 2){
+                    $thireceipt_title = '进入填写期';
+                }else if ($thiurgent == 3){
+                    $thireceipt_title = '过期未填写';
+                }
             } else {
                 $receiptdate='无';
             }
@@ -539,10 +602,18 @@ class ControllerCustomerCustomer extends Controller {
                 'telephone'     =>  $result['telephone'],
 				'customer_group' => $result['customer_group'],
 				'ip'             => $result['ip'],
+                'firreceipt'    => $firreceipt,
+                'firreceipt_title' => $firreceipt_title,
+                'firurgent'    => $firurgent,
+                'secreceipt'    => $secreceipt,
+                'secreceipt_title' => $secreceipt_title,
+                'securgent'     => $securgent,
+                'thireceipt'    => $thireceipt,
+                'thireceipt_title' => $thireceipt_title,
+                'thiurgent'     =>  $thiurgent,
                 'receiptdate'   => $receiptdate,
 				'date_added'     => date($this->language->get('date_format_short'), strtotime($result['date_added'])),
-                'customer_address'   => $result['customer_address'],
-                'urgency'        => $Urgency,
+                'customer_address'=> $result['customer_address'],
                 //'product_duration_visit'=> $result['product_duration_visit'],
 				'approve'        => $approve,
 				'unlock'         => $unlock,
@@ -1740,11 +1811,14 @@ class ControllerCustomerCustomer extends Controller {
             $customer_id = $this->request->get['customer_id'];
         } else {
             $customer_id = null;
+            $this->response->setOutput($this->load->view('error/not_found', $data));
         }
 
         $this->load->model('customer/customer');
         $log = new Log('sql2.log');
         $log->write($customer_id);
+
+
         $results = $this->model_customer_customer->getReceiptByCustomerId($customer_id);
 
         if($results){

@@ -646,7 +646,7 @@ class ModelCustomerCustomer extends Model {
 	}
 
     public function getReceiptByCustomerId($customer_id) {
-        $receipt_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "receipt_history WHERE customer_id = '" . (int)$customer_id . "'");
+        $receipt_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "receipt_history WHERE customer_id = '" . (int)$customer_id . "' AND receipt_text != NULL");
         return $receipt_query->rows;
     }
 
