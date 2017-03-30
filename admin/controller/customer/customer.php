@@ -574,6 +574,8 @@ class ControllerCustomerCustomer extends Controller {
                     $securgent=3;
                     $thiurgent=2;
                 } else{
+                    $firurgent=3;
+                    $securgent=3;
                     $thiurgent=3;
                 }
 
