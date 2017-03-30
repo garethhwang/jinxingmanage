@@ -613,7 +613,7 @@ class ControllerCustomerCustomer extends Controller {
                 $firurgent=0;
                 $securgent=0;
                 $thiurgent=0;
-                $lastmenstrualdatedate='无';
+                $lastmenstrualdatedate='非孕妇';
             }
 
             $data['customers'][] = array(

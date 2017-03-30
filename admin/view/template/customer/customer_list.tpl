@@ -219,7 +219,7 @@
                     <div class="btn-group">
                       <a href="<?php echo $customer['visit_info']; ?>" data-toggle="tooltip"
                          title="<?php echo $customer['thireceipt_title'] ?>"
-                         class="<?php if ($customer['thiurgent'] == 1){ echo 'btn btn-success'; } else if ($customer['thiurgent'] == 2) { echo 'btn btn-warning';} else if ($customer['thiurgent'] == 3) { echo 'btn btn-danger';} ?> ">
+                         class="<?php if ($customer['thiurgent'] == 1){ echo 'btn btn-success'; } else if ($customer['thiurgent'] == 2) { echo 'btn btn-warning';} else if ($customer['thiurgent'] == 3) { echo 'btn btn-danger';} else { echo 'btn btn-info'; }?> ">
                         <i class="fa"><?php echo $customer['thireceipt'] ?></i>
                       </a>
                     </div>
