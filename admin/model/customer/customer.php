@@ -159,9 +159,9 @@ class ModelCustomerCustomer extends Model {
 	}
 
 	public function getCustomers($data = array()) {
-		$sql = "SELECT *, CONCAT(c.realname) AS name, cgd.name AS customer_group, ca.address_1 AS customer_address FROM " . DB_PREFIX . "customer c LEFT JOIN " . DB_PREFIX . "customer_group_description cgd ON (c.customer_group_id = cgd.customer_group_id) LEFT JOIN " . DB_PREFIX . "address ca ON (c.customer_id = ca.customer_id) WHERE cgd.language_id = '" . (int)$this->config->get('config_language_id') . "'";
-
-		$implode = array();
+		//$sql = "SELECT *, CONCAT(c.realname) AS name, cgd.name AS customer_group, ca.address_1 AS customer_address FROM " . DB_PREFIX . "customer c LEFT JOIN " . DB_PREFIX . "customer_group_description cgd ON (c.customer_group_id = cgd.customer_group_id) LEFT JOIN " . DB_PREFIX . "address ca ON (c.customer_id = ca.customer_id) WHERE cgd.language_id = '" . (int)$this->config->get('config_language_id') . "'";
+        $sql = "SELECT *, CONCAT(c.realname) AS name, cgd.name AS customer_group, ca.address_1 AS customer_address FROM " . DB_PREFIX . "customer c LEFT JOIN " . DB_PREFIX . "customer_group_description cgd ON (c.customer_group_id = cgd.customer_group_id) LEFT JOIN " . DB_PREFIX . "address ca ON (c.customer_id = ca.customer_id) LEFT JOIN " . DB_PREFIX . "physical cp ON (c.customer_id = cp.customer_id) WHERE cgd.language_id = '" . (int)$this->config->get('config_language_id') . "'";
+        $implode = array();
 
 		if (!empty($data['filter_name'])) {
 			$implode[] = "CONCAT(c.realname) LIKE '%" . $this->db->escape($data['filter_name']) . "%'";
@@ -183,21 +183,25 @@ class ModelCustomerCustomer extends Model {
 			$implode[] = "c.customer_id IN (SELECT customer_id FROM " . DB_PREFIX . "customer_ip WHERE ip = '" . $this->db->escape($data['filter_ip']) . "')";
 		}
 
-		if (!empty($data['filter_date_added'])) {
-			$implode[] = "DATE(c.date_added) = DATE('" . $this->db->escape($data['filter_date_added']) . "')";
-		}
+        if (!empty($data['filter_date_added'])) {
+            $implode[] = "DATE(c.date_added) = DATE('" . $this->db->escape($data['filter_date_added']) . "')";
+        }
+
+        if (!empty($data['filter_lastmenstrualdate'])) {
+            $implode[] = "DATE(cp.lastmenstrualdate) = DATE('" . $this->db->escape($data['filter_lastmenstrualdate']) . "')";
+        }
 
         if (!empty($data['filter_receiptdate'])) {
             $implode[] = "DATE(c.receiptdate) = DATE('" . $this->db->escape($data['filter_receiptdate']) . "')";
         }
 
         if (!empty($data['office_id'])) {
-            $implode[] = "department =  '" . $data['office_id'] . "'";
+            $implode[] = "c.department =  '" . $data['office_id'] . "'";
         }
 
         //add for doctor group filter
         if (!empty($data['department'])) {
-            $implode[] = "department =  '" . $data['department'] . "'";
+            $implode[] = "c.department =  '" . $data['department'] . "'";
         }
 
 		if ($implode) {
@@ -209,7 +213,8 @@ class ModelCustomerCustomer extends Model {
 			'c.email',
 			'c.ip',
 			'c.date_added',
-            'c.receiptdate'
+            'c.receiptdate',
+            'cp.filter_lastmenstrualdate'
 		);
 
 		if (isset($data['sort']) && in_array($data['sort'], $sort_data)) {

@@ -358,6 +358,12 @@ class ControllerCustomerCustomer extends Controller {
             $filter_date_added = null;
         }
 
+        if (isset($this->request->get['filter_lastmenstrualdate'])) {
+            $filter_lastmenstrualdate = $this->request->get['filter_lastmenstrualdate'];
+        } else {
+            $filter_lastmenstrualdate = null;
+        }
+
         if (isset($this->request->get['filter_receiptdate'])) {
             $filter_receiptdate = $this->request->get['filter_receiptdate'];
         } else {
@@ -410,6 +416,10 @@ class ControllerCustomerCustomer extends Controller {
             $url .= '&filter_date_added=' . $this->request->get['filter_date_added'];
         }
 
+        if (isset($this->request->get['filter_lastmenstrualdate'])) {
+            $url .= '&filter_lastmenstrualdate=' . $this->request->get['filter_lastmenstrualdate'];
+        }
+
         if (isset($this->request->get['filter_receiptdate'])) {
             $url .= '&filter_receiptdate=' . $this->request->get['filter_receiptdate'];
         }
@@ -456,6 +466,7 @@ class ControllerCustomerCustomer extends Controller {
                 'filter_email' => $filter_email,
                 'filter_telephone' => $filter_telephone,
                 'filter_date_added' => $filter_date_added,
+                'filter_lastmenstrualdate' => $filter_lastmenstrualdate,
                 'filter_receiptdate' => $filter_receiptdate,
                 'filter_ip' => $filter_ip,
                 'office_id' => $office_id,
@@ -471,6 +482,7 @@ class ControllerCustomerCustomer extends Controller {
                 'filter_email' => $filter_email,
                 'filter_telephone' => $filter_telephone,
                 'filter_date_added' => $filter_date_added,
+                'filter_lastmenstrualdate' => $filter_lastmenstrualdate,
                 'filter_receiptdate' => $filter_receiptdate,
                 'filter_ip' => $filter_ip,
                 'office_id' => $office_id,
@@ -618,7 +630,8 @@ class ControllerCustomerCustomer extends Controller {
                 'thireceipt'    => $thireceipt,
                 'thireceipt_title' => $thireceipt_title,
                 'thiurgent'     =>  $thiurgent,
-				'date_added'     => date($this->language->get('date_format_short'), strtotime($result['date_added'])),
+                'date_added'     => date($this->language->get('date_format_short'), strtotime($result['date_added'])),
+                'lastmenstrualdate'     => date($this->language->get('date_format_short'), strtotime($result['lastmenstrualdate'])),
                 'customer_address'=> $result['customer_address'],
                 //'product_duration_visit'=> $result['product_duration_visit'],
 				'approve'        => $approve,
@@ -648,7 +661,8 @@ class ControllerCustomerCustomer extends Controller {
 		$data['column_status'] = $this->language->get('column_status');
 		$data['column_approved'] = $this->language->get('column_approved');
 		$data['column_ip'] = $this->language->get('column_ip');
-		$data['column_date_added'] = $this->language->get('column_date_added');
+        $data['column_date_added'] = $this->language->get('column_date_added');
+        $data['column_lastmenstrualdate'] = $this->language->get('column_lastmenstrualdate');
         $data['column_receiptdate'] = $this->language->get('column_receiptdate');
         $data['column_firreceipt'] = $this->language->get('column_firreceipt');
         $data['column_secreceipt'] = $this->language->get('column_secreceipt');
@@ -664,6 +678,7 @@ class ControllerCustomerCustomer extends Controller {
 		$data['entry_approved'] = $this->language->get('entry_approved');
 		$data['entry_ip'] = $this->language->get('entry_ip');
         $data['entry_date_added'] = $this->language->get('entry_date_added');
+        $data['entry_lastmenstrualdate'] = $this->language->get('entry_lastmenstrualdate');
         $data['entry_receiptdate'] = $this->language->get('entry_receiptdate');
         $data['office_name'] = $this->language->get('office_name');
 
@@ -724,6 +739,10 @@ class ControllerCustomerCustomer extends Controller {
             $url .= '&filter_date_added=' . $this->request->get['filter_date_added'];
         }
 
+        if (isset($this->request->get['filter_lastmenstrualdate'])) {
+            $url .= '&filter_lastmenstrualdate=' . $this->request->get['filter_lastmenstrualdate'];
+        }
+
         if (isset($this->request->get['filter_receiptdate'])) {
             $url .= '&filter_receiptdate=' . $this->request->get['filter_receiptdate'];
         }
@@ -739,7 +758,8 @@ class ControllerCustomerCustomer extends Controller {
 		$data['sort_customer_group'] = $this->url->link('customer/customer', 'token=' . $this->session->data['token'] . '&sort=customer_group' . $url, true);
 		$data['sort_status'] = $this->url->link('customer/customer', 'token=' . $this->session->data['token'] . '&sort=c.status' . $url, true);
 		$data['sort_ip'] = $this->url->link('customer/customer', 'token=' . $this->session->data['token'] . '&sort=c.ip' . $url, true);
-		$data['sort_date_added'] = $this->url->link('customer/customer', 'token=' . $this->session->data['token'] . '&sort=c.date_added' . $url, true);
+        $data['sort_date_added'] = $this->url->link('customer/customer', 'token=' . $this->session->data['token'] . '&sort=c.date_added' . $url, true);
+        $data['sort_lastmenstrualdate'] = $this->url->link('customer/customer', 'token=' . $this->session->data['token'] . '&sort=cp.lastmenstrualdate' . $url, true);
         $data['sort_receiptdate'] = $this->url->link('customer/customer', 'token=' . $this->session->data['token'] . '&sort=c.receiptdate' . $url, true);
 
 		$pagination = new Pagination();
@@ -757,6 +777,7 @@ class ControllerCustomerCustomer extends Controller {
         $data['filter_telephone'] = $filter_telephone;
 		$data['filter_ip'] = $filter_ip;
         $data['filter_date_added'] = $filter_date_added;
+        $data['filter_lastmenstrualdate'] = $filter_lastmenstrualdate;
         $data['filter_receiptdate'] = $filter_receiptdate;
 
 		$this->load->model('customer/customer_group');
