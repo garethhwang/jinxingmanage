@@ -755,10 +755,6 @@ class ControllerCustomerCustomer extends Controller {
             $url .= '&filter_receiptdate=' . $this->request->get['filter_receiptdate'];
         }
 
-        if (isset($this->request->get['sort'])) {
-            $url .= '&sort=' . $this->request->get['sort'];
-        }
-
         if ($order == 'ASC') {
             $url .= '&order=DESC';
         } else {
