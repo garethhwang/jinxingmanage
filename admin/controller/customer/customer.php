@@ -813,9 +813,7 @@ class ControllerCustomerCustomer extends Controller {
         }
 
         if (isset($this->request->get['order'])) {
-            $order = $this->request->get['order'];
-        } else {
-            $order = 'ASC';
+            $url .= '&order='.$this->request->get['order'];
         }
 
 		$pagination = new Pagination();
