@@ -214,7 +214,7 @@ class ModelCustomerCustomer extends Model {
 			'c.ip',
 			'c.date_added',
             'c.receiptdate',
-            'cp.filter_lastmenstrualdate'
+            'cp.lastmenstrualdate'
 		);
 
 		if (isset($data['sort']) && in_array($data['sort'], $sort_data)) {
