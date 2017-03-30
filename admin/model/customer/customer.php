@@ -413,7 +413,7 @@ class ModelCustomerCustomer extends Model {
 
         //add for doctor group filter
         if (!empty($data['department'])) {
-            $implode[] = "c.department =  '" . $data['department'] . "'";
+            $implode[] = "department =  '" . $data['department'] . "'";
         }
 
 		if ($implode) {
