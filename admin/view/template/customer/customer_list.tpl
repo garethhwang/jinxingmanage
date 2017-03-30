@@ -161,11 +161,11 @@
                     <?php } else { ?>
                     <a href="<?php echo $sort_lastmenstrualdate; ?>"><?php echo $column_lastmenstrualdate; ?></a>
                     <?php } ?></td>
-                  <td class="text-left"><?php if ($sort == 'c.firreceipt') { ?>
+                  <!--<td class="text-left"><?php if ($sort == 'c.firreceipt') { ?>
                     <a href="<?php echo $sort_firreceipt; ?>" class="<?php echo strtolower($order); ?>"><?php echo $column_firreceipt; ?></a>
                     <?php } else { ?>
                     <a href="<?php echo $sort_firreceipt; ?>"><?php echo $column_firreceipt; ?></a>
-                    <?php } ?></td>
+                    <?php } ?></td> -->
                   <td class="text-left"><?php if ($sort == 'c.secreceipt') { ?>
                     <a href="<?php echo $sort_secreceipt; ?>" class="<?php echo strtolower($order); ?>"><?php echo $column_secreceipt; ?></a>
                     <?php } else { ?>
@@ -197,7 +197,7 @@
                   <td class="text-left"><?php echo $customer['telephone']; ?></td>
                   <td class="text-left"><?php echo $customer['customer_address']; ?></td>
                   <td class="text-left"><?php echo $customer['lastmenstrualdate']; ?></td>
-                  <td class="text-left">
+                  <!-- <td class="text-left">
                     <div class="btn-group">
                       <a href="<?php echo $customer['visit_info']; ?>" data-toggle="tooltip"
                          title="<?php echo $customer['firreceipt_title'] ?>"
@@ -205,12 +205,12 @@
                         <i class="fa"><?php echo $customer['firreceipt'] ?></i>
                       </a>
                     </div>
-                  </td>
+                  </td> -->
                   <td class="text-left">
                     <div class="btn-group">
                       <a href="<?php echo $customer['visit_info']; ?>" data-toggle="tooltip"
                          title="<?php echo $customer['secreceipt_title'] ?>"
-                         class="<?php if ($customer['securgent'] == 1){ echo 'btn btn-success'; } else if ($customer['securgent'] == 2) { echo 'btn btn-warning';} else if ($customer['securgent'] == 3) { echo 'btn btn-danger';} ?> ">
+                         class="<?php if ($customer['securgent'] == 1){ echo 'btn btn-success'; } else if ($customer['securgent'] == 2) { echo 'btn btn-warning';} else if ($customer['securgent'] == 3) { echo 'btn btn-danger';} else { echo 'btn btn-info'; }?> ">
                         <i class="fa"><?php echo $customer['secreceipt'] ?></i>
                       </a>
                     </div>

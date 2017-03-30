@@ -602,6 +602,7 @@ class ControllerCustomerCustomer extends Controller {
                 }else if ($thiurgent == 3){
                     $thireceipt_title = '过期未填写';
                 }
+                $lastmenstrualdatedate=date($this->language->get('date_format_short'), strtotime($result['lastmenstrualdate']));
             } else {
                 $firreceipt='无';
                 $firreceipt_title='';
@@ -612,6 +613,7 @@ class ControllerCustomerCustomer extends Controller {
                 $firurgent=0;
                 $securgent=0;
                 $thiurgent=0;
+                $lastmenstrualdatedate='无';
             }
 
             $data['customers'][] = array(
@@ -631,7 +633,7 @@ class ControllerCustomerCustomer extends Controller {
                 'thireceipt_title' => $thireceipt_title,
                 'thiurgent'     =>  $thiurgent,
                 'date_added'     => date($this->language->get('date_format_short'), strtotime($result['date_added'])),
-                'lastmenstrualdate'     => date($this->language->get('date_format_short'), strtotime($result['lastmenstrualdate'])),
+                'lastmenstrualdate'     => $lastmenstrualdatedate,
                 'customer_address'=> $result['customer_address'],
                 //'product_duration_visit'=> $result['product_duration_visit'],
 				'approve'        => $approve,
