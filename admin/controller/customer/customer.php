@@ -812,6 +812,12 @@ class ControllerCustomerCustomer extends Controller {
             $url .= '&sort=' . $this->request->get['sort'];
         }
 
+        if (isset($this->request->get['order'])) {
+            $order = $this->request->get['order'];
+        } else {
+            $order = 'ASC';
+        }
+
 		$pagination = new Pagination();
 		$pagination->total = $customer_total;
 		$pagination->page = $page;
