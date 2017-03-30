@@ -550,13 +550,17 @@ class ControllerCustomerCustomer extends Controller {
                 }
 
                 if ( strtotime($currentDate) < strtotime($firreceipt)) {
-                    $firurgent=$securgent=$thiurgent=1;
+                    $firurgent=1;
+                    $securgent=1;
+                    $thiurgent=1;
                 } else if (strtotime($currentDate) < strtotime("+1 week", strtotime($firreceipt))){
                     $firurgent=2;
-                    $securgent=$thiurgent=1;
+                    $securgent=1;
+                    $thiurgent=1;
                 } else if ( strtotime($currentDate) < strtotime($secreceipt)) {
                     $firurgent=3;
-                    $securgent=$thiurgent=1;
+                    $securgent=1;
+                    $thiurgent=1;
                 } else if (strtotime($currentDate) < strtotime("+1 week", strtotime($secreceipt))) {
                     $firurgent=3;
                     $securgent=2;
