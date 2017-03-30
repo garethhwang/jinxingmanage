@@ -411,6 +411,11 @@ class ModelCustomerCustomer extends Model {
             $implode[] = "department =  '" . $data['office_id'] . "'";
         }
 
+        //add for doctor group filter
+        if (!empty($data['department'])) {
+            $implode[] = "c.department =  '" . $data['department'] . "'";
+        }
+
 		if ($implode) {
 			$sql .= " WHERE " . implode(" AND ", $implode);
 		}
