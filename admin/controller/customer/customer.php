@@ -760,9 +760,9 @@ class ControllerCustomerCustomer extends Controller {
         }
 
 		if ($order == 'ASC') {
-			$url .= '&order=ASC';
-		} else {
 			$url .= '&order=DESC';
+		} else {
+			$url .= '&order=ASC';
 		}
 
 		$data['sort_name'] = $this->url->link('customer/customer', 'token=' . $this->session->data['token'] . '&sort=name' . $url, true);
