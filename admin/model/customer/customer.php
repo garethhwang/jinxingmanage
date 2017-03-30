@@ -214,6 +214,8 @@ class ModelCustomerCustomer extends Model {
 			'c.ip',
 			'c.date_added',
             'c.receiptdate',
+            'c.secreceipt',
+            'c.thireceipt',
             'cp.lastmenstrualdate'
 		);
 

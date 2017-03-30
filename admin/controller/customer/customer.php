@@ -769,6 +769,8 @@ class ControllerCustomerCustomer extends Controller {
         $data['sort_date_added'] = $this->url->link('customer/customer', 'token=' . $this->session->data['token'] . '&sort=c.date_added' . $url, true);
         $data['sort_lastmenstrualdate'] = $this->url->link('customer/customer', 'token=' . $this->session->data['token'] . '&sort=cp.lastmenstrualdate' . $url, true);
         $data['sort_receiptdate'] = $this->url->link('customer/customer', 'token=' . $this->session->data['token'] . '&sort=c.receiptdate' . $url, true);
+        $data['sort_secreceipt'] = $this->url->link('customer/customer', 'token=' . $this->session->data['token'] . '&sort=c.secreceipt' . $url, true);
+        $data['sort_thireceipt'] = $this->url->link('customer/customer', 'token=' . $this->session->data['token'] . '&sort=c.thireceipt' . $url, true);
 
         $url = '';
 
