@@ -436,12 +436,6 @@ class ControllerCustomerCustomer extends Controller {
 			$url .= '&page=' . $this->request->get['page'];
 		}
 
-        if ($order == 'ASC') {
-            $url .= '&order=DESC';
-        } else {
-            $url .= '&order=ASC';
-        }
-
 		$data['breadcrumbs'] = array();
 
         $data['breadcrumbs'][] = array(
@@ -765,7 +759,11 @@ class ControllerCustomerCustomer extends Controller {
             $url .= '&sort=' . $this->request->get['sort'];
         }
 
-
+        if ($order == 'ASC') {
+            $url .= '&order=DESC';
+        } else {
+            $url .= '&order=ASC';
+        }
 
 		$data['sort_name'] = $this->url->link('customer/customer', 'token=' . $this->session->data['token'] . '&sort=name' . $url, true);
 		$data['sort_email'] = $this->url->link('customer/customer', 'token=' . $this->session->data['token'] . '&sort=c.email' . $url, true);
@@ -775,6 +773,44 @@ class ControllerCustomerCustomer extends Controller {
         $data['sort_date_added'] = $this->url->link('customer/customer', 'token=' . $this->session->data['token'] . '&sort=c.date_added' . $url, true);
         $data['sort_lastmenstrualdate'] = $this->url->link('customer/customer', 'token=' . $this->session->data['token'] . '&sort=cp.lastmenstrualdate' . $url, true);
         $data['sort_receiptdate'] = $this->url->link('customer/customer', 'token=' . $this->session->data['token'] . '&sort=c.receiptdate' . $url, true);
+
+        $url = '';
+
+        if (isset($this->request->get['filter_name'])) {
+            $url .= '&filter_name=' . urlencode(html_entity_decode($this->request->get['filter_name'], ENT_QUOTES, 'UTF-8'));
+        }
+
+        if (isset($this->request->get['filter_email'])) {
+            $url .= '&filter_email=' . urlencode(html_entity_decode($this->request->get['filter_email'], ENT_QUOTES, 'UTF-8'));
+        }
+
+        if (isset($this->request->get['filter_telephone'])) {
+            $url .= '&filter_telephone=' . urlencode(html_entity_decode($this->request->get['filter_telephone'], ENT_QUOTES, 'UTF-8'));
+        }
+
+        if (isset($this->request->get['filter_ip'])) {
+            $url .= '&filter_ip=' . $this->request->get['filter_ip'];
+        }
+
+        if (isset($this->request->get['office_id'])) {
+            $url .= '&office_id=' . $this->request->get['office_id'];
+        }
+
+        if (isset($this->request->get['filter_date_added'])) {
+            $url .= '&filter_date_added=' . $this->request->get['filter_date_added'];
+        }
+
+        if (isset($this->request->get['filter_lastmenstrualdate'])) {
+            $url .= '&filter_lastmenstrualdate=' . $this->request->get['filter_lastmenstrualdate'];
+        }
+
+        if (isset($this->request->get['filter_receiptdate'])) {
+            $url .= '&filter_receiptdate=' . $this->request->get['filter_receiptdate'];
+        }
+
+        if (isset($this->request->get['sort'])) {
+            $url .= '&sort=' . $this->request->get['sort'];
+        }
 
 		$pagination = new Pagination();
 		$pagination->total = $customer_total;
