@@ -329,8 +329,8 @@ $('input[name=\'customergroup\']').autocomplete({
                   success: function(json) {
                       response($.map(json, function(item) {
                           return {
-                              label: item['customer_group_id'],
-                              value: item['customer_group_id']
+                              label: item['name'],
+                              value: item['customergroup_id']
                           }
                       }));
                   }
