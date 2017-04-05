@@ -462,7 +462,7 @@ class ControllerMarketingCoupon extends Controller {
         $data['coupon_customer'] = array();
 
         foreach ($customers as $customer_id) {
-            $customer_info = $this->model_catalog_product->getCustomer($customer_id);
+            $customer_info = $this->model_customer_customer->getCustomer($customer_id);
 
             if ($customer_info) {
                 $data['coupon_customer'][] = array(
