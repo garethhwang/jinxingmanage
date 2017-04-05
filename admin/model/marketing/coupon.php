@@ -158,7 +158,7 @@ class ModelMarketingCoupon extends Model {
     public function getCouponCustomergroups($coupon_id) {
         $coupon_customergroup_data = array();
 
-        $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "coupon_customergroup WHERE coupon_id = '" . (int)$coupon_id . "'");
+        $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "coupon_customer_group WHERE coupon_id = '" . (int)$coupon_id . "'");
 
         foreach ($query->rows as $result) {
             $coupon_customergroup_data[] = $result['customer_group_id'];
