@@ -445,13 +445,47 @@ class ControllerMarketingCoupon extends Controller {
 			$data['total'] = '';
 		}
 
-		if (isset($this->request->post['coupon_product'])) {
-			$products = $this->request->post['coupon_product'];
-		} elseif (isset($this->request->get['coupon_id'])) {
-			$products = $this->model_marketing_coupon->getCouponProducts($this->request->get['coupon_id']);
-		} else {
-			$products = array();
-		}
+        if (isset($this->request->post['coupon_customer'])) {
+            $customers = $this->request->post['coupon_customer'];
+        } elseif (isset($this->request->get['coupon_id'])) {
+            $customers = $this->model_marketing_coupon->getCouponCustomers($this->request->get['coupon_id']);
+        } else {
+            $customers = array();
+        }
+
+        $this->load->model('customer/customer');
+
+        $data['coupon_customer'] = array();
+
+        foreach ($customers as $customer_id) {
+            $customer_info = $this->model_catalog_product->getCustomer($customer_id);
+
+            if ($customer_info) {
+                $data['coupon_customer'][] = array(
+                    'customer_id' => $customer_info['customer_id'],
+                    'name'       => $customer_info['realname']
+                );
+            }
+        }
+
+        if (isset($this->request->post['coupon_customergroup'])) {
+            $customergroups = $this->request->post['coupon_customergroup'];
+        } elseif (isset($this->request->get['coupon_id'])) {
+            $customergroups = $this->model_marketing_coupon->getCouponCustomergroups($this->request->get['coupon_id']);
+        } else {
+            $customergroups = array();
+        }
+
+        $data['coupon_customergroup'] = array();
+        $data['coupon_customergroup'] = $customergroups;
+
+        if (isset($this->request->post['coupon_product'])) {
+            $products = $this->request->post['coupon_product'];
+        } elseif (isset($this->request->get['coupon_id'])) {
+            $products = $this->model_marketing_coupon->getCouponProducts($this->request->get['coupon_id']);
+        } else {
+            $products = array();
+        }
 
 		$this->load->model('catalog/product');
 

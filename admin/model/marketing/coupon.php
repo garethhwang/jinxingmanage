@@ -112,6 +112,30 @@ class ModelMarketingCoupon extends Model {
 		return $coupon_product_data;
 	}
 
+    public function getCouponCustomers($coupon_id) {
+        $coupon_customer_data = array();
+
+        $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "coupon_customer WHERE coupon_id = '" . (int)$coupon_id . "'");
+
+        foreach ($query->rows as $result) {
+            $coupon_customer_data[] = $result['customer_id'];
+        }
+
+        return $coupon_customer_data;
+    }
+
+    public function getCouponCustomergroups($coupon_id) {
+        $coupon_customergroup_data = array();
+
+        $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "coupon_customergroup WHERE coupon_id = '" . (int)$coupon_id . "'");
+
+        foreach ($query->rows as $result) {
+            $coupon_customergroup_data[] = $result['customer_group_id'];
+        }
+
+        return $coupon_customergroup_data;
+    }
+
 	public function getCouponCategories($coupon_id) {
 		$coupon_category_data = array();
 

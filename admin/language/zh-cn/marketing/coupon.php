@@ -39,6 +39,8 @@ $_['entry_date_end']      = '结束日期';
 $_['entry_uses_total']    = '每张折扣券可以使用次数';
 $_['entry_uses_customer'] = '每个会员可以使用次数';
 $_['entry_status']        = '状态';
+$_['entry_customer']     ='用户';
+$_['entry_customergroup'] ='用户组';
 
 // Help
 $_['help_code']           = '会员输入该代码以得到折扣。';
