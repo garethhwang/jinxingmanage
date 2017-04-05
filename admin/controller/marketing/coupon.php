@@ -305,7 +305,9 @@ class ControllerMarketingCoupon extends Controller {
 		$data['help_logged'] = $this->language->get('help_logged');
 		$data['help_total'] = $this->language->get('help_total');
 		$data['help_category'] = $this->language->get('help_category');
-		$data['help_product'] = $this->language->get('help_product');
+        $data['help_product'] = $this->language->get('help_product');
+        $data['help_customer'] = $this->language->get('help_customer');
+        $data['help_customergroup'] = $this->language->get('help_customergroup');
 		$data['help_uses_total'] = $this->language->get('help_uses_total');
 		$data['help_uses_customer'] = $this->language->get('help_uses_customer');
 
