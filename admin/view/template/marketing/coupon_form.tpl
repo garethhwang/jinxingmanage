@@ -292,6 +292,64 @@ $('input[name=\'category\']').autocomplete({
 $('#coupon-category').delegate('.fa-minus-circle', 'click', function() {
 	$(this).parent().remove();
 });
+
+$('input[name=\'customer\']').autocomplete({
+          'source': function(request, response) {
+              $.ajax({
+                  url: 'index.php?route=customer/customer/autocomplete&token=<?php echo $token; ?>&filter_name=' +  encodeURIComponent(request),
+                  dataType: 'json',
+                  success: function(json) {
+                      response($.map(json, function(item) {
+                          return {
+                              label: item['realname'],
+                              value: item['customer_id']
+                          }
+                      }));
+                  }
+              });
+          },
+          'select': function(item) {
+              $('input[name=\'customer\']').val('');
+
+              $('#coupon-customer' + item['value']).remove();
+
+              $('#coupon-customer').append('<div id="coupon-customer' + item['value'] + '"><i class="fa fa-minus-circle"></i> ' + item['label'] + '<input type="hidden" name="coupon_customer[]" value="' + item['value'] + '" /></div>');
+          }
+      });
+
+$('#coupon-customer').delegate('.fa-minus-circle', 'click', function() {
+          $(this).parent().remove();
+      });
+
+$('input[name=\'customergroup\']').autocomplete({
+          'source': function(request, response) {
+              $.ajax({
+                  url: 'index.php?route=customer/customer_group/autocomplete&token=<?php echo $token; ?>&filter_name=' +  encodeURIComponent(request),
+                  dataType: 'json',
+                  success: function(json) {
+                      response($.map(json, function(item) {
+                          return {
+                              label: item['customer_group_id'],
+                              value: item['customer_group_id']
+                          }
+                      }));
+                  }
+              });
+          },
+          'select': function(item) {
+              $('input[name=\'customergroup\']').val('');
+
+              $('#coupon-customergroup' + item['value']).remove();
+
+              $('#coupon-customergroup').append('<div id="coupon-customergroup' + item['value'] + '"><i class="fa fa-minus-circle"></i> ' + item['label'] + '<input type="hidden" name="coupon_customergroup[]" value="' + item['value'] + '" /></div>');
+          }
+      });
+
+$('#coupon-customergroup').delegate('.fa-minus-circle', 'click', function() {
+          $(this).parent().remove();
+      });
+
+
 //--></script>
   <?php if ($coupon_id) { ?>
   <script type="text/javascript"><!--
