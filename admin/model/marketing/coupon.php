@@ -17,6 +17,18 @@ class ModelMarketingCoupon extends Model {
 			}
 		}
 
+        if (isset($data['coupon_customer'])) {
+            foreach ($data['coupon_customer'] as $customer_id) {
+                $this->db->query("INSERT INTO " . DB_PREFIX . "coupon_customer SET coupon_id = '" . (int)$coupon_id . "', customer_id = '" . (int)$customer_id . "'");
+            }
+        }
+
+        if (isset($data['coupon_customergroup'])) {
+            foreach ($data['coupon_customergroup'] as $customergroup_id) {
+                $this->db->query("INSERT INTO " . DB_PREFIX . "coupon_customer_group SET coupon_id = '" . (int)$coupon_id . "', customer_group_id = '" . (int)$customergroup_id . "'");
+            }
+        }
+
 		return $coupon_id;
 	}
 
@@ -38,14 +50,33 @@ class ModelMarketingCoupon extends Model {
 				$this->db->query("INSERT INTO " . DB_PREFIX . "coupon_category SET coupon_id = '" . (int)$coupon_id . "', category_id = '" . (int)$category_id . "'");
 			}
 		}
+
+        $this->db->query("DELETE FROM " . DB_PREFIX . "coupon_customer WHERE coupon_id = '" . (int)$coupon_id . "'");
+
+        if (isset($data['coupon_customer'])) {
+            foreach ($data['coupon_customer'] as $customer_id) {
+                $this->db->query("INSERT INTO " . DB_PREFIX . "coupon_customer SET coupon_id = '" . (int)$coupon_id . "', customer_id = '" . (int)$customer_id . "'");
+            }
+        }
+
+        $this->db->query("DELETE FROM " . DB_PREFIX . "coupon_customer_group WHERE coupon_id = '" . (int)$coupon_id . "'");
+
+        if (isset($data['coupon_customergroup'])) {
+            foreach ($data['coupon_customergroup'] as $customergroup_id) {
+                $this->db->query("INSERT INTO " . DB_PREFIX . "coupon_customer_group SET coupon_id = '" . (int)$coupon_id . "', customer_group_id = '" . (int)$customergroup_id . "'");
+            }
+        }
+
 	}
 
 	public function deleteCoupon($coupon_id) {
 		$this->db->query("DELETE FROM " . DB_PREFIX . "coupon WHERE coupon_id = '" . (int)$coupon_id . "'");
 		$this->db->query("DELETE FROM " . DB_PREFIX . "coupon_product WHERE coupon_id = '" . (int)$coupon_id . "'");
 		$this->db->query("DELETE FROM " . DB_PREFIX . "coupon_category WHERE coupon_id = '" . (int)$coupon_id . "'");
+        $this->db->query("DELETE FROM " . DB_PREFIX . "coupon_customer WHERE coupon_id = '" . (int)$coupon_id . "'");
+        $this->db->query("DELETE FROM " . DB_PREFIX . "coupon_customer_group WHERE coupon_id = '" . (int)$coupon_id . "'");
 		$this->db->query("DELETE FROM " . DB_PREFIX . "coupon_history WHERE coupon_id = '" . (int)$coupon_id . "'");
-	}
+    }
 
 	public function getCoupon($coupon_id) {
 		$query = $this->db->query("SELECT DISTINCT * FROM " . DB_PREFIX . "coupon WHERE coupon_id = '" . (int)$coupon_id . "'");

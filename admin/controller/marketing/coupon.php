@@ -300,8 +300,6 @@ class ControllerMarketingCoupon extends Controller {
         $data['entry_customer'] = $this->language->get('entry_customer');
         $data['entry_customergroup'] = $this->language->get('entry_customergroup');
 
-
-
 		$data['help_code'] = $this->language->get('help_code');
 		$data['help_type'] = $this->language->get('help_type');
 		$data['help_logged'] = $this->language->get('help_logged');
@@ -479,9 +477,22 @@ class ControllerMarketingCoupon extends Controller {
         } else {
             $customergroups = array();
         }
+        $data['coupon_customergroup'] = $customergroups;
+
+        $this->load->model('customer/customer_group');
 
         $data['coupon_customergroup'] = array();
-        $data['coupon_customergroup'] = $customergroups;
+
+        foreach ($customergroups as $customergroup_id) {
+            $customergroup_info = $this->model_customer_customer_group->getCustomerGroup($customergroup_id);
+
+            if ($customergroup_info) {
+                $data['coupon_customergroup'][] = array(
+                    'customergroup_id' => $customergroup_info['category_id'],
+                    'name'        => $customergroup_info['name']
+                );
+            }
+        }
 
         if (isset($this->request->post['coupon_product'])) {
             $products = $this->request->post['coupon_product'];
