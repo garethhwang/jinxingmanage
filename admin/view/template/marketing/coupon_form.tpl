@@ -127,6 +127,32 @@
                 </div>
               </div>
               <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-customer"><span data-toggle="tooltip" title="<?php echo $help_customer; ?>"><?php echo $entry_customer; ?></span></label>
+                <div class="col-sm-10">
+                  <input type="text" name="customer" value="" placeholder="<?php echo $entry_customer; ?>" id="input-customer" class="form-control" />
+                  <div id="coupon-customer" class="well well-sm" style="height: 150px; overflow: auto;">
+                    <?php foreach ($coupon_customer as $coupon_customer) { ?>
+                    <div id="coupon-customer<?php echo $coupon_customer['customer_id']; ?>"><i class="fa fa-minus-circle"></i> <?php echo $coupon_customer['name']; ?>
+                      <input type="hidden" name="coupon_customer[]" value="<?php echo $coupon_customer['customer_id']; ?>" />
+                    </div>
+                    <?php } ?>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-customergroup"><span data-toggle="tooltip" title="<?php echo $help_customergroup; ?>"><?php echo $entry_customergroup; ?></span></label>
+                <div class="col-sm-10">
+                  <input type="text" name="customergroup" value="" placeholder="<?php echo $entry_customergroup; ?>" id="input-customergroup" class="form-control" />
+                  <div id="coupon-customergroup" class="well well-sm" style="height: 150px; overflow: auto;">
+                    <?php foreach ($coupon_customergroup as $coupon_customergroup) { ?>
+                    <div id="coupon-customergroup<?php echo $coupon_customergroup['customergroup_id']; ?>"><i class="fa fa-minus-circle"></i> <?php echo $coupon_customergroup['name']; ?>
+                      <input type="hidden" name="coupon_customergroup[]" value="<?php echo $coupon_customergroup['customergroup_id']; ?>" />
+                    </div>
+                    <?php } ?>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-product"><span data-toggle="tooltip" title="<?php echo $help_product; ?>"><?php echo $entry_product; ?></span></label>
                 <div class="col-sm-10">
                   <input type="text" name="product" value="" placeholder="<?php echo $entry_product; ?>" id="input-product" class="form-control" />
