@@ -418,7 +418,6 @@ class ControllerCustomerCustomerGroup extends Controller {
             );
 
             $results = $this->model_customer_customer_group->getCustomerGroups($filter_data);
-            var_dump($results);
 
             foreach ($results as $result) {
                 $json[] = array(
