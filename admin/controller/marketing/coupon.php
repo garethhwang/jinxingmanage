@@ -490,7 +490,7 @@ class ControllerMarketingCoupon extends Controller {
 
             if ($customergroup_info) {
                 $data['coupon_customergroup'][] = array(
-                    'customergroup_id' => $customergroup_info['category_id'],
+                    'customergroup_id' => $customergroup_info['customer_group_id'],
                     'name'        => $customergroup_info['name']
                 );
             }
