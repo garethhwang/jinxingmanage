@@ -27,6 +27,8 @@ class ModelMarketingCoupon extends Model {
             foreach ($data['coupon_customergroup'] as $customergroup_id) {
                 $this->db->query("INSERT INTO " . DB_PREFIX . "coupon_customer_group SET coupon_id = '" . (int)$coupon_id . "', customer_group_id = '" . (int)$customergroup_id . "'");
             }
+        }else{
+            $this->db->query("INSERT INTO " . DB_PREFIX . "coupon_customer_group SET coupon_id = '" . (int)$coupon_id . "', customer_group_id = '1'");
         }
 
 		return $coupon_id;
