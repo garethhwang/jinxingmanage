@@ -1,6 +1,6 @@
 <?php
 // Heading
-$_['heading_title']        = 'MyCnCart';
+$_['heading_title']        = '金杏管理系统';
 
 // Text
 $_['text_order']           = '订单';
@@ -17,7 +17,7 @@ $_['text_affiliate']       = '加盟';
 $_['text_store']           = '商店';
 $_['text_front']           = '商店前台';
 $_['text_help']            = '帮助';
-$_['text_homepage']        = 'MyCnCart官网';
+$_['text_homepage']        = '金杏管理系统';
 $_['text_support']         = '支持论坛';
 $_['text_documentation']   = '手册教程';
 $_['text_logout']          = '安全退出';
