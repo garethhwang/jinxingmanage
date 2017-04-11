@@ -301,7 +301,7 @@ $('input[name=\'customer\']').autocomplete({
                   success: function(json) {
                       response($.map(json, function(item) {
                           return {
-                              label: item['realname'],
+                              label: item['name'],
                               value: item['customer_id']
                           }
                       }));
