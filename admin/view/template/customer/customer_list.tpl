@@ -112,9 +112,20 @@
             </div>
             <div class="col-sm-3">
               <div class="form-group">
-                <label class="control-label" for="input-date-added"><?php echo $entry_lastmenstrualdate; ?></label>
+                <label class="control-label" for="input-date-added"><?php echo $entry_date_added; ?></label>
                 <div class="input-group date">
-                  <input type="text" name="filter_lastmenstrualdate" value="<?php echo $filter_lastmenstrualdate; ?>" placeholder="<?php echo $entry_lastmenstrualdate; ?>" data-date-format="YYYY-MM-DD" id="input-date-added" class="form-control" />
+                  <input type="text" name="filter_date_added" value="<?php echo $filter_date_added; ?>" placeholder="<?php echo $entry_date_added; ?>" data-date-format="YYYY-MM-DD" id="input-date-added" class="form-control" />
+                  <span class="input-group-btn">
+                  <button type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button>
+                  </span></div>
+              </div>
+              <button type="button" id="button-filter" class="btn btn-primary pull-right"><i class="fa fa-filter"></i> <?php echo $button_filter; ?></button>
+            </div>
+            <div class="col-sm-3">
+              <div class="form-group">
+                <label class="control-label" for="input-lastmenstrualdate"><?php echo $entry_lastmenstrualdate; ?></label>
+                <div class="input-group date">
+                  <input type="text" name="filter_lastmenstrualdate" value="<?php echo $filter_lastmenstrualdate; ?>" placeholder="<?php echo $entry_lastmenstrualdate; ?>" data-date-format="YYYY-MM-DD" id="input-lastmenstrualdate" class="form-control" />
                   <span class="input-group-btn">
                   <button type="button" class="btn btn-default"><i class="fa fa-calendar"></i></button>
                   </span></div>
@@ -156,6 +167,11 @@
                     <?php } else { ?>
                     <a href="<?php echo $sort_ip; ?>"><?php echo $column_ip; ?></a>
                     <?php } ?></td>-->
+                  <td class="text-left"><?php if ($sort == 'cp.date_added') { ?>
+                    <a href="<?php echo $sort_date_added; ?>" class="<?php echo strtolower($order); ?>"><?php echo $column_date_added; ?></a>
+                    <?php } else { ?>
+                    <a href="<?php echo $sort_date_added; ?>"><?php echo $column_date_added; ?></a>
+                    <?php } ?></td>
                   <td class="text-left"><?php if ($sort == 'cp.lastmenstrualdate') { ?>
                     <a href="<?php echo $sort_lastmenstrualdate; ?>" class="<?php echo strtolower($order); ?>"><?php echo $column_lastmenstrualdate; ?></a>
                     <?php } else { ?>
@@ -196,6 +212,7 @@
                   <!-- <td class="text-left"><?php echo $customer['email']; ?></td> -->
                   <td class="text-left"><?php echo $customer['telephone']; ?></td>
                   <td class="text-left"><?php echo $customer['customer_address']; ?></td>
+                  <td class="text-left"><?php echo $customer['date_added']; ?></td>
                   <td class="text-left"><?php echo $customer['lastmenstrualdate']; ?></td>
                   <!-- <td class="text-left">
                     <div class="btn-group">
