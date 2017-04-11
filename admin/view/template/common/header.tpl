@@ -60,6 +60,7 @@
         <li><a href="<?php echo $affiliate_approval; ?>"><span class="label label-danger pull-right"><?php echo $affiliate_total; ?></span><?php echo $text_approval; ?></a></li>
       </ul>
     </li>
+    <!--
     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-home fa-lg"></i></a>
       <ul class="dropdown-menu dropdown-menu-right">
         <li class="dropdown-header"><?php echo $text_store; ?></li>
@@ -68,7 +69,6 @@
         <?php } ?>
       </ul>
     </li>
-    <!--
     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-life-ring fa-lg"></i></a>
       <ul class="dropdown-menu dropdown-menu-right">
         <li class="dropdown-header"><?php echo $text_help; ?></li>
