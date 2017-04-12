@@ -147,7 +147,7 @@ class ControllerApiCart extends Controller {
 
 	public function products() {
 		$this->load->language('api/cart');
-        $log = new log('api.log');
+        $log = new Log('api.log');
 
 		$json = array();
 
