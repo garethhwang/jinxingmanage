@@ -266,8 +266,7 @@ class Cart {
 			}
 		}
 
-		$log = new Log('api.log');
-        $log->write('system/cart getProducts price: '.$product_data['price']);
+		var_dump($product_data['price']);
 
 		return $product_data;
 	}
