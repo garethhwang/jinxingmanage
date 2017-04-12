@@ -265,8 +265,6 @@ class Cart {
 				$this->remove($cart['cart_id']);
 			}
 		}
-		var_dump($option_price);
-        //var_dump($product_data);
 		return $product_data;
 	}
 
