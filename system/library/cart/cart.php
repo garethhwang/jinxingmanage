@@ -261,12 +261,11 @@ class Cart {
 					'length_class_id' => $product_query->row['length_class_id'],
 					'recurring'       => $recurring
 				);
-                var_dump($product_data['price']);
 			} else {
 				$this->remove($cart['cart_id']);
 			}
 		}
-
+        var_dump($product_data);
 		return $product_data;
 	}
 
